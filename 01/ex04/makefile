@@ -34,11 +34,16 @@ fclean		:	clean
 
 run			: 	all
 				./create.sh
-				./sed loser Take king
-#				rm loser
+#				chmod 000 poem
+				./sed poem to To
+#				./sed poem to ""
+#				./sed poem "" to
+#				./sed "" to To
+				sleep 2
+				rm poem
 
 re 			: 	fclean all
 
 .PHONY 		: 	clean fclean all 
 
-.DEFAULT_GOAL:=run
+#.DEFAULT_GOAL:=run

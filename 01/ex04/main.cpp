@@ -1,9 +1,11 @@
 #include <fstream>
 #include <iostream>
-#include <string>
+#include <vector>
+#include <unistd.h>
+
 // void	leaks()
 // {
-// 	system("leaks -q fight");
+// 	system("leaks -q sed");
 // }
 
 std::string	*arguments_string(char *argv[])
@@ -22,8 +24,8 @@ std::string	*arguments_string(char *argv[])
 	return (array);
 	
 }
-//write changed lines one to one to other temp file
-std::string changefile(std::string line, const std::string &s1, const std::string &s2, int num)
+
+std::string changefile(std::string line, const std::string &s1, const std::string &s2)
 {
     size_t found = 0;
     size_t lengthone = s1.size();
@@ -47,33 +49,65 @@ void	printArray(std::string *array)
 
 int main(int argc, char *argv[])
 {
-	std::string *array;
-	int i = 0;
-	if (argc != 4)
-		return (1);
-	if (strlen(argv[2]) <= 0)
-		return (1);
+	std::string					*array;
+	std::vector<std::string>	changedfile;
+
+	if (argc != 4 || !strcmp(argv[1], "") || strlen(argv[2]) <= 0)
+	{
+		std::cout << "I DID NOT CHANGE THE FILE" << std::endl;
+		return 1;
+	}
 	array = arguments_string(argv);
+	if (array == NULL)
+		return 1;
 	printArray(array); 
-	std::fstream file(array[0], std::ios::trunc);
+	std::ifstream file(array[0]);
 	if (file.is_open())
 	{
 		std::string line;
 		while (std::getline(file, line))
-			changefile(line, array[1], array[2], i++);
+			changedfile.push_back(changefile(line, array[1], array[2]));
 		file.close();
+		sleep(2);
+        std::ofstream outputFile(array[0]);
+        if (!outputFile.is_open()) 
+		{
+            std::cout << "Failed to open file: " << array[0] << std::endl;
+            return 1;
+        }
+        for (std::vector<std::string>::size_type i = 0; i < changedfile.size(); ++i) 
+			outputFile << changedfile[i] << std::endl;
+        outputFile.close();
 	}
 	else
 	{
-		std::cout << "File not opened - program terminated" << std::endl;
-		exit(EXIT_FAILURE);
+		std::cout << "Failed to open file: " << array[0] << std::endl;
+		return 1;
 	}
-
-	// if filename empty exit. 1 empty, replace niets, if 2 empty, replace 1 met ""
-	// file openen *name
-	// temp file maken
-	// line schrijven tot s2 en dan s1 vervangen door s2 en dan verder schrijven.
-	// file 1 leeg, alles van temp naar file
+	delete[] array;
 	// atexit(leaks);
 	return (0);
 }
+
+// #!/bin/bash
+
+// sentences=(
+// "Take time to work, it is the price of success."
+// "Take time to think, it is the source of power."
+// "Take time to play, it is the secret of perpetual youth."
+// "Take time to read, it is the foundation of wisdom."
+// "Take time to worship, it is the highway to reverence."
+// "Take time to be friendly, it is the road to happiness."
+// "Take time to dream, it is hitching your wagon to a star."
+// "Take time to love and be loved, it is the privilege of the gods."
+// "Take time to look around; it is too short a day to be selfish."
+// "Take time to laugh; it is the music of the soul.")
+
+// file_name="loser"
+
+// # Write sentences to the file
+// if [ ! -s "$file_name" ]; then
+// 	for sentence in "${sentences[@]}"; do
+// 		echo "$sentence" >> "$file_name"
+// 	done
+// fi
