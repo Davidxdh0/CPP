@@ -1,7 +1,7 @@
 NAME		= 	zombie
 CC 			= 	g++
 
-CFLAGS 		= 	-Wall -Wextra -Werror 
+CFLAGS 		= 	-Wall -Wextra -Werror -pedantic
 CFLAGS		+=	-std=c++98
 INCLUDE 	= 	./include
 VPATH 		= 	src
