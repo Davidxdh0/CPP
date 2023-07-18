@@ -1,5 +1,5 @@
 NAME		= 	number
-CC 			= 	g++
+CC 			= 	c++
 
 CFLAGS 		= 	-Wall -Wextra -Werror -pedantic
 CFLAGS		+=	-std=c++98
@@ -33,7 +33,7 @@ fclean		:	clean
 				rm -rf ${NAME}
 
 run			: 	
-				./harl
+				./${NAME}
 
 re 			: 	fclean all
 

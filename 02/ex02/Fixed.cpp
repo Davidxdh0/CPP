@@ -66,3 +66,61 @@ void Fixed::setRawBits( int const raw )
 	this->_number = raw;
 }
 
+bool Fixed::operator>(const Fixed& fx)
+{
+	;
+}
+
+bool Fixed::operator<(const Fixed& fx)
+{
+	;	
+}
+
+bool Fixed::operator>=(const Fixed& fx)
+{
+	;	
+}
+
+bool Fixed::operator<=(const Fixed& fx)
+{
+	;	
+}
+
+bool Fixed::operator==(const Fixed& fx)
+{
+	;	
+}
+
+bool Fixed::operator!=(const Fixed& fx)
+{
+	;	
+}
+
+Fixed Fixed::operator+(const Fixed& fx)
+{}
+Fixed Fixed::operator-(const Fixed& fx)
+{}
+Fixed Fixed::operator*(const Fixed& fx)
+{}
+Fixed Fixed::operator/(const Fixed& fx)
+{}
+Fixed Fixed::operator++ ()
+{}
+Fixed Fixed::operator++(int)
+{}
+Fixed Fixed::operator-- ()
+{}
+Fixed Fixed::operator--(int)
+{}
+
+A static member function min that takes as parameters two references on fixed-point
+numbers, and returns a reference to the smallest one.
+
+• A static member function min that takes as parameters two references to constant
+fixed-point numbers, and returns a reference to the smallest one.
+
+• A static member function max that takes as parameters two references on fixed-point
+numbers, and returns a reference to the greatest one.
+
+• A static member function max that takes as parameters two references to constant
+fixed-point numbers, and returns a reference to the greatest one.
