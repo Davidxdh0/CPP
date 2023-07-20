@@ -66,61 +66,117 @@ void Fixed::setRawBits( int const raw )
 	this->_number = raw;
 }
 
-bool Fixed::operator>(const Fixed& fx)
+bool Fixed::operator>(const Fixed& fx) const
 {
-	;
+	return this->_number > fx._number;
 }
 
-bool Fixed::operator<(const Fixed& fx)
+bool Fixed::operator<(const Fixed& fx) const
 {
-	;	
+	return this->_number < fx._number;
 }
 
-bool Fixed::operator>=(const Fixed& fx)
+bool Fixed::operator>=(const Fixed& fx) const
 {
-	;	
+	return this->_number >= fx._number;	
 }
 
-bool Fixed::operator<=(const Fixed& fx)
+bool Fixed::operator<=(const Fixed& fx) const
 {
-	;	
+	return this->_number <= fx._number;	
 }
 
-bool Fixed::operator==(const Fixed& fx)
+bool Fixed::operator==(const Fixed& fx) const
 {
-	;	
+	return this->_number == fx._number;	
 }
 
-bool Fixed::operator!=(const Fixed& fx)
+bool Fixed::operator!=(const Fixed& fx) const
 {
-	;	
+	return this->_number != fx._number;	
 }
 
 Fixed Fixed::operator+(const Fixed& fx)
-{}
+{
+	Fixed result;
+    result._number = this->_number + fx._number;
+    return result;
+}
+
 Fixed Fixed::operator-(const Fixed& fx)
-{}
+{
+	Fixed result;
+    result._number = this->_number - fx._number;
+    return result;
+}
+
+//how to make it safely that the number doesnt go over int? no need?
 Fixed Fixed::operator*(const Fixed& fx)
-{}
+{
+	Fixed result;
+	result._number = this->_number * fx._number * (1 * _fractBits);
+	return result;
+}
 Fixed Fixed::operator/(const Fixed& fx)
-{}
-Fixed Fixed::operator++ ()
-{}
-Fixed Fixed::operator++(int)
-{}
-Fixed Fixed::operator-- ()
-{}
-Fixed Fixed::operator--(int)
-{}
+{
+	Fixed result;
+	result._number = this->_number * fx._number / (1 * _fractBits);
+	return result;
+}
+Fixed& Fixed::operator++ ()
+{
+	this->_number++;
+	return *this;
+}
+	
+Fixed Fixed::operator++ (int)
+{
+	Fixed temp(*this);
+	++(*this);
+	return temp;
+}
 
-A static member function min that takes as parameters two references on fixed-point
-numbers, and returns a reference to the smallest one.
+Fixed& Fixed::operator-- ()
+{
+	this->_number--;
+	return *this;
+}
+Fixed Fixed::operator-- (int)
+{
+	Fixed temp(*this);
+	--(*this);
+	return temp;
+}
 
-• A static member function min that takes as parameters two references to constant
-fixed-point numbers, and returns a reference to the smallest one.
+Fixed& Fixed::min(Fixed &a, Fixed &b)
+{
+	if (a > b)
+		return b;
+	else
+		return a;
+}
 
-• A static member function max that takes as parameters two references on fixed-point
-numbers, and returns a reference to the greatest one.
+const Fixed& Fixed::min(const Fixed &a, const Fixed &b)
+{
+	if (a > b)
+		return b;
+	else
+		return a;
+}
 
-• A static member function max that takes as parameters two references to constant
-fixed-point numbers, and returns a reference to the greatest one.
+Fixed& Fixed::max(Fixed& a, Fixed& b)	
+{
+	if (a > b)
+		return a;
+	else
+		return b;
+}
+
+const Fixed& Fixed::max(const Fixed& a, const Fixed& b)
+{
+	if (a > b)
+		return a;
+	else
+		return b;
+}
+
