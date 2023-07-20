@@ -19,7 +19,6 @@ public:
 	int toInt( void ) const;
 	float toFloat( void ) const;
 	
-	friend std::ostream& operator<<(std::ostream& out, const Fixed& c);
 	Fixed& operator=(const Fixed &child);
 	Fixed& operator++ ();
 	Fixed operator++ (int);
@@ -43,4 +42,5 @@ public:
 	static const Fixed& max(const Fixed& a, const Fixed& b);
 };
 
+std::ostream& operator<<(std::ostream& out, const Fixed& c);
 #endif
