@@ -1,7 +1,7 @@
-NAME		= 	number
+NAME		= 	clap
 CC 			= 	c++
 
-CFLAGS 		= 	-Wall -Wextra -Werror -pedantic
+CFLAGS 		= 	-Wall -Wextra -Werror -Wpedantic
 CFLAGS		+=	-std=c++98
 INCLUDE 	= 	./include
 VPATH 		= 	src

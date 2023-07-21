@@ -3,6 +3,8 @@
 
 #include <iostream>
 
+#define MESSAGE = 1
+
 class 	ClapTrap
 {
 	private:
