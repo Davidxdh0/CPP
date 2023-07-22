@@ -1,4 +1,4 @@
-NAME		= 	clap
+NAME		= 	scav
 CC 			= 	c++
 
 CFLAGS 		= 	-Wall -Wextra -Werror -Wpedantic
@@ -6,7 +6,7 @@ CFLAGS		+=	-std=c++98
 INCLUDE 	= 	./include
 VPATH 		= 	src
 
-SRC_FILES 	=	main.cpp ClapTrap.cpp
+SRC_FILES 	=	main.cpp ClapTrap.cpp ScavTrap.cpp
 
 # object files
 OBJ_DIR = obj
@@ -17,14 +17,14 @@ all: $(OBJ_DIR) $(NAME)
 
 # obj dir
 ${OBJ_DIR}	:
-				mkdir -p ${OBJ_DIR}
+				@mkdir -p ${OBJ_DIR}
 
 # Build 
 ${NAME}		: 	${OBJ_FILES} 
-				$(CC) $(CFLAGS) $^ -o $@
+				@$(CC) $(CFLAGS) $^ -o $@
 
 $(OBJ_FILES): 	$(OBJ_DIR)/%.o : %.cpp
-				$(CC) $(CFLAGS) -c $< -o $@
+				@$(CC) $(CFLAGS) -c $< -o $@
 
 clean		:
 				rm -rf ${OBJ_DIR}
@@ -32,7 +32,7 @@ clean		:
 fclean		:	clean
 				rm -rf ${NAME}
 
-run			: 	
+run			: 	all
 				./${NAME}
 
 re 			: 	fclean all
