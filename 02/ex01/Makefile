@@ -1,7 +1,7 @@
 NAME		= 	number
 CC 			= 	c++
 
-CFLAGS 		= 	-Wall -Wextra -Werror -pedantic
+CFLAGS 		= 	-Wall -Wextra -Werror -Wpedantic
 CFLAGS		+=	-std=c++98
 INCLUDE 	= 	./include
 VPATH 		= 	src
@@ -32,7 +32,7 @@ clean		:
 fclean		:	clean
 				rm -rf ${NAME}
 
-run			: 	
+run			: 	all
 				./${NAME}
 
 re 			: 	fclean all

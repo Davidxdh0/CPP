@@ -7,6 +7,7 @@ class Fixed
 private:
 	int _number;
 	static const int _fractBits = 8;
+	
 public:
 	Fixed();
 	~Fixed();
@@ -43,5 +44,4 @@ public:
 };
 
 std::ostream& operator<<(std::ostream& out, const Fixed& c);
-
 #endif
