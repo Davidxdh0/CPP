@@ -1,4 +1,14 @@
 #include "FragTrap.hpp"
+#include "Debug.hpp"
+
+FragTrap::FragTrap( void ) : ClapTrap() {
+	setName("FragTrap");
+	setHitpoints(100);
+    setEnergypoints(100);
+    setAttackdamage(30);
+	if (MESSAGE == 1)
+		std::cout << "Default contructed FragTrap" << std::endl;
+}
 
 FragTrap::FragTrap(std::string name) : ClapTrap(name) {
 	setName(name);
@@ -7,6 +17,12 @@ FragTrap::FragTrap(std::string name) : ClapTrap(name) {
     setAttackdamage(30);
 	if (MESSAGE == 1)
 		std::cout << "Contructed FragTrap named " << name << std::endl;
+	if (VALUES == 1){
+		std::cout << "FragTrap name = " << FragTrap::getName() << std::endl;
+		std::cout << "FragTrap hitpoints = " << FragTrap::getHitpoints() << std::endl;
+		std::cout << "FragTrap energy points = " << FragTrap::getEnergypoints() << std::endl;
+		std::cout << "FragTrap attack damage = " << FragTrap::getAttackdamage() << std::endl;
+	}
 }
 
 FragTrap::~FragTrap( void ){

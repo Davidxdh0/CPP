@@ -36,6 +36,7 @@ int main ( void )
 	// scav.guardGate();
 	//-------------------------
 	FragTrap Frag("Repetitive work");
+	FragTrap Frags;
 	Frag.attack("none");
 	Frag.showHitpoint();
 	Frag.beRepaired(1);

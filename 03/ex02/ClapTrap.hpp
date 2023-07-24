@@ -3,12 +3,8 @@
 
 #include <iostream>
 
-#define MESSAGE 1
+#include "Debug.hpp"
 
-// • Name, which is passed as parameter to a constructor
-// • Hit points (10), represent the health of the ClapTrap
-// • Energy points (10)
-// • Attack damage (0)
 class 	ClapTrap{
 	private:
 		std::string			_name;
@@ -18,6 +14,7 @@ class 	ClapTrap{
 		static ClapTrap* 	allClapTraps[]; 
 
 	public:
+		ClapTrap( void );
 		ClapTrap(std::string name);
 		void		attack(const std::string& target);
 		void		takeDamage(unsigned int amount);
@@ -29,6 +26,8 @@ class 	ClapTrap{
 		void 		setAttackdamage( int const raw );
 		int 		getHitpoints() const ;
 		std::string getName() const ;
+		int 		getEnergypoints() const ;
+		int			getAttackdamage() const ;
 		static void	addClap(ClapTrap* clap, int i);
 		ClapTrap* 	findTarget(const std::string& target);
 		~ClapTrap( void );

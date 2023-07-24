@@ -4,6 +4,14 @@
 
 int main ( void )
 {
+
+	DiamondTrap Diamond("Monster");
+	// DiamondTrap Diamonds("Monster_clap_name");
+	Diamond.whoAmI();
+	Diamond.attack("Monster_clap_name");
+	// Diamond.showHitpoint();
+	// Diamond.beRepaired(1);
+	// Diamond.showHitpoint();
 	// ClapTrap clap[3] = { 
 	// 					ClapTrap("Clap"), 
 	// 					ClapTrap("Trap"), 
@@ -13,7 +21,7 @@ int main ( void )
 
 	// clap[0].attack("Trap");
 	// clap[0].attack("TheClapClap");
-	// clap[0].attack("Problems");
+	// clap[0].attack("Problems");	
 	// clap[1].showHitpoint();
 	// clap[2].showHitpoint();
 	// for (int i = 0; i < 3; i++)
@@ -42,13 +50,6 @@ int main ( void )
 	// Frag.showHitpoint();
 	// Frag.highFivesGuys();
 	//-------------------------
-	DiamondTrap Diamond("Monster");
-	Diamond.whoAmI();
-	Diamond.attack("none");
-	Diamond.showHitpoint();
-	Diamond.beRepaired(1);
-	Diamond.showHitpoint();
-
 
 }
 

@@ -6,17 +6,15 @@
 #include "FragTrap.hpp"
 #include <iostream>
 
-#define MESSAGE 1
-
 class DiamondTrap : public ScavTrap, public FragTrap {
 	private:
 		std::string	_name;
 	public:
+		// DiamondTrap();
 		DiamondTrap(std::string name);
 		~DiamondTrap( void );
 		void 	whoAmI();
-		std::string getName() const ;
-		using ScavTrap::attack;
+		void	attack(std::string target);
 };
 
 #endif

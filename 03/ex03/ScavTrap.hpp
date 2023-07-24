@@ -4,10 +4,13 @@
 #include "ClapTrap.hpp"
 #include <iostream>
 
-#define MESSAGE 1
+#include "Debug.hpp"
 
-class ScavTrap : virtual public ClapTrap {
+class ScavTrap : public virtual ClapTrap {
+	private:
+        std::string _name;
 	public:
+		ScavTrap( void );
 		ScavTrap(std::string name);
 		~ScavTrap( void );
 		void guardGate( void );

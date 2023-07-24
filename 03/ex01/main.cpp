@@ -28,9 +28,12 @@ int main ( void )
 	// clap[1].showHitpoint();
 	// clap[2].showHitpoint();
 	ScavTrap scav("Serena");
-	scav.attack("none");
+	ScavTrap a;
+	scav.attack("Serenab");
+
 	scav.showHitpoint();
 	scav.beRepaired(1);
+	scav.takeDamage(2);
 	scav.showHitpoint();
 	scav.guardGate();
 }

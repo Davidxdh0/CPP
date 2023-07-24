@@ -1,7 +1,7 @@
 NAME		= 	diamond
 CC 			= 	c++
 
-CFLAGS 		= 	-Wall -Wextra -Werror -Wpedantic
+CFLAGS 		= 	-Wall -Wextra -Werror -Wpedantic -Wshadow
 CFLAGS		+=	-std=c++98
 INCLUDE 	= 	./include
 VPATH 		= 	src
@@ -39,4 +39,4 @@ re 			: 	fclean all
 
 .PHONY 		: 	clean fclean all 
 
-# .DEFAULT_GOAL:=run
+.DEFAULT_GOAL:=run

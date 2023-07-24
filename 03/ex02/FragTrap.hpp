@@ -4,10 +4,11 @@
 #include "ClapTrap.hpp"
 #include <iostream>
 
-#define MESSAGE 1
+#include "Debug.hpp"
 
 class FragTrap : public ClapTrap {
 	public:
+		FragTrap( void );
 		FragTrap(std::string name);
 		~FragTrap( void );
 		void 	highFivesGuys( void );

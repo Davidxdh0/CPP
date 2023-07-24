@@ -1,7 +1,7 @@
 NAME		= 	scav
 CC 			= 	c++
 
-CFLAGS 		= 	-Wall -Wextra -Werror -Wpedantic
+CFLAGS 		= 	-Wall -Wextra -Werror -Wpedantic -Wshadow
 CFLAGS		+=	-std=c++98
 INCLUDE 	= 	./include
 VPATH 		= 	src

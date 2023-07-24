@@ -1,33 +1,35 @@
 #include "DiamondTrap.hpp"
+#include "Debug.hpp"
 
-//initialize with
-// Name, which is passed as parameter to a constructor
-// • Hit points (FragTrap)
-// • Energy points (ScavTrap)
-// • Attack damage (FragTrap)
-// • attack() (Scavtrap
+// DiamondTrap::DiamondTrap() {
+// 	if (MESSAGE == 1)
+// 		std::cout << "default Contructed DiamondTrap"<< std::endl;
+// }
 
-DiamondTrap::DiamondTrap(std::string name) : ClapTrap(name + "_clap_name"), ScavTrap(name), FragTrap(name) {
-    _name = name;
-	DiamondTrap::setHitpoints(FragTrap::getHitpoints());
-    DiamondTrap::setEnergypoints(ScavTrap::getEnergypoints());
-	DiamondTrap::setAttackdamage(FragTrap::getAttackdamage());
+DiamondTrap::DiamondTrap(std::string name) : ClapTrap(name + "_clap_name"), ScavTrap("ScavTrap"), FragTrap("FragTrap") {
+	// ClapTrap::setName(name + "_clap_name");
+	this->_name = name;
+	this->_hitpoints = FragTrap::getHitpoints();
+    this->_energypoints = ScavTrap::getEnergypoints();
+	this->_attackdamage = FragTrap::getAttackdamage();
 	if (MESSAGE == 1)
-		std::cout << "Contructed DiamondTrap named " << name << std::endl;
+		std::cout << "Contructed DiamondTrap named " << this->getName() << std::endl;
 }
 
 DiamondTrap::~DiamondTrap( void ){
 	if (MESSAGE == 1)
-		std::cout << "Decontructed DiamondTrap named " << getName() << std::endl;
+		std::cout << "Decontructed DiamondTrap named " << this->_name << std::endl;
 }
 
-std::string DiamondTrap::getName() const {
-	return this->_name;
+void DiamondTrap::whoAmI() {
+    if (MESSAGE == 1) {
+        std::cout << "whoAmI: DiamondTrap is named " << this->_name
+                  << ", ClapTrap is named " << static_cast<ClapTrap*>(this)->getName()  << std::endl;
+    }
 }
 
-void DiamondTrap::whoAmI( void ){
-	if (MESSAGE == 1){
-		// ClapTrap::setName(_name + "_clap_name");
-		std::cout << "DiamondTrap is named " << getName() << std::endl << "ClapTrap is named " << ClapTrap::getName() << std::endl;
-	}
+void DiamondTrap::attack(std::string target)
+{
+    ScavTrap::attack(target);
 }
+
