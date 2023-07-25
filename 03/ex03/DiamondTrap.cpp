@@ -6,7 +6,7 @@ DiamondTrap::DiamondTrap() {
 		std::cout << "default Contructed DiamondTrap"<< std::endl;
 }
 
-DiamondTrap::DiamondTrap(std::string name) : ClapTrap(name + "_clap_name"), ScavTrap("ScavTrap"), FragTrap("FragTrap") {
+DiamondTrap::DiamondTrap(std::string name) : ClapTrap(name + "_clap_name"), ScavTrap(name), FragTrap(name) {
 	this->_name = name;
 	this->_hitpoints = FragTrap::getHitpoints();
     this->_energypoints = ScavTrap::getEnergypoints();
