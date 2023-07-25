@@ -3,9 +3,6 @@ CC 			= 	c++
 
 CFLAGS 		= 	-Wall -Wextra -Werror -Wpedantic
 CFLAGS		+=	-std=c++98
-INCLUDE 	= 	./include
-VPATH 		= 	src
-
 SRC_FILES 	=	main.cpp ClapTrap.cpp
 
 # object files
