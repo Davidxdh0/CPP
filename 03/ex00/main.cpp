@@ -5,18 +5,17 @@
 int main ( void )
 {
 	ClapTrap clap[3] = { 
-						ClapTrap("one"), 
-						ClapTrap("two"), 
-						ClapTrap("three") };
+						ClapTrap("One"), 
+						ClapTrap("Two"), 
+						ClapTrap("Three") };
 	for (int i = 0; i < 3; ++i)
     	ClapTrap::addClap(&clap[i], i);
 	clap[0].setAttackdamage(5);
-	clap[0].attack("one");
-	clap[0].attack("two");
-	clap[0].attack("two");
-	clap[0].attack("two");
-	clap[0].attack("three");
-	clap[0].attack("lol");
+	clap[0].attack("Two");
+	clap[0].attack("Two");
+	clap[0].attack("Two");
+	clap[0].attack("Three");
+	clap[0].attack("doesnt exist");
 	clap[1].showHitpoint();
 	clap[2].showHitpoint();
 	for (int i = 0; i < 3; i++)
