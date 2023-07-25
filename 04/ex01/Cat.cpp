@@ -1,15 +1,17 @@
-#include "Dog.hpp"
+#include "Cat.hpp"
 #include <iostream>
 
-Dog::Dog( void ) : Animal("Dog") {
+Cat::Cat( void ): Animal("Cat"){
+	brain = new Brain();
 }
-Dog::Dog(const Dog& old){
+Cat::Cat(const Cat& old){
+	brain = new Brain();
 	if (MESSAGE == 1)
 		std::cout << "Copy constructor " << type << " called" << std::endl;
 	*this = old;
 }
 
-Dog &Dog::operator=(const Dog& old){
+Cat &Cat::operator=(const Cat& old){
 	if (MESSAGE == 1)
 		std::cout << "Copy assignment " << type << " operator called" << std::endl;
 	if (this != &old){
@@ -18,7 +20,8 @@ Dog &Dog::operator=(const Dog& old){
 	return *this;
 }
 
-Dog::~Dog( void ){
+Cat::~Cat( void ){
+	delete brain;
 	if (MESSAGE == 1)
 		std::cout << "Deconstructed " << type << " called" << std::endl;
 }

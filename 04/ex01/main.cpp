@@ -32,3 +32,9 @@ int main()
 	// atexit(checkleaks);
 	return 1;
 }
+// To test whether your copies are deep copies, 
+// you would need to create copies of objects that contain pointers to other objects and 
+// then check if changes made to the data in the copied objects affect the original objects 
+// or vice versa. If they do not, then your copies are considered deep copies. 
+// If changes in one object affect the other, then you would need to adjust your copying mechanism
+// to achieve a deep copy.

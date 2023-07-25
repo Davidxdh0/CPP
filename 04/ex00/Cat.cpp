@@ -1,8 +1,7 @@
 #include "Cat.hpp"
 #include <iostream>
 
-Cat::Cat( void ): Animal(){
-	type = "Cat";
+Cat::Cat( void ): Animal("Cat"){
 }
 Cat::Cat(const Cat& old){
 	if (MESSAGE == 1)
@@ -21,5 +20,5 @@ Cat &Cat::operator=(const Cat& old){
 
 Cat::~Cat( void ){
 	if (MESSAGE == 1)
-		std::cout << "Deconstructor " << type << " called" << std::endl;
+		std::cout << "Deconstructed " << type << " called" << std::endl;
 }
