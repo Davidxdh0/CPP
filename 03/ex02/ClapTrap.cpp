@@ -5,12 +5,12 @@
 ClapTrap* ClapTrap::allClapTraps[] = { nullptr, nullptr, nullptr };
 
 ClapTrap::ClapTrap( void ){
-	this->_name 		= "Default";
+	this->_name 		= "ClapTrap";
 	this->_hitpoints 	= 10;
 	this->_energypoints = 10;
 	this->_attackdamage = 0;
 	if (MESSAGE == 1)
-		std::cout << "Default Contructor called" << std::endl;
+		std::cout << "Default ClapTrap Contructor called" << std::endl;
 }
 
 ClapTrap::ClapTrap(std::string name){	
@@ -39,12 +39,12 @@ void	ClapTrap::attack(const std::string& target){
 		if (this->_energypoints > 0 && this->_hitpoints > 0){
 			if (MESSAGE == 1)
 				std::cout << this->_name << " has attacked " << target << "attackpower: " << this->getAttackdamage() <<std::endl;
-			this->_energypoints = this->_energypoints - 1;
 			goal->setHitpoints(goal->_hitpoints - _attackdamage);
 		}	
 	}
 	else
-		std::cout << target <<" doesn't exist but it still has attacked it. Attackpower: " << this->getAttackdamage() << std::endl;
+		std::cout << target <<" doesn't exist but got attacked. Attackpower: " << this->getAttackdamage() << std::endl;
+	this->_energypoints = this->_energypoints - 1;
 }
 
 void	ClapTrap::takeDamage(unsigned int amount){
@@ -70,6 +70,8 @@ void	ClapTrap::showHitpoint( void ){
 	if (this->_hitpoints <= 0)
 		this->_hitpoints = 0;
 	std::cout << this->_name << " has " << this->_hitpoints << " hitpoints" << std::endl; 
+	if (this->_energypoints < 0)
+		this->_energypoints = 0;
 	std::cout << this->_name << " has " << this->_energypoints << " energypoints" << std::endl; 
 }
 

@@ -32,7 +32,7 @@ clean		:
 fclean		:	clean
 				rm -rf ${NAME}
 
-run			: 	all
+run			: 	re
 				./${NAME}
 
 re 			: 	fclean all

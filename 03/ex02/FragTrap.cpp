@@ -2,35 +2,35 @@
 #include "Debug.hpp"
 
 FragTrap::FragTrap( void ) : ClapTrap() {
-	setName("FragTrap");
-	setHitpoints(100);
-    setEnergypoints(100);
-    setAttackdamage(30);
+	_name 			= "FragTrap";
+	_hitpoints 		= 100;
+	_energypoints	= 100;
+	_attackdamage	= 30;
 	if (MESSAGE == 1)
 		std::cout << "Default contructed FragTrap" << std::endl;
 }
 
 FragTrap::FragTrap(std::string name) : ClapTrap(name) {
-	setName(name);
-	setHitpoints(100);
-    setEnergypoints(100);
-    setAttackdamage(30);
+	this->_name 	= name;
+	_hitpoints 		= 100;
+	_energypoints	= 100;
+	_attackdamage	= 30;
 	if (MESSAGE == 1)
-		std::cout << "Contructed FragTrap named " << name << std::endl;
+		std::cout << "Contructed FragTrap named " << _name << std::endl;
 	if (VALUES == 1){
-		std::cout << "FragTrap name = " << FragTrap::getName() << std::endl;
-		std::cout << "FragTrap hitpoints = " << FragTrap::getHitpoints() << std::endl;
-		std::cout << "FragTrap energy points = " << FragTrap::getEnergypoints() << std::endl;
-		std::cout << "FragTrap attack damage = " << FragTrap::getAttackdamage() << std::endl;
+		std::cout << "FragTrap name = " 		 << _name << std::endl;
+		std::cout << "FragTrap hitpoints = "	 << _hitpoints << std::endl;
+		std::cout << "FragTrap energy points = " << _energypoints << std::endl;
+		std::cout << "FragTrap attack damage = " << _attackdamage << std::endl;
 	}
 }
 
 FragTrap::~FragTrap( void ){
 	if (MESSAGE == 1)
-		std::cout << "Decontructed FragTrap named " << getName() << std::endl;
+		std::cout << "Decontructed FragTrap named " << _name << std::endl;
 }
 
 void FragTrap::highFivesGuys( void ){
 	if (MESSAGE == 1)
-		std::cout << "FragTrap " << getName() << " requests an high five"<< std::endl;
+		std::cout << "FragTrap " << _name << " requests an high five"<< std::endl;
 }

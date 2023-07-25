@@ -32,11 +32,11 @@ clean		:
 fclean		:	clean
 				rm -rf ${NAME}
 
-run			: 	all
+run			: 	re
 				./${NAME}
 
 re 			: 	fclean all
 
 .PHONY 		: 	clean fclean all 
 
-.DEFAULT_GOAL:=run
+# .DEFAULT_GOAL:=run

@@ -7,6 +7,8 @@
 #include "Debug.hpp"
 
 class FragTrap : public ClapTrap {
+	// private:
+	// 	std::string _name;
 	public:
 		FragTrap( void );
 		FragTrap(std::string name);

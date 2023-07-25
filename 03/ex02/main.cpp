@@ -41,5 +41,7 @@ int main ( void )
 	Frag.showHitpoint();
 	Frag.beRepaired(1);
 	Frag.showHitpoint();
+	Frag.takeDamage(20);
+	Frag.showHitpoint();
 	Frag.highFivesGuys();
 }

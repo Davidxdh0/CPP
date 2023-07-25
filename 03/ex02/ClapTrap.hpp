@@ -6,7 +6,7 @@
 #include "Debug.hpp"
 
 class 	ClapTrap{
-	private:
+	protected:
 		std::string			_name;
 		int					_hitpoints;
 		int 				_energypoints;

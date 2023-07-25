@@ -16,17 +16,18 @@ int main ( void )
 	clap[0].attack("two");
 	clap[0].attack("two");
 	clap[0].attack("three");
+	clap[0].attack("lol");
 	clap[1].showHitpoint();
 	clap[2].showHitpoint();
-	// for (int i = 0; i < 3; i++)
-	// 	clap[0].takeDamage(2);
-	// clap[0].showHitpoint();
-	// clap[0].beRepaired(1);
-	// clap[0].showHitpoint();
-    // clap[0].takeDamage(2);
-	// clap[0].takeDamage(2);
-	// clap[0].takeDamage(2);
-	// clap[0].showHitpoint();
-	// clap[1].showHitpoint();
-	// clap[2].showHitpoint();
+	for (int i = 0; i < 3; i++)
+		clap[0].takeDamage(2);
+	clap[0].showHitpoint();
+	clap[0].beRepaired(1);
+	clap[0].showHitpoint();
+    clap[0].takeDamage(2);
+	clap[0].takeDamage(2);
+	clap[0].takeDamage(2);
+	clap[0].showHitpoint();
+	clap[1].showHitpoint();
+	clap[2].showHitpoint();
 }
