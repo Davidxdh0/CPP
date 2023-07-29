@@ -6,7 +6,7 @@
 #include <iostream>
 
 // void checkleaks(void){
-// 	system("leaks -q poly");
+// 	system("leaks -q animalkingdom");
 // }
 
 int main()
@@ -14,11 +14,12 @@ int main()
 	const Animal* meta = new Animal();
 	const Animal* j = new Dog();
 	const Animal* i = new Cat();
+	std::cout << meta->getType() << " should be Animal type" << std::endl;
 	std::cout << j->getType() << " should be Dog type" << std::endl;
 	std::cout << i->getType() << " should be Cat type" << std::endl;
+	meta->makeSound();	
 	i->makeSound();
 	j->makeSound();
-	meta->makeSound();
 
 	delete meta;
 	delete j;

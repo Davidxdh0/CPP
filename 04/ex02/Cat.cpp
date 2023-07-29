@@ -1,19 +1,19 @@
 #include "Cat.hpp"
 #include <iostream>
 
-Cat::Cat( void ): Animal("Cat"){
+Cat::Cat( void ): AAnimal("Cat"){
 	brain = new Brain();
 	std::cout << "Constructed " << type << " with brain" << std::endl;
 }
 
-Cat::Cat(const Cat& old): Animal(old) {
+Cat::Cat(const Cat& old): AAnimal(old) {
 	brain = new Brain(*old.brain);
 	if (MESSAGE == 1)
 		std::cout << "Copy constructor " << type << " called" << std::endl;
 }
 
 //Shallow copy - Same Brain object
-// Cat::Cat(const Cat& old): Animal(old), brain(old.brain){
+// Cat::Cat(const Cat& old): AAnimal(old), brain(old.brain){
 // 	if (MESSAGE == 1)
 // 		std::cout << "Copy constructor " << type << " called" << std::endl;
 // }
@@ -22,7 +22,7 @@ Cat &Cat::operator=(const Cat& old){
 	if (MESSAGE == 1)
 		std::cout << "Copy assignment " << type << " operator called" << std::endl;
 	if (this != &old){
-		Animal::operator=(old);
+		AAnimal::operator=(old);
 		this->type = old.type;
 		delete brain;
 		brain = new Brain(*old.brain);
@@ -35,7 +35,7 @@ Cat &Cat::operator=(const Cat& old){
 //     if (MESSAGE == 1)
 //         std::cout << "Copy assignment " << type << " operator called" << std::endl;
 //     if (this != &old) {
-//         Animal::operator=(old);
+//         AAnimal::operator=(old);
 //         this->type = old.type;
 //         if (brain != old.brain) {
 //             delete brain;

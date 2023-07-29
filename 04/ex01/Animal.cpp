@@ -3,18 +3,19 @@
 
 Animal::Animal( void ){
 	type = "Animal";
-	std::cout << "Constructed " << type << std::endl;
+	if (MESSAGE == 1)
+		std::cout << "Constructed " << type << std::endl;
 }
 
 Animal::Animal( std::string name ){
 	type = name;
-	std::cout << "Constructed " << type << std::endl;
+	if (MESSAGE == 1)
+		std::cout << "Constructed Animal " << type << std::endl;
 }
 
-Animal::Animal(const Animal& old){
+Animal::Animal(const Animal& old): type(old.type) {
 	if (MESSAGE == 1)
 		std::cout << "Copy constructor " << type << " called" << std::endl;
-	*this = old;
 }
 
 Animal &Animal::operator=(const Animal& old){
@@ -27,18 +28,13 @@ Animal &Animal::operator=(const Animal& old){
 }
 
 void Animal::makeSound() const {
-	std::cout << "MakingSound called: ";
-	if (getType() == "Dog")
-		std::cout << "I am dog, I "<< "Bark " << std::endl;
-	if (getType() == "Cat")
-		std::cout << "I am cat, I "<< "Miaauw " << std::endl;
-	if (getType() == "Animal")
-		std::cout << "I am an Animal, I make Animal sounds" << std::endl;
+	std::cout << "Virtual MakingSound called: ";
+	std::cout << "I am " << type << ", I make Animal sounds" << std::endl;
 }
 
 Animal::~Animal( void ){
 	if (MESSAGE == 1)
-		std::cout << "Deconstructed " << type << " called" << std::endl;
+		std::cout << "Deconstructed Animal " << this->type << std::endl;
 }
 
 std::string Animal::getType() const {

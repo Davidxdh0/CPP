@@ -18,7 +18,12 @@ WrongCat &WrongCat::operator=(const WrongCat& old){
 	return *this;
 }
 
+void WrongCat::makeSound() const {
+	std::cout << "MakingSound called: ";
+	std::cout << "I am " << type << ", I make Miauw sounds" << std::endl;
+}
+
 WrongCat::~WrongCat( void ){
 	if (MESSAGE == 1)
-		std::cout << "Deconstructed " << type << " called" << std::endl;
+		std::cout << "Deconstructed WrongCat " << this->type << std::endl;
 }

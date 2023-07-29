@@ -1,9 +1,9 @@
 NAME		= 	animalkingdom
 CC 			= 	c++
 
-CFLAGS 		= 	-Wall -Wextra -Werror -Wpedantic -Wshadow
+CFLAGS 		= 	-Wall -Wextra -Werror -Wpedantic
 CFLAGS		+=	-std=c++98
-SRC_FILES 	=	main.cpp Animal.cpp Cat.cpp Dog.cpp WrongAnimal.cpp WrongCat.cpp
+SRC_FILES 	=	main.cpp Animal.cpp Cat.cpp Dog.cpp WrongAnimal.cpp WrongCat.cpp Brain.cpp
 
 # object files
 OBJ_DIR = obj

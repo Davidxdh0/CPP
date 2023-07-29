@@ -1,4 +1,4 @@
-#include "Animal.hpp"
+#include "AAnimal.hpp"
 #include "Cat.hpp"
 #include "Dog.hpp"
 #include "WrongAnimal.hpp"
@@ -11,27 +11,27 @@ void checkleaks(void){
 
 int main()
 {
-	// const Animal* meta = new Animal();
-	// const Animal* j = new Dog();
-	// const Animal* i = new Cat();
-	// std::cout << meta->getType() << " should be Animal type" << std::endl;
-	// std::cout << j->getType() << " should be Dog type" << std::endl;
-	// std::cout << i->getType() << " should be Cat type" << std::endl;
+	// const AAnimal* meta = new AAnimal();
+	const AAnimal* j = new Dog();
+	const AAnimal* i = new Cat();
+	// std::cout << meta->getType() << " should be AAnimal type" << std::endl;
+	std::cout << j->getType() << " should be Dog type" << std::endl;
+	std::cout << i->getType() << " should be Cat type" << std::endl;
 	// meta->makeSound();	
-	// i->makeSound();
-	// j->makeSound();
+	i->makeSound();
+	j->makeSound();
 
 	// delete meta;
-	// delete j;
-	// delete i;
-	// const WrongAnimal* Beta = new WrongAnimal();
-	// const WrongAnimal* k = new WrongCat();
-	// Beta->makeSound(); 
-	// k->makeSound();
-	// delete Beta;
-	// delete k;
+	delete j;
+	delete i;
+	const WrongAnimal* Beta = new WrongAnimal();
+	const WrongAnimal* k = new WrongCat();
+	Beta->makeSound(); 
+	k->makeSound();
+	delete Beta;
+	delete k;
 
-	Animal* animalArray[4];
+	AAnimal* animalArray[4];
 	for (int i = 0; i < 2; i++) {
         animalArray[i] = new Dog();
     }

@@ -1,12 +1,9 @@
-NAME		= 	poly
+NAME		= 	animalkingdom
 CC 			= 	c++
 
-CFLAGS 		= 	-Wall -Wextra -Werror -Wpedantic -Wshadow
+CFLAGS 		= 	-Wall -Wextra -Werror -Wpedantic
 CFLAGS		+=	-std=c++98
-INCLUDE 	= 	./include
-VPATH 		= 	src
-
-SRC_FILES 	=	main.cpp Poly.cpp
+SRC_FILES 	=	main.cpp AAnimal.cpp Cat.cpp Dog.cpp WrongAnimal.cpp WrongCat.cpp Brain.cpp
 
 # object files
 OBJ_DIR = obj

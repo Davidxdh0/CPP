@@ -3,12 +3,14 @@
 
 WrongAnimal::WrongAnimal( void ){
 	type = "WrongAnimal";
-	std::cout << "Constructed " << type << std::endl;
+	if (MESSAGE == 1)
+		std::cout << "Constructed " << type << std::endl;
 }
 
 WrongAnimal::WrongAnimal( std::string name ){
 	type = name;
-	std::cout << "Constructed " << type << std::endl;
+	if (MESSAGE == 1)
+		std::cout << "Constructed " << type << std::endl;
 }
 
 WrongAnimal::WrongAnimal(const WrongAnimal& old){
@@ -27,17 +29,13 @@ WrongAnimal &WrongAnimal::operator=(const WrongAnimal& old){
 }
 
 void WrongAnimal::makeSound() const {
-	if (getType() == "WrongDog")
-		std::cout << "Miauwing " << getType() <<std::endl;
-	if (getType() == "WrongCat")
-		std::cout << "I am Barking " << getType() <<  std::endl;
-	if (getType() == "WrongAnimal")
-		std::cout << "I am WrongAnimal, I make RightAnimal sounds" << std::endl;
+	std::cout << "MakingSound called: ";
+	std::cout << "I am " << type << ", I make Animal sounds" << std::endl;
 }
 
 WrongAnimal::~WrongAnimal( void ){
 	if (MESSAGE == 1)
-		std::cout << "Deconstructed " << type << " called" << std::endl;
+		std::cout << "Deconstructed WrongAnimal " << type << std::endl;
 }
 
 std::string WrongAnimal::getType() const {

@@ -29,9 +29,8 @@ clean		:
 fclean		:	clean
 				rm -rf ${NAME}
 
-run			: 	all
+run			: 	re
 				./${NAME}
-				clean
 
 re 			: 	fclean all
 

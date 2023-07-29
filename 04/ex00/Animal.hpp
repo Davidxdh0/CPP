@@ -15,11 +15,9 @@ class Animal {
 		Animal( std::string name );
 		Animal(const Animal& old);
 		Animal& operator=(const Animal& old);
-		Animal& operator=(const Dog& old);
-		Animal& operator=(const Cat& old);
 		std::string getType( void ) const ;
-		void makeSound( void ) const ;
-		~Animal( void );
+		virtual void makeSound( void ) const;
+		virtual ~Animal( void ) ;
 };
 
 #endif
