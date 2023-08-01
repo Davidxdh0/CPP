@@ -3,7 +3,7 @@
 
 Dog::Dog( void ) : AAnimal("Dog") {
 	brain = new Brain();
-	std::cout << "Constructed " << type << " with brain" << std::endl;
+	std::cout << "Constructed " << type << std::endl;
 }
 
 Dog::Dog(const Dog& old): AAnimal(old) {
@@ -31,5 +31,5 @@ void Dog::makeSound() const {
 Dog::~Dog( void ){
 	delete brain;
 	if (MESSAGE == 1)
-		std::cout << "Deconstructed " << type << " called" << std::endl;
+		std::cout << "Deconstructed " << type << std::endl;
 }

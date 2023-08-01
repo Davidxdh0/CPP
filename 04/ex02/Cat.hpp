@@ -14,7 +14,7 @@ class Cat : public AAnimal {
 		Cat(const Cat& old);
 		Cat& operator=(const Cat& old);
 		void 	makeSound() const;
-		void	addIdea(unsigned int index, std::string idea);
+		void	addIdea(int index, std::string idea);
 		Brain* 	getBrain(void);
 		virtual ~Cat( void );
 };

@@ -3,6 +3,7 @@
 
 #include "Animal.hpp"
 #include "_Debug.hpp"
+#include <iostream>
 
 class Cat : public Animal {
 	public:

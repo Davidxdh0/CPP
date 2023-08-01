@@ -38,7 +38,10 @@ int main()
 	for (int i = 2; i < 4; i++) {
         animalArray[i] = new Cat();
     }
-	
+	for (int i = 0; i < 4; i++) {
+        animalArray[i]->makeSound();
+    }
+
 	Cat *cat = (Cat *)animalArray[3];
 	Cat copyCat(*cat);
 

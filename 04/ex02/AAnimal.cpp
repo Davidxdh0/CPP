@@ -1,5 +1,4 @@
 #include "AAnimal.hpp"
-#include <iostream>
 
 AAnimal::AAnimal( void ){
 	type = "AAnimal";
@@ -7,7 +6,7 @@ AAnimal::AAnimal( void ){
 		std::cout << "Constructed " << type << std::endl;
 }
 
-AAnimal::AAnimal( std::string name ){
+AAnimal::AAnimal( const std::string name ){
 	type = name;
 	if (MESSAGE == 1)
 		std::cout << "Constructed AAnimal " << type << std::endl;

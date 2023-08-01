@@ -1,11 +1,10 @@
 #include "WrongCat.hpp"
-#include <iostream>
 
 WrongCat::WrongCat( void ): WrongAnimal("WrongCat"){
 }
 WrongCat::WrongCat(const WrongCat& old){
 	if (MESSAGE == 1)
-		std::cout << "Copy constructor " << type << " called" << std::endl;
+		std::cout << "Copy constructor " << type << std::endl;
 	*this = old;
 }
 

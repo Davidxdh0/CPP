@@ -1,5 +1,4 @@
 #include "Animal.hpp"
-#include <iostream>
 
 Animal::Animal( void ){
 	type = "Animal";
@@ -7,7 +6,7 @@ Animal::Animal( void ){
 		std::cout << "Constructed " << type << std::endl;
 }
 
-Animal::Animal( std::string name ){
+Animal::Animal( const std::string name ){
 	type = name;
 	if (MESSAGE == 1)
 		std::cout << "Constructed " << type << std::endl;
@@ -16,7 +15,6 @@ Animal::Animal( std::string name ){
 Animal::Animal(const Animal& old): type(old.type) {
 	if (MESSAGE == 1)
 		std::cout << "Copy constructor " << type << " called" << std::endl;
-	// *this = old;
 }
 
 Animal &Animal::operator=(const Animal& old){

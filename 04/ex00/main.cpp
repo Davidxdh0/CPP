@@ -5,9 +5,9 @@
 #include "WrongCat.hpp"
 #include <iostream>
 
-// void checkleaks(void){
-// 	system("leaks -q animalkingdom");
-// }
+void checkleaks(void){
+	system("leaks -q animalkingdom");
+}
 
 int main()
 {
@@ -30,6 +30,6 @@ int main()
 	k->makeSound();
 	delete Beta;
 	delete k;
-	// atexit(checkleaks);
+	atexit(checkleaks);
 	return 1;
 }

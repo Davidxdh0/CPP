@@ -3,13 +3,13 @@
 
 Dog::Dog( void ) : Animal("Dog") {
 	brain = new Brain();
-	std::cout << "Constructed " << type << " with brain" << std::endl;
+	std::cout << "Constructed " << type << std::endl;
 }
 
 Dog::Dog(const Dog& old): Animal(old) {
 	brain = new Brain(*old.brain);
 	if (MESSAGE == 1)
-		std::cout << "Copy constructor " << type << " called" << std::endl;
+		std::cout << "Copy constructor " << type << std::endl;
 }
 
 Dog &Dog::operator=(const Dog& old){
@@ -28,8 +28,12 @@ void Dog::makeSound() const {
 	std::cout << "I am " << type << ", I make Barking sounds" << std::endl;
 }
 
+void	Dog::addIdea(int index, std::string idea){
+	this->brain->addIdea(index, idea);
+}
+
 Dog::~Dog( void ){
 	delete brain;
 	if (MESSAGE == 1)
-		std::cout << "Deconstructed " << type << " called" << std::endl;
+		std::cout << "Deconstructed " << type << std::endl;
 }

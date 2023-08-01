@@ -12,7 +12,7 @@ class AAnimal {
 		std::string type;
 	public:
 		AAnimal( void );
-		AAnimal( std::string name );
+		AAnimal( const std::string name );
 		AAnimal(const AAnimal& old);
 		AAnimal& operator=(const AAnimal& old);
 		std::string getType( void ) const ;

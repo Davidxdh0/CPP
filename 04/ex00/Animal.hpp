@@ -12,7 +12,7 @@ class Animal {
 		std::string type;
 	public:
 		Animal( void );
-		Animal( std::string name );
+		Animal( const std::string name );
 		Animal(const Animal& old);
 		Animal& operator=(const Animal& old);
 		std::string getType( void ) const ;
