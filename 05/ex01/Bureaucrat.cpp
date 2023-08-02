@@ -110,6 +110,25 @@ const char *Bureaucrat::GradeTooLowException::what() const throw(){
     return "Grade is too low";
 }
 
+const char *Bureaucrat::FormTooLowException::what() const throw(){
+    return "Form is already signed";
+}
+
+void Bureaucrat::signForm(Form &form){
+	// try {
+	// 	if (grade < 1)
+	// 		throw Bureaucrat::GradeTooHighException();
+	// 	else if ( grade > 150)
+	// 		throw Bureaucrat::GradeTooLowException();
+	// 	return (1);
+	// }
+	// catch (const Bureaucrat::GradeTooHighException& e) {
+    // 	std::cout << e.what() << std::endl;
+	// }
+	// catch (const Bureaucrat::GradeTooLowException& e) {
+    // 	std::cout << e.what() << std::endl;
+	// }
+}
 // bool Bureaucrat::checkGrade(int grade) const{
 // 	if (TESTS == 1)
 // 		std::cout << "checkGrade " << grade << std::endl;

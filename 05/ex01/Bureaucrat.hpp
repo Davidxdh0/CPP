@@ -5,6 +5,7 @@
 #include <exception>
 #define TESTS 0
 
+class Form;
 class Bureaucrat {
 	private:
 		std::string const	_name;
@@ -21,6 +22,7 @@ class Bureaucrat {
 		int 				setGrade(int i);
 		void 				doIncrement();
 		void 				doDecrement();
+		void				signForm(Form &formobj);
 
 		class GradeTooHighException : public std::exception {
 			public:
@@ -28,6 +30,11 @@ class Bureaucrat {
 		};
 
 		class GradeTooLowException : public std::exception {
+			public:
+				virtual const char* what() const throw();
+		};
+
+		class FormTooLowException : public std::exception {
 			public:
 				virtual const char* what() const throw();
 		};
