@@ -1,18 +1,18 @@
-#include "Form.hpp"
+#include "AForm.hpp"
 
-Form::Form() :_nameForm("Default"), _signed(0),  _gradeSign(150), _gradeExecute(150){
+AForm::AForm() :_nameForm("Default"), _signed(0),  _gradeSign(150), _gradeExecute(150){
 	std::cout << "Contructed Form: Default"<< std::endl;
 }
 
-Form::Form(const std::string name, int gradeSign, int gradeExecute) : _nameForm(name), _signed(0), _gradeSign(gradeSign), _gradeExecute(gradeExecute){
+AForm::AForm(const std::string name, int gradeSign, int gradeExecute) : _nameForm(name), _signed(0), _gradeSign(gradeSign), _gradeExecute(gradeExecute){
 	std::cout << "Contructed Form: " << this->_nameForm << std::endl;
 }
 
-Form::Form( const Form& other) : _nameForm(other._nameForm), _signed(0), _gradeSign(other._gradeSign), _gradeExecute(other._gradeExecute){
+AForm::AForm( const AForm& other) : _nameForm(other._nameForm), _signed(0), _gradeSign(other._gradeSign), _gradeExecute(other._gradeExecute){
 	std::cout << "Copy constructor called Form" << std::endl;
 }
 
-Form& Form::operator=(const Form& other){
+AForm& AForm::operator=(const AForm& other){
 	std::cout << "Copy assignment called Form: " << _nameForm << std::endl;
     if (this == &other)
         return *this;
@@ -20,31 +20,32 @@ Form& Form::operator=(const Form& other){
     return *this;
 }
 
-Form::~Form(){
+AForm::~AForm(){
 	std::cout << "Decontructed Form: " << _nameForm << std::endl;
 }
 
-std::ostream& operator<<(std::ostream &out, const Form &c) {
+std::ostream& operator<<(std::ostream &out, const AForm &c) {
 	out << "nameForm: " << c.getNameForm() << " gradeSign: " << c.getGradeSign() << " gradeExecute: " << c.getGradeExecute() << " Signed: " << c.getSigned() << std::endl;
     return out;
 }
 
-const std::string Form::getNameForm(void) const{
+const std::string AForm::getNameForm(void) const{
 	return _nameForm;
 }
 
-int Form::getGradeSign(void) const{
+int AForm::getGradeSign(void) const{
 	return _gradeSign;
 }
 
-int Form::getGradeExecute(void) const{
+int AForm::getGradeExecute(void) const{
 	return _gradeExecute;
 }
 
-int Form::getSigned(void) const{
+int AForm::getSigned(void) const{
 	return _signed;
 }
-void Form::setGradeSigned(int i){
+
+void AForm::setGradeSigned(int i){
 	try {
 		if (i == 0 || i == 1 ){
 			std::cout << "Form signed is set to " << i << std::endl;
@@ -59,7 +60,7 @@ void Form::setGradeSigned(int i){
 	}
 }
 
-void Form::setSigned(void){
+void AForm::setSigned(void){
 	if (_signed == 0)
 		std::cout << "Form is set to signed" << std::endl;
 	else
@@ -67,21 +68,29 @@ void Form::setSigned(void){
 	_signed = 1;
 }
 
-const char *Form::GradeTooHighException::what() const throw(){
+void AForm::setSigneds(void){
+	if (_signed == 0)
+		std::cout << "Form is set to signed" << std::endl;
+	else
+		std::cout << "Form was already signed" << std::endl;
+	_signed = 1;
+}
+
+const char *AForm::GradeTooHighException::what() const throw(){
     return "Form grade is too high";
 }
 
-void	Form::beSigned(Bureaucrat &obj)
+void	AForm::beSigned(Bureaucrat &obj)
 {
 	try{
 		if (obj.getGrade() > _gradeSign)
-			throw Form::GradeTooHighException();
+			throw AForm::GradeTooHighException();
 		if (_signed == 1)
 			throw std::invalid_argument("Form was already signed");
 		std::cout << "Form signed: " << _nameForm <<  " by: " << obj.getName()<< std::endl;
 		_signed = 1;
 	}
-	catch (const Form::GradeTooHighException& e) {
+	catch (const AForm::GradeTooHighException& e) {
 		std::cout << e.what() << ", " << obj.getName() << " can't signt it"<<std::endl;
 	}
 	catch(std::invalid_argument &e)
@@ -91,7 +100,7 @@ void	Form::beSigned(Bureaucrat &obj)
 	
 }
 
-// bool Form::checkGrade(int grade) const{
+// bool AForm::checkGrade(int grade) const{
 // 	if (TESTS == 1)
 // 		std::cout << "checkGrade " << grade << std::endl;
 // 	try {
