@@ -2,6 +2,12 @@
 The following rule applies to the entire module and is not optional.
 For each exercise, the type conversion must be solved using one specific type of casting.
 Your choice will be checked during defense
+
+1. loop over the string and check what type it is. Return 0-4 (4 = impossible for all)
+2.Then do the conversion for the type found and return it. 
+3. Use the new return value to find the functions with that value.
+4. Do the functions, minus the one already done.
+
 */
 #include "ScalarConverter.hpp"
 #include <limits.h>
