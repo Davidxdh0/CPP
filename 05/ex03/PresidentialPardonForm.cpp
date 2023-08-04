@@ -23,10 +23,10 @@ PresidentialPardonForm::~PresidentialPardonForm(){
 	std::cout << "Decontructed PresidentialPardonForm " << getNameForm() << std::endl;
 }
 
-void PresidentialPardonForm::setSigned(void){
-	std::cout << getNameForm() << " ";
-	AForm::setSigned();
-}
+// void PresidentialPardonForm::setSigned(void){
+// 	std::cout << getNameForm() << " ";
+// 	AForm::setSigned();
+// }
 
 void	PresidentialPardonForm::execute(Bureaucrat const & executor) const {
 	try {

@@ -4,12 +4,40 @@
 #include "RobotomyRequestForm.hpp"
 #include "PresidentialPardonForm.hpp"
 #include "Intern.hpp"
+
+void checkleaks(void){
+	system("leaks -q intern");
+}
+
 int main (void)
 {
+	atexit(checkleaks);
 	Intern someRandomIntern;
-	AForm* rrf;
-	rrf = someRandomIntern.makeForm("robotomy request", "Bender");
-	delete rrf;
+	
+	AForm* rob = someRandomIntern.makeForm("Robot", "One");
+	AForm* pres = someRandomIntern.makeForm("Presidential", "Three");
+	AForm* shrub = someRandomIntern.makeForm("Shrubbery", "Three");
+	AForm* Notexist = someRandomIntern.makeForm("Pres", "Babe");
+	AForm* No = nullptr;
+	Bureaucrat david("David", 1);
+	rob->beSigned(david);
+	pres->beSigned(david);
+	shrub->beSigned(david);
+	
+	david.executeForm(*rob);
+	david.executeForm(*pres);
+	david.executeForm(*shrub);
+	std::cout << "----------------" << std::endl;
+	No->beSigned(david);
+	No->setGradeSigned(5);
+	No->setSigned();
+	// std::cout	<< __func__	<< __LINE__	<<std::endl;
+	david.executeForm(*Notexist);
+	david.signForm(*Notexist);
+	std::cout << "----------------" << std::endl;
+	delete rob;
+	delete pres;
+	delete shrub;
 	// Bureaucrat david("David", 1);
 	// // Bureaucrat david("David", 150);
 	// ShrubberyCreationForm B("Find");

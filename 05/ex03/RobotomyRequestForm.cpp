@@ -1,4 +1,5 @@
 #include "RobotomyRequestForm.hpp"
+#include <random>
 #include <iostream>
 
 RobotomyRequestForm::RobotomyRequestForm(){}
@@ -23,19 +24,23 @@ RobotomyRequestForm::~RobotomyRequestForm(){
 	std::cout << "Decontructed RobotomyRequestForm " << getNameForm() << std::endl;
 }
 
-void RobotomyRequestForm::setSigned(void){
-	std::cout << getNameForm() << " ";
-	AForm::setSigned();
-}
+// void RobotomyRequestForm::setSigned(void){
+// 	std::cout << getNameForm() << " ";
+// 	AForm::setSigned();
+// }
 
 void	RobotomyRequestForm::execute(Bureaucrat const & executor) const {
+	
 	try {
 		if (this->getSigned() == 0)
 			throw std::runtime_error("The Form is not signed, can't sign it");
 		if (executor.getGrade() > getGradeExecute())
 			throw std::runtime_error("The Grade of the Bureaucrat is too low");
+		std::random_device rd;
+		std::mt19937 rng(rd()); 
+		std::uniform_int_distribution<int> distribution(0, 99);
 		std::cout << "Drilling boem boem boem with " << executor.getName() << " result: ";
-		if (rand() % 100 > 49)
+		if (distribution(rng) > 49) 
 			std::cout << _target << " has been robotomized successfully" << std::endl;
 		else
 			std::cout << getNameForm() << " has been failed" << std::endl;

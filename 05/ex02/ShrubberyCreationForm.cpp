@@ -5,7 +5,7 @@
 ShrubberyCreationForm::ShrubberyCreationForm(){}
 
 ShrubberyCreationForm::ShrubberyCreationForm(const std::string &target) : AForm("ShrubberyCreationForm", 145, 137), _target(target) {
-	std::cout << "Contructed ShrubberyCreationForm name: " << getNameForm() << std::endl;
+	std::cout << "Contructed ShrubberyCreationForm name: "  << std::endl;
 }
 
 ShrubberyCreationForm::ShrubberyCreationForm( const ShrubberyCreationForm& other) : AForm(other), _target(other._target){
@@ -21,7 +21,7 @@ ShrubberyCreationForm& ShrubberyCreationForm::operator=(const ShrubberyCreationF
 }
 
 ShrubberyCreationForm::~ShrubberyCreationForm(){
-	std::cout << "Decontructed ShrubberyCreationForm " << getNameForm() << std::endl;
+	std::cout << "Decontructed ShrubberyCreationForm " << std::endl;
 }
 
 void	ShrubberyCreationForm::doExecute(void) const {

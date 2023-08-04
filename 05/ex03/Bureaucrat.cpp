@@ -111,6 +111,8 @@ const char *Bureaucrat::GradeTooLowException::what() const throw(){
 }
 
 void Bureaucrat::signForm(AForm &form){
+	if (!form.isValid()) 
+        return ;
 	try {
 		if (this->_grade > form.getGradeSign())
 			throw AForm::GradeTooHighException();
@@ -127,6 +129,8 @@ void Bureaucrat::signForm(AForm &form){
 
 void	Bureaucrat::executeForm(AForm const & form){
 	try {
+		if (!form.isValid()) 
+        	return ;
 		form.execute(*this);
 	}
 	catch (const std::exception& e)

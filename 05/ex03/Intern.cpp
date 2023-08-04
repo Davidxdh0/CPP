@@ -7,16 +7,6 @@ Intern::Intern(){
 	std::cout << "Contructed Intern"<< std::endl;
 }
 
-Intern::Intern(const std::string name, const std::string str){
-	try {
-		if (name == "" || str == "")
-			throw std::runtime_error("Intern is a bit empty");
-	}
- 	catch (const std::exception& e){
-		std::cout << e.what() << std::endl;
-	}
-}
-
 Intern::Intern( const Intern& other) {
 	std::cout << "Copy constructor called Intern" << std::endl;
 	*this = other;
@@ -46,13 +36,13 @@ AForm* Intern::createShrubbery(std::string str) {
 }
 
 AForm*	Intern::makeForm(const std::string nameForm,  std::string str){
-	const std::string array[] = {"RobotomyRequestForm", "PresidentialPardonForm", "ShrubberyCreationForm"};
-	AForm* (*forms[])(std::string) = {&Intern::createRobot, &Intern::createPresident, &Intern::createShrubbery};
+	const std::string array[] = {"Robot", "Presidential", "Shrubbery"};
+	AForm* (Intern::*forms[])(std::string) = {&Intern::createRobot, &Intern::createPresident, &Intern::createShrubbery};
 	try {
 		for (int i = 0; i < 3; i++){
 			if ( nameForm == array[i]){
 				std::cout << "Intern creates " << nameForm << " with " << str << std::endl;
-				return forms[i](str);
+				return (this->*forms[i])(str);
 			}
 			if (i == 2)
 				throw std::runtime_error("The intern can't find the form you want to make named: ");
@@ -63,3 +53,10 @@ AForm*	Intern::makeForm(const std::string nameForm,  std::string str){
 	}
 	return nullptr;
 }
+
+// void Intern::setSigned(AForm* form){
+// 	if (this == nullptr)
+// 		return ;
+// 	else
+// 		form->setSigned();
+// }

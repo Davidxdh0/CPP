@@ -11,7 +11,6 @@ class Intern {
 
 	public:
 		Intern();
-		Intern(const std::string name, const std::string str);
 		Intern( const Intern& other);
 		Intern& operator=(const Intern& other);
 		~Intern();

@@ -27,11 +27,10 @@ class AForm {
 		int 				getSigned(void) const;
 
 		void 				setGradeSigned(int i);
-		virtual void 		setSigned(void) = 0;
+		void 				setSigned(void);
 		virtual	void		execute(Bureaucrat const & executor) const = 0;
-		void 				setSigneds(void);
 		void				beSigned(Bureaucrat &obj);
-
+		bool				isValid() const;
 		class GradeTooHighException : public std::exception {
 			public:
 				virtual const char* what() const throw();

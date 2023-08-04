@@ -1,8 +1,13 @@
 #include "Bureaucrat.hpp"
 #include "Form.hpp"
 
+void checkleaks(void){
+	system("leaks -q bureaucrat");
+}
+
 int main (void)
 {
+	atexit(checkleaks);
 	Bureaucrat david("David", 1);
 	Bureaucrat def;
 	Bureaucrat davidlow("Davidlow", 150);
@@ -20,7 +25,8 @@ int main (void)
 	std::cout << B;
 	B.beSigned(davidlow);
 	std::cout << B;
-	std::cout << B.getNameForm() << " = name " << B.getGradeSign() << " = gradetosign " << B.getGradeExecute() << " = gradetoexecute " << B.getSigned() << " = signed" << std::endl;
+	std::cout << B.getNameForm() << " = Name, " << B.getGradeSign() << " = gradetosign, ";
+	std::cout << B.getGradeExecute() << " = gradetoexecute, " << B.getSigned() << " = signed" << std::endl;
 	B.setSigned();
 	std::cout << B;
 	B.setGradeSigned(5);

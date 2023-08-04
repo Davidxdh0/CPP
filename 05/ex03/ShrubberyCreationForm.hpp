@@ -20,7 +20,6 @@ class ShrubberyCreationForm : public AForm {
 		~ShrubberyCreationForm();
 
 		void	doExecute() const ;
-		void	setSigned(void);
 		void	execute(Bureaucrat const & executor) const;
 
 

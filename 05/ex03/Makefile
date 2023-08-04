@@ -1,4 +1,4 @@
-NAME		= 	bureaucrat
+NAME		= 	intern
 CC 			= 	c++
 
 CFLAGS 		= 	-Wall -Wextra -Werror

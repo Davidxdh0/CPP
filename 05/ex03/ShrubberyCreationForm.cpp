@@ -43,11 +43,6 @@ void	ShrubberyCreationForm::doExecute(void) const {
 	}
 }
 
-void ShrubberyCreationForm::setSigned(void){
-	std::cout << getNameForm() << " ";
-	AForm::setSigned();
-}
-
 void	ShrubberyCreationForm::execute(Bureaucrat const & executor) const {
 	try {
 		if (this->getSigned() == 0)

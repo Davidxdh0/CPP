@@ -4,7 +4,7 @@
 PresidentialPardonForm::PresidentialPardonForm(){}
 
 PresidentialPardonForm::PresidentialPardonForm(const std::string &target) : AForm("PresidentialPardonForm", 25, 5), _target(target) {
-	std::cout << "Contructed PresidentialPardonForm name: " << getNameForm() << std::endl;
+	std::cout << "Contructed PresidentialPardonForm name: " << std::endl;
 }
 
 PresidentialPardonForm::PresidentialPardonForm( const PresidentialPardonForm& other) : AForm(other), _target(other._target){
@@ -20,7 +20,7 @@ PresidentialPardonForm& PresidentialPardonForm::operator=(const PresidentialPard
 }
 
 PresidentialPardonForm::~PresidentialPardonForm(){
-	std::cout << "Decontructed PresidentialPardonForm " << getNameForm() << std::endl;
+	std::cout << "Decontructed PresidentialPardonForm "<< std::endl;
 }
 
 void PresidentialPardonForm::setSigned(void){

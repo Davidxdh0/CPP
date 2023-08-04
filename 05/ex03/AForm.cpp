@@ -25,28 +25,40 @@ AForm::~AForm(){
 }
 
 std::ostream& operator<<(std::ostream &out, const AForm &c) {
+	if (!c.isValid()) 
+        return out;
 	out << "nameForm: " << c.getNameForm() << " gradeSign: " << c.getGradeSign() << " gradeExecute: " << c.getGradeExecute() << " Signed: " << c.getSigned() << std::endl;
     return out;
 }
 
 const std::string AForm::getNameForm(void) const{
-	return _nameForm;
+	if (!isValid()) 
+        return NULL;
+	return this->_nameForm;
 }
 
 int AForm::getGradeSign(void) const{
-	return _gradeSign;
+	if (!isValid()) 
+        return 0;
+	return this->_gradeSign;
 }
 
 int AForm::getGradeExecute(void) const{
-	return _gradeExecute;
+	if (!isValid()) 
+        return 0;
+	return this->_gradeExecute;
 }
 
 int AForm::getSigned(void) const{
-	return _signed;
+	if (!isValid()) 
+        return -1;
+	return this->_signed;
 }
 
 void AForm::setGradeSigned(int i){
 	try {
+		if (!isValid()) 
+        	return ;
 		if (i == 0 || i == 1 ){
 			std::cout << "Form signed is set to " << i << std::endl;
 			_signed = i;
@@ -61,28 +73,40 @@ void AForm::setGradeSigned(int i){
 }
 
 void AForm::setSigned(void){
-	if (_signed == 0)
-		std::cout << "Form is set to signed" << std::endl;
-	else
-		std::cout << "Form was already signed" << std::endl;
-	_signed = 1;
-}
+	try {
+		if (!isValid()) 
+        	return ;
+		if (_signed == 0){
+			std::cout << "Form is set to signed" << std::endl;
+			_signed = 1;
+		}
+		else
+			throw std::invalid_argument("Form was already signe");
+		}
+	catch(std::invalid_argument &e)
+	{
+		std::cout << e.what() << std::endl;
+			std::cout	<< __func__	<< __LINE__	<<std::endl;
 
-void AForm::setSigneds(void){
-	if (_signed == 0)
-		std::cout << "Form is set to signed" << std::endl;
-	else
-		std::cout << "Form was already signed" << std::endl;
-	_signed = 1;
+	}
 }
 
 const char *AForm::GradeTooHighException::what() const throw(){
     return "Form grade is too high";
 }
 
+bool	AForm::isValid() const{
+	if (this != nullptr)
+		return true;
+	std::cout << "Form signed doesn't exist" << std::endl;
+	return false;
+}
+
 void	AForm::beSigned(Bureaucrat &obj)
 {
 	try{
+		if (!isValid()) 
+            return ;
 		if (obj.getGrade() > _gradeSign)
 			throw AForm::GradeTooHighException();
 		if (_signed == 1)
@@ -97,24 +121,4 @@ void	AForm::beSigned(Bureaucrat &obj)
 	{
 		std::cout << e.what() << std::endl;
 	}
-	
 }
-
-// bool AForm::checkGrade(int grade) const{
-// 	if (TESTS == 1)
-// 		std::cout << "checkGrade " << grade << std::endl;
-// 	try {
-// 		if (grade < 1)
-// 			throw Form::GradeTooHighException();
-// 		else if ( grade > 150)
-// 			throw Form::GradeTooLowException();
-// 		return (1);
-// 	}
-// 	catch (const Form::GradeTooHighException& e) {
-//     	std::cout << e.what() << std::endl;
-// 	}
-// 	catch (const Form::GradeTooLowException& e) {
-//     	std::cout << e.what() << std::endl;
-// 	}
-// 	return (0);
-// }

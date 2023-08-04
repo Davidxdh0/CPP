@@ -3,21 +3,31 @@
 #include "ShrubberyCreationForm.hpp"
 #include "RobotomyRequestForm.hpp"
 #include "PresidentialPardonForm.hpp"
+
+void checkleaks(void){
+	system("leaks -q bureaucrat");
+}
+
 int main (void)
 {
-	
+	atexit(checkleaks);
 	Bureaucrat david("David", 1);
 	// Bureaucrat david("David", 150);
-	ShrubberyCreationForm B("Find");
-	PresidentialPardonForm 	p("President");
-	RobotomyRequestForm		r("Robot");
-	david.executeForm(B);
-	B.setSigned();
-	david.executeForm(B);
-	david.executeForm(p);
+	ShrubberyCreationForm 	shrub("Find");
+	PresidentialPardonForm 	pres("President");
+	RobotomyRequestForm		robot("Robot");
+	david.executeForm(shrub);
+	david.executeForm(robot);
+	david.executeForm(pres);
+	shrub.setSigned();
+	pres.setSigned();
+	david.executeForm(shrub);
+	david.executeForm(robot);
+	
 	std::cout << std::endl;
+	robot.setSigned();
 	for (int i = 0; i < 10; i++)
-		david.executeForm(r);
+		david.executeForm(robot);
 	std::cout << std::endl;
 	// Bureaucrat david("David", 1);
 	// Bureaucrat def;
