@@ -43,7 +43,7 @@ The extraction operator will read until whitespace is reached or until the strea
 
 void	ScalarConverter::converter(const std::string& input){
 	findType(input);
-    const std::string array[] = {"char", "float", "int", "double", "impossible"};
+    const std::string array[] = {"char", "float", "int", "double", "Impossible"};
     void (*conv[])(const std::string&) = {
         &ScalarConverter::convertchar,
         &ScalarConverter::convertfloat,
@@ -65,9 +65,9 @@ void	ScalarConverter::printChar(const std::string& input){
 	// else if (!input.compare("-inf") || !input.compare("-inff"))
 	// 	std::cout << "-∞" << std::endl;
 	if (input.empty() || _int < 0 || _int > 256)
-		std::cout << "impossible" << std::endl;
+		std::cout << "Impossible" << std::endl;
 	else if (isprint(_char))
-		std::cout << _char << std::endl;
+		std::cout << "'" <<_char << "'" << std::endl;
 	else
 		std::cout << "Not displayable" << std::endl;
 }
@@ -75,28 +75,33 @@ void	ScalarConverter::printChar(const std::string& input){
 void	ScalarConverter::printInt(){
 	std::cout << "Int: ";
 	try {
-		if (_int < INT_MIN)
-			throw std::runtime_error("impossible");
+		if (_int < INT_MIN || std::isnan(_float) || std::isnan(_double))
+			throw std::runtime_error("Impossible");
 		if (_int > INT_MAX)
-			throw std::runtime_error("impossible");
-		std::cout << _int << std::endl;
+			throw std::runtime_error("Impossible");
+		if (_int == INT_MIN && (_double > INT_MAX || _double < INT_MIN))
+			std::cout << "Impossible" << std::endl;
+		else
+			std::cout << _int << std::endl;
 	}
 	catch (std::runtime_error &err){
 		std::cout << err.what() << std::endl;
 	}
 	catch (std::out_of_range &range){
-		std::cout << "impossible" << std::endl;}
+		std::cout << "Impossible" << std::endl;}
 }
 
 void	ScalarConverter::printFloat(){
 	std::cout << "Float: ";
 	try {
 		if (_float < std::numeric_limits<float>::lowest() && _float != -std::numeric_limits<float>::infinity())
-			throw std::runtime_error("impossible");
+			throw std::runtime_error("Impossible");
 		if (_float > std::numeric_limits<float>::max() && _float != std::numeric_limits<float>::infinity())
-			throw std::runtime_error("impossible");
-		if (_float == -std::numeric_limits<float>::infinity() || _float == std::numeric_limits<float>::infinity())
+			throw std::runtime_error("Impossible");
+		if (std::isinf(_float) && std::isinf(_double))
 			std::cout << _float << "f" << std::endl;
+		else if (std::isinf(_float) && !std::isinf(_double))
+			std::cout << "Impossible" << std::endl;
 		else if (std::fmod(_float, 1.0) == 0.0)
 			std::cout << _float << ".0f" << std::endl;
 		else
@@ -106,7 +111,7 @@ void	ScalarConverter::printFloat(){
 		std::cout << err.what() << std::endl;
 	}
 	catch (std::out_of_range &range){
-		std::cout << "impossible" << std::endl;}
+		std::cout << "Impossible" << std::endl;}
 	
 }
 
@@ -114,9 +119,9 @@ void	ScalarConverter::printDouble(){
 	std::cout << "Double: ";
 	try {
 		if (_double < std::numeric_limits<double>::lowest() && _double != -std::numeric_limits<double>::infinity())
-			throw std::runtime_error("impossible");
+			throw std::runtime_error("Impossible");
 		if (_double > std::numeric_limits<double>::max() && _double != std::numeric_limits<double>::infinity())
-			throw std::runtime_error("impossible");
+			throw std::runtime_error("Impossible");
 		else if (std::fmod(_double, 1.0) == 0.0)
 			std::cout << _double << ".0" << std::endl;
 		else
@@ -126,13 +131,22 @@ void	ScalarConverter::printDouble(){
 		std::cout << err.what() << std::endl;
 	}
 	catch (std::out_of_range &range){
-		std::cout << "impossible" << std::endl;}
+		std::cout << "Impossible" << std::endl;}
 }
 
 void	ScalarConverter::convertchar(const std::string& input){
-	if (TESTS == 1)
-		std::cout << "char" << std::endl;
 	char i = input.front();
+	try {
+		if (input.length() - _digits < 8){
+			int b = stoi(input);
+			if (b > 0 && b < 256)
+				i = b;
+		}
+		}
+		catch (std::out_of_range &range){
+			;}
+	if (TESTS == 1)
+		std::cout << "char = " << i << std::endl;
 	_char = static_cast<char>(i);
 	_float = static_cast<char>(i);
 	_double = static_cast<char>(i);
@@ -143,18 +157,21 @@ void	ScalarConverter::convertint(const std::string& input){
 	if (TESTS == 1)
 		std::cout << "int" << std::endl;
 	std::istringstream readinput(input);
-	long long result = 0;
+	int result = 0;
 	try {
-		result = stoi(input);}
-	catch (std::out_of_range &range){
-		std::cout << "" << std::endl;}
-	if	(result > INT_MAX || result < INT_MIN)
-		_int = 0;
-	else
+		result = stoi(input);
 		_int = result;
-	_char = static_cast<int>(result);
-	_float = static_cast<int>(result);
-	_double = static_cast<int>(result);
+		_char = static_cast<int>(result);
+		_float = static_cast<int>(result);
+		_double = static_cast<int>(result);
+	}
+	catch (std::out_of_range &range){
+		std::cout << "Char: Impossible" << std::endl;
+		std::cout << "Int: Impossible" << std::endl;
+		std::cout << "Double: Impossible" << std::endl;
+		std::cout << "Float: Impossible" << std::endl;
+		exit(1);
+		}
 }
 
 void	ScalarConverter::convertdouble(const std::string& input){
@@ -185,16 +202,25 @@ void	ScalarConverter::convertfloat(const std::string& input){
 	std::istringstream readinput(input);
 
 	float i = 0;
-	i = std::stof(input);
-	_float = i;
-	_char = static_cast<float>(i);
-	_int = static_cast<float>(i);
-	_double = static_cast<float>(i);
+	try {
+		i = std::stof(input);
+		_float = i;
+		_char = static_cast<float>(i);
+		_int = static_cast<float>(i);
+		_double = static_cast<float>(i);
+		}
+	catch (std::out_of_range &range){
+		std::cout << "Char: Impossible" << std::endl;
+		std::cout << "Int: Impossible" << std::endl;
+		std::cout << "Double: Impossible" << std::endl;
+		std::cout << "Float: Impossible" << std::endl;
+		exit(1);
+	}
 }
 
 void	ScalarConverter::Impossible(const std::string& input){
 	if (TESTS == 1)
-		std::cout << "impossible " << input << std::endl;
+		std::cout << "Impossible " << input << std::endl;
 	char i = static_cast<char>(0);
 	_char = static_cast<float>(i);
 	_float = static_cast<float>(i);
@@ -203,7 +229,7 @@ void	ScalarConverter::Impossible(const std::string& input){
 
 int ScalarConverter::_type = 0;
 char ScalarConverter::_char = 'H';
-long long ScalarConverter::_int = 0;
+int ScalarConverter::_int = 0;
 float ScalarConverter::_float = 0;
 double ScalarConverter::_double = 0;
 int ScalarConverter::_digits = 0;
@@ -249,31 +275,23 @@ void	ScalarConverter::findType(const std::string& input)
 			}
 			i++;
 		}
-		size_t plus = 0;
-		long double n1 = 0;
-		if (((input[0] == '-' || input[0] == '+' ) && i - _digits > 9 )|| i - _digits > 8){
-			if (input[0] == '+')
-				plus++;
-			try {
-				n1 = stod(input, &plus);}
-			catch (std::out_of_range &range){
-				_type = e_double;
-				return ;}
-			if (n1 >= INT_MIN && n1 <= INT_MAX)
-				_type = e_int;
-			else if (n1 >= std::numeric_limits<float>::lowest() && n1 <= std::numeric_limits<float>::max())
-				_type = e_float;
-			else if (n1 >= std::numeric_limits<double>::lowest() && n1 <= std::numeric_limits<double>::max())
-				_type = e_double;
-			return ;
+		try {
+			int i = stoi(input);
+			if (i > 0 && i < 256 && !isdigit(i)){
+				_type = e_char;
+				return ;
+				}
+			}
+		catch (std::out_of_range &range){
+			;}//int
+		catch (std::invalid_argument &inv){
+			;//double
 		}
 		if ((i == 1 && !isdigit(input[0])) || fbool > 1 || dotbool > 1){
 			_type = e_char;
 			return ;
 		}
-		if (_type == e_double && _digits < 8)
-			_type = e_float;
-		else if (_type == e_float && _digits > 7)
+		if (_type == e_float && _digits > 7 && fbool == 0)
 			_type = e_double;
 	
 		else if (_type != e_double && _type != e_float)
@@ -292,15 +310,3 @@ void	ScalarConverter::findType(const std::string& input)
 int		ScalarConverter::getType(void ){
 	return (_type);
 }
-
-// void ScalarConverter::convertchars(int input)
-// {
-// 	try {
-// 		if(input < 32 || input > 126)
-// 			throw(NonDisplayable());
-// 		else
-// 			std::cout << "'" << static_cast<char>(input) << "'" << std::endl;
-// 	}
-// 	catch(const std::runtime_error& e) { std::cerr << e.what() << std::endl; }
-// }
-

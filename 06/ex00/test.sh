@@ -6,16 +6,16 @@ run_test() {
     local expected_output=$2
     local test_number=$3
 
-    echo -n "Test $test_number - "
+    echo -n "Test $test_number - Input: $input"
 
     # Run the converter and capture the output
     output=$(./converter "$input")
 
     # Compare the output with the expected output
     if [ "$output" == "$expected_output" ]; then
-        echo -e "\033[32m✓ PASSED\033[0m $expected_output"
+        echo -e "\033[32m ✓ PASSED\033[0m"
     else
-        echo -e "\033[31m✗ FAILED\033[0m $expected_output input: $input"
+        echo -e "\033[31m ✗ FAILED\033[0m"
         echo "Expected Output:"
         echo -e "$expected_output"
         echo "Actual Output:"
@@ -25,11 +25,25 @@ run_test() {
 }
 
 # Read test cases from the "testcases" file
-while read -r line; do
-    if [ -n "$line" ]; then
-        ((test_number++))
-        input=$(echo "$line" | cut -d " " -f 1)
-        expected_output=$(echo "$line" | cut -d " " -f 2)
-        run_test "$input" "$expected_output" "$test_number"
+test_number=0
+lines_to_skip=0
+input=""
+expected_output=""
+while IFS= read -r line; do
+    if [ $lines_to_skip -eq 0 ]; then
+        if [ -n "$line" ]; then
+            ((test_number++))
+            input="$line"
+            lines_to_skip=5
+        fi
+    else
+        ((lines_to_skip--))
+        if [ $lines_to_skip -eq 4 ]; then
+            expected_output="$line"
+        elif [ $lines_to_skip -gt 0 ]; then
+            expected_output="$expected_output"$'\n'"$line"
+        elif [ $lines_to_skip -eq 0 ]; then
+            run_test "$input" "$expected_output" "$test_number"
+        fi
     fi
 done < testcases

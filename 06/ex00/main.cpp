@@ -25,11 +25,11 @@ int main(int argc, char *argv[]) {
 		std::cout << "Not enough values" << std::endl;
 		return 1;
 	}
-	// std::istringstream readinput("-inf");
-	// double result = 0;
-	// result = std::stod("-inf");
+	// std::istringstream readinput("13.5534344433434f");
+	// float result = 1222222222222222;
+	// float result = std::stof("13.5534344433434f");
 
-	// std::cout << result << std::endl;
+	// std::cout << (result) << std::endl;
 	//--------------------------
 	//TESTS == 1
 	ScalarConverter::converter(argv[1]);
