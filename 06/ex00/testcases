@@ -1,126 +1,126 @@
-1 
+1
 Char: Not displayable
 Int: 1
 Float: 1.0f
 Double: 1.0
 -----------------------
--1 
+-1
 Char: Impossible
 Int: -1
 Float: -1.0f
 Double: -1.0
 -----------------------
-+3 
++3
 Char: Not displayable
 Int: 3
 Float: 3.0f
 Double: 3.0
 -----------------------
-2147483647 
+2147483647
 Char: Impossible
 Int: 2147483647
 Float: 2.14748e+09.0f
 Double: 2.14748e+09.0
 -----------------------
--2147483648 
+-2147483648
 Char: Impossible
 Int: -2147483648
 Float: -2.14748e+09.0f
 Double: -2.14748e+09.0
 -----------------------
-12222222222222222222222222222222222222222222222222233333333333333333333333333333333333333333333333333333333222222222222222222222222222222222222222222222222233333333333333333333333333333333333333333333333333333333222222222222222222222222222222222222222222222222233333333333333333333333333 
-Char: Not displayable
-Int: 0
-Float: 0.0f
-Double: 0.0
+12222222222222222222222222222222222222222222222222233333333333333333333333333333333333333333333333333333333222222222222222222222222222222222222222222222222233333333333333333333333333333333333333333333333333333333222222222222222222222222222222222222222222222222233333333333333333333333333
+Char: Impossible
+Int: Impossible
+Double: Impossible
+Float: Impossible
 -----------------------
-1222222222222222222222222222222222222222222222222223333333333333333333333333333333333333333333333333333333322222222222222222222222222222222222222222222222223333333333333333333333333333333333333333333333333333333322222222222222222222222222222222222222222222222223333333333333333333333333333333333333333333333333333333322222222222222222222222222222222 
-Char: Not displayable
-Int: 0
-Float: 0.0f
-Double: 0.0
+1222222222222222222222222222222222222222222222222223333333333333333333333333333333333333333333333333333333322222222222222222222222222222222222222222222222223333333333333333333333333333333333333333333333333333333322222222222222222222222222222222222222222222222223333333333333333333333333333333333333333333333333333333322222222222222222222222222222222
+Char: Impossible
+Int: Impossible
+Double: Impossible
+Float: Impossible
 -----------------------
-.1 
+.1
 Char: Not displayable
 Int: 0
 Float: 0.1f
 Double: 0.1
 -----------------------
--2147483649 
-Char: Not displayable
-Int: 0
-Float: 0.0f
-Double: 0.0
+-2147483649
+Char: Impossible
+Int: Impossible
+Double: Impossible
+Float: Impossible
 -----------------------
-2147483648 
-Char: Not displayable
-Int: 0
-Float: 0.0f
-Double: 0.0
+2147483648
+Char: Impossible
+Int: Impossible
+Double: Impossible
+Float: Impossible
 -----------------------
-1.1 
+1.1
 Char: Not displayable
 Int: 1
 Float: 1.1f
 Double: 1.1
 -----------------------
--inff 
+-inff
 Char: Impossible
-Int: -2147483648
+Int: Impossible
 Float: -inff
 Double: -inf
 -----------------------
-+inff 
++inff
 Char: Impossible
-Int: -2147483648
+Int: Impossible
 Float: inff
 Double: inf
 -----------------------
-inff 
+inff
 Char: Impossible
-Int: -2147483648
+Int: Impossible
 Float: inff
 Double: inf
 -----------------------
-nanf 
+nanf
 Char: Impossible
-Int: -2147483648
+Int: Impossible
 Float: nanf
 Double: nan
 -----------------------
-1.111111111 
+1.111111111
 Char: Not displayable
 Int: 1
 Float: 1.11111f
 Double: 1.11111
 -----------------------
-inf 
+inf
 Char: Impossible
-Int: -2147483648
+Int: Impossible
 Float: inff
 Double: inf
 -----------------------
--inf 
+-inf
 Char: Impossible
-Int: -2147483648
+Int: Impossible
 Float: -inff
 Double: -inf
 -----------------------
-+inf 
++inf
 Char: Impossible
-Int: -2147483648
+Int: Impossible
 Float: inff
 Double: inf
 -----------------------
-inf 
+inf
 Char: Impossible
-Int: -2147483648
+Int: Impossible
 Float: inff
 Double: inf
 -----------------------
-nan 
+nan
 Char: Impossible
-Int: -2147483648
+Int: Impossible
 Float: nanf
 Double: nan
 -----------------------
@@ -149,16 +149,16 @@ Float: 45.0f
 Double: 45.0
 -----------------------
 1ff 
-Char: '1'
-Int: 49
-Float: 49.0f
-Double: 49.0
+Char: Not displayable
+Int: 1
+Float: 1.0f
+Double: 1.0
 -----------------------
 1f1 
-Char: '1'
-Int: 49
-Float: 49.0f
-Double: 49.0
+Char: Not displayable
+Int: 1
+Float: 1.0f
+Double: 1.0
 -----------------------
 .40545
 Char: Not displayable
@@ -169,8 +169,8 @@ Double: 0.40545
 42.40545464454543434
 Char: '*'
 Int: 42
-Float: 42.0f
-Double: 42.0
+Float: 42.4055f
+Double: 42.4055
 -----------------------
 1242.0022342
 Char: Impossible

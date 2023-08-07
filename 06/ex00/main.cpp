@@ -18,6 +18,7 @@ https://www.geeksforgeeks.org/static_cast-in-cpp/
 #include <cstdlib>
 #include <cmath>
 #include <cassert>
+
 // you have to handle these pseudo literals as well 
 // -inf, +inf and nan.
 int main(int argc, char *argv[]) {
@@ -32,6 +33,14 @@ int main(int argc, char *argv[]) {
 	// std::cout << (result) << std::endl;
 	//--------------------------
 	//TESTS == 1
+	// std::string p(argv[1]);
+	// std::istringstream my_stream(p);
+	// std::cout << p << std::endl;
+	// char * n = NULL;
+	// my_stream >> (n);
+	// std::cout << n << std::endl;
+	// std::istringstream readinput(n);
+	// ScalarConverter::converter(n);
 	ScalarConverter::converter(argv[1]);
 	//--------------------------
 	// test return value 

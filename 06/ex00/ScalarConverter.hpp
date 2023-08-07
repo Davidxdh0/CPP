@@ -10,7 +10,7 @@
 #include <limits>
 #include <cmath>
 
-#define TESTS 1
+#define TESTS 0
 
 enum enum_type {
 	e_char = 0,

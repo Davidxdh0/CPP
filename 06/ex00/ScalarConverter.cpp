@@ -42,6 +42,7 @@ The extraction operator will read until whitespace is reached or until the strea
 
 
 void	ScalarConverter::converter(const std::string& input){
+	
 	findType(input);
     const std::string array[] = {"char", "float", "int", "double", "Impossible"};
     void (*conv[])(const std::string&) = {
@@ -137,13 +138,15 @@ void	ScalarConverter::printDouble(){
 void	ScalarConverter::convertchar(const std::string& input){
 	char i = input.front();
 	try {
-		if (input.length() - _digits < 8){
+		if (input.length() - _digits < 8 && input.length() > 1){
 			int b = stoi(input);
-			if (b > 0 && b < 256)
+			if (b > 0 && b < 256 )
 				i = b;
 		}
 		}
 		catch (std::out_of_range &range){
+			;}
+		catch (std::invalid_argument &range){
 			;}
 	if (TESTS == 1)
 		std::cout << "char = " << i << std::endl;
@@ -172,6 +175,8 @@ void	ScalarConverter::convertint(const std::string& input){
 		std::cout << "Float: Impossible" << std::endl;
 		exit(1);
 		}
+	catch (std::invalid_argument &range){
+		std::cout << "Char: Impossible" << std::endl;}
 }
 
 void	ScalarConverter::convertdouble(const std::string& input){
@@ -275,6 +280,18 @@ void	ScalarConverter::findType(const std::string& input)
 			}
 			i++;
 		}
+		if ((i == 1 && !isdigit(input[0])) || fbool > 1 || dotbool > 1){
+			_type = e_char;
+			return ;
+		}
+		if (_type == e_float && _digits > 7 && fbool == 0)
+			_type = e_double;
+	
+		else if (_type != e_double && _type != e_float)
+			_type = e_int;
+		if (fbool > 1 || dotbool == 1){
+			return ;
+		}
 		try {
 			int i = stoi(input);
 			if (i > 0 && i < 256 && !isdigit(i)){
@@ -287,15 +304,7 @@ void	ScalarConverter::findType(const std::string& input)
 		catch (std::invalid_argument &inv){
 			;//double
 		}
-		if ((i == 1 && !isdigit(input[0])) || fbool > 1 || dotbool > 1){
-			_type = e_char;
-			return ;
-		}
-		if (_type == e_float && _digits > 7 && fbool == 0)
-			_type = e_double;
-	
-		else if (_type != e_double && _type != e_float)
-			_type = e_int;
+		
 	}
 	else {
 		for (int i = 0; input[i] != '\0'; i++)
