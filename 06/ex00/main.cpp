@@ -20,56 +20,76 @@ https://www.geeksforgeeks.org/static_cast-in-cpp/
 #include <cassert>
 // you have to handle these pseudo literals as well 
 // -inf, +inf and nan.
-int main() {
-	std::cout << "Start" << std::endl;
-	ScalarConverter A;
-	try {
-		std::cout << "inf" << std::endl;
-		float negative_infinity1 = INFINITY;
-		std::cout << negative_infinity1 << std::endl;
-		float doubleinf = INFINITY;
-		std::cout << doubleinf << std::endl;
+int main(int argc, char *argv[]) {
+	if (argc < 2){
+		std::cout << "Not enough values" << std::endl;
+		return 1;
+	}
+	// std::istringstream readinput("-inf");
+	// double result = 0;
+	// result = std::stod("-inf");
 
-		std::cout << "negativ" << std::endl;
-		float anegative_infinity1 = -INFINITY;
-		std::cout << anegative_infinity1 << std::endl;
-		float adoubleinf = -INFINITY;
+	// std::cout << result << std::endl;
+	//--------------------------
+	//TESTS == 1
+	ScalarConverter::converter(argv[1]);
+	//--------------------------
+	// test return value 
+	//--------------------------    
+	// ScalarConverter::findType(argv[1]);
+	// std::string array[5] = {"char", "float", "int", "double", "not printable"};
+	// std::cout << array[ScalarConverter::getType()] << std::endl;
+	
 
-		std::cout << adoubleinf << std::endl;
-		std::cout << "Testing ints" << std::endl;
-		std::cout << "------------------" << std::endl;
-		std::string intStr1 = "0";
-		std::string intStr2 = "-5";
-		std::string intStr3 = "2147483647";
-		std::string intStr4 = "-2147483647";
-		std::string intStr5 = "21474836455";
-		std::string intStr6 = "-21474836499";
-		std::string intStr7 = std::to_string(std::numeric_limits<int>::infinity());
-		std::string intStr8 = std::to_string(std::numeric_limits<int>::infinity() * -1);
-		//double
-		std::string intStr9 = "-inf";
-		std::string intStr10 = "+inf";
-		std::string intStr11= "nan";
-		//float
-		std::string intStr12 = "inff";
-		std::string intStr13 = "+inff";
-		std::string intStr14 = "nanf";
-		A.ScalarConverter::converter(intStr1);
-		A.ScalarConverter::converter(intStr2);
-		A.ScalarConverter::converter(intStr3);
-		A.ScalarConverter::converter(intStr4);
-		A.ScalarConverter::converter(intStr5);
-		A.ScalarConverter::converter(intStr6);
-		A.ScalarConverter::converter(intStr7);
-		A.ScalarConverter::converter(intStr8);
-		std::cout << intStr7 << std::endl;
-		std::cout << intStr8 << std::endl;
-		// int inttest6 = A.ScalarConverter::converter(intStr6);
-		// std::cout << "inttest6 = " << inttest6 <<std::endl;
-	} 
-	catch (const std::exception& e) {
-        std::cerr << "Error: " << e.what() << std::endl;
-    }
+
+
+	// try {
+	// 	std::cout << "inf" << std::endl;
+	// 	float negative_infinity1 = INFINITY;
+	// 	std::cout << negative_infinity1 << std::endl;
+	// 	float doubleinf = INFINITY;
+	// 	std::cout << doubleinf << std::endl;
+
+	// 	std::cout << "negativ" << std::endl;
+	// 	float anegative_infinity1 = -INFINITY;
+	// 	std::cout << anegative_infinity1 << std::endl;
+	// 	float adoubleinf = -INFINITY;
+
+	// 	std::cout << adoubleinf << std::endl;
+	// 	std::cout << "Testing ints" << std::endl;
+	// 	std::cout << "------------------" << std::endl;
+	// 	std::string intStr1 = "0";
+	// 	std::string intStr2 = "-5";
+	// 	std::string intStr3 = "2147483647";
+	// 	std::string intStr4 = "-2147483647";
+	// 	std::string intStr5 = "21474836455";
+	// 	std::string intStr6 = "-21474836499";
+	// 	std::string intStr7 = std::to_string(std::numeric_limits<int>::infinity());
+	// 	std::string intStr8 = std::to_string(std::numeric_limits<int>::infinity() * -1);
+	// 	//double
+	// 	std::string intStr9 = "-inf";
+	// 	std::string intStr10 = "+inf";
+	// 	std::string intStr11= "nan";
+	// 	//float
+	// 	std::string intStr12 = "inff";
+	// 	std::string intStr13 = "+inff";
+	// 	std::string intStr14 = "nanf";
+	// 	A.ScalarConverter::converter(intStr1);
+	// 	A.ScalarConverter::converter(intStr2);
+	// 	A.ScalarConverter::converter(intStr3);
+	// 	A.ScalarConverter::converter(intStr4);
+	// 	A.ScalarConverter::converter(intStr5);
+	// 	A.ScalarConverter::converter(intStr6);
+	// 	A.ScalarConverter::converter(intStr7);
+	// 	A.ScalarConverter::converter(intStr8);
+	// 	std::cout << intStr7 << std::endl;
+	// 	std::cout << intStr8 << std::endl;
+	// 	// int inttest6 = A.ScalarConverter::converter(intStr6);
+	// 	// std::cout << "inttest6 = " << inttest6 <<std::endl;
+	// } 
+	// catch (const std::exception& e) {
+    //     std::cerr << "Error: " << e.what() << std::endl;
+    // }
 
 	// try {
 	// 	std::cout << "Testing double" << std::endl;
