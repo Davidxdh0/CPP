@@ -1,9 +1,9 @@
-NAME        := convert
+NAME        := serializer
 CC          := c++
 
 CFLAGS      := -Wall -Wextra -Werror
 CFLAGS      += -std=c++98 -std=c++11
-SRC_FILES   := main.cpp ScalarConverter.cpp
+SRC_FILES   := main.cpp Serializer.cpp
 
 # object files
 OBJ_DIR 	:= obj
@@ -34,10 +34,6 @@ run: 	all
 	
 test: 	clean
 		@$(MAKE) CFLAGS="-DTESTS=1" 
-		@$(MAKE) all
-
-test2: 	clean
-		@$(MAKE) CFLAGS="-DTESTS=2" 
 		@$(MAKE) all
 
 re: 	fclean all

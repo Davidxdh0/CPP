@@ -1,23 +1,18 @@
 #!/bin/bash
 
-# Function to run the converter and compare the output
 run_test() {
     local input=$1
     local expected_output=$2
     local test_number=$3
 
     echo -n "Test $test_number - Input: $input"
-
-    # Run the converter and capture the output
-    output=$(./converter "$input")
-
-    # Compare the output with the expected output
+    output=$(./convert "$input")
     if [ "$output" == "$expected_output" ]; then
         echo -e "\033[32m ✓ PASSED\033[0m"
         # echo -e "$output"
 		# echo "-----------------------"
     else
-        echo -e "\033[31m ✗ FAILED\033[0m"
+        echo -e "\033[31m ✗ FAILED\033[0m Input: $input"
         echo "Expected Output:"
         echo -e "$expected_output"
         echo "Actual Output:"
@@ -26,7 +21,6 @@ run_test() {
     fi
 }
 
-# Read test cases from the "testcases" file
 test_number=0
 lines_to_skip=0
 input=""
@@ -48,4 +42,4 @@ while IFS= read -r line; do
             run_test "$input" "$expected_output" "$test_number"
         fi
     fi
-done < testcases
+done < testcase
