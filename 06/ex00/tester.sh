@@ -14,6 +14,8 @@ run_test() {
     # Compare the output with the expected output
     if [ "$output" == "$expected_output" ]; then
         echo -e "\033[32m ✓ PASSED\033[0m"
+        # echo -e "$output"
+		# echo "-----------------------"
     else
         echo -e "\033[31m ✗ FAILED\033[0m"
         echo "Expected Output:"

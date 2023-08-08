@@ -12,118 +12,117 @@ https://www.geeksforgeeks.org/static_cast-in-cpp/
 
 */
 #include "ScalarConverter.hpp"
-#include <limits.h>
-#include <string.h>
-#include <limits>
-#include <cstdlib>
-#include <cmath>
-#include <cassert>
 
 // you have to handle these pseudo literals as well 
 // -inf, +inf and nan.
+
+void testValues(const char* input) {
+	std::cout << "input " << input << std::endl;
+	ScalarConverter::converter(input);
+	std::string array[4]; //= {"default", "default", "default", "default"};
+	if (!strcmp(input, "1"))
+		array[0] = "Char: Not displayable", array[1] = "Int: 1", array[2] = "Float: 1.0f", array[3] = "Double: 1.0";
+	else if (!strcmp(input, "-1"))
+		array[0] = "Char: Impossible", array[1] = "Int: -1", array[2] = "Float: -1.0f", array[3] = "Double: -1.0";
+	else if (!strcmp(input, "+3"))
+		array[0] = "Char: Not displayable", array[1] = "Int: 3", array[2] = "Float: 3.0f", array[3] = "Double: 3.0";
+	else if (!strcmp(input, "2147483647"))
+		array[0] = "Char: Impossible", array[1] = "Int: 2147483647", array[2] = "Float: 2.14748e+09.0f", array[3] = "Double: 2.14748e+09.0";
+	else if (!strcmp(input, "-2147483648"))
+		array[0] = "Char: Impossible", array[1] = "Int: -2147483648", array[2] = "Float: -2.14748e+09.0f", array[3] = "Double: -2.14748e+09.0";
+	else if (!strcmp(input, "12222222222222222222222222222222222222222222222222233333333333333333333333333333333333333333333333333333333222222222222222222222222222222222222222222222222233333333333333333333333333333333333333333333333333333333222222222222222222222222222222222222222222222222233333333333333333333333333"))
+		array[0] = "Char: Impossible", array[1] = "Int: Impossible", array[2] = "Float: Impossible", array[3] = "Double: Impossible";
+	else if (!strcmp(input, ".1"))
+		array[0] = "Char: Not displayable", array[1] = "Int: 0", array[2] = "Float: 0.1f", array[3] = "Double: 0.1";
+	else if (!strcmp(input, "-2147483649"))
+		array[0] = "Char: Impossible", array[1] = "Int: Impossible", array[2] = "Float: Impossible", array[3] = "Double: Impossible";
+	else if (!strcmp(input, "2147483648"))
+		array[0] = "Char: Impossible", array[1] = "Int: Impossible", array[2] = "Float: Impossible", array[3] = "Double: Impossible";
+	else if (!strcmp(input, "1.1"))
+		array[0] = "Char: Not displayable", array[1] = "Int: 1", array[2] = "Float: 1.1f", array[3] = "Double: 1.1";
+	else if (!strcmp(input, "-inff"))
+		array[0] = "Char: Impossible", array[1] = "Int: Impossible", array[2] = "Float: -inff", array[3] = "Double: -inf";
+	else if (!strcmp(input, "+inff"))
+		array[0] = "Char: Impossible", array[1] = "Int: Impossible", array[2] = "Float: inff", array[3] = "Double: inf";
+	else if (!strcmp(input, "inff"))
+		array[0] = "Char: Impossible", array[1] = "Int: Impossible", array[2] = "Float: inff", array[3] = "Double: inf";
+	else if (!strcmp(input, "nanf"))
+		array[0] = "Char: Impossible", array[1] = "Int: Impossible", array[2] = "Float: nanf", array[3] = "Double: nan";
+	else if (!strcmp(input, "1.111111111"))
+		array[0] = "Char: Not displayable", array[1] = "Int: 1", array[2] = "Float: 1.11111f", array[3] = "Double: 1.11111";
+	else
+		exit(1);
+	static int i = 0;
+	i++;
+	assert(ScalarConverter::get_pc() == array[0] && "PC value mismatch!");
+    assert(ScalarConverter::get_pi() == array[1] && "PI value mismatch!");
+    assert(ScalarConverter::get_pf() == array[2] && "PF value mismatch!");
+    assert(ScalarConverter::get_pd() == array[3] && "PD value mismatch!");
+	std::cout << "\033[32m" << "Test "<< i << " PASSED input " << input << std::endl;
+	std::cout << "\033[0m" << "-------------------" << std::endl;
+}
+
 int main(int argc, char *argv[]) {
-	if (argc < 2){
+	if (argc < 2 && argv[0]){
 		std::cout << "Not enough values" << std::endl;
 		return 1;
 	}
-	// std::istringstream readinput("13.5534344433434f");
-	// float result = 1222222222222222;
-	// float result = std::stof("13.5534344433434f");
+	// char k = .1;
+	// std::string input = "42..0";
+	// char k = input.front();
+	// int k = static_cast<char>("");
+	// double k = .1;
+	// float k = 11.f;
 
-	// std::cout << (result) << std::endl;
+	// char c = static_cast<char>(k);
+	// int i = static_cast<int>(k);
+	// float f = static_cast<float>(k);
+	// double d = static_cast<double>(k);
+	// std::cout << "c = " << c << std::endl << "i = " << i << std::endl << "f = " << f << std::endl << "d = " << d << std::endl;
+	// -------------------
+	// testValues(argv[1]);
+
+	//	tester.sh & normal
 	//--------------------------
-	//TESTS == 1
-	// std::string p(argv[1]);
-	// std::istringstream my_stream(p);
-	// std::cout << p << std::endl;
-	// char * n = NULL;
-	// my_stream >> (n);
-	// std::cout << n << std::endl;
-	// std::istringstream readinput(n);
-	// ScalarConverter::converter(n);
+	//--------------------------
+	//--------------------------
 	ScalarConverter::converter(argv[1]);
 	//--------------------------
-	// test return value 
-	//--------------------------    
-	// ScalarConverter::findType(argv[1]);
-	// std::string array[5] = {"char", "float", "int", "double", "not printable"};
-	// std::cout << array[ScalarConverter::getType()] << std::endl;
-	
+    //--------------------------
+	//--------------------------
+	//		secondary tester
+	// testValues("1");
+    // testValues("-1");
+    // testValues("+3");
+    // testValues("2147483647");
+    // testValues("-2147483648");
+    // testValues("12222222222222222222222222222222222222222222222222233333333333333333333333333333333333333333333333333333333222222222222222222222222222222222222222222222222233333333333333333333333333333333333333333333333333333333222222222222222222222222222222222222222222222222233333333333333333333333333");
+    // testValues("1222222222222222222222222222222222222222222222222223333333333333333333333333333333333333333333333333333333322222222222222222222222222222222222222222222222223333333333333333333333333333333333333333333333333333333322222222222222222222222222222222222222222222222223333333333333333333333333333333333333333333333333333333322222222222222222222222222222222");
+    // testValues(".1");
+    // testValues("-2147483649");
+    // testValues("2147483648");
+    // testValues("1.1");
+    // testValues("-inff");
+    // testValues("+inff");
+    // testValues("inff");
+    // testValues("nanf");
+    // testValues("1.111111111");
+    // testValues("inf");
+    // testValues("-inf");
+    // testValues("+inf");
+    // testValues("inf");
+    // testValues("nan");
+    // testValues("1233.00040040404");
+    // testValues("++1");
+    // testValues("--1");
+    // testValues("-");
+    // testValues("1ff");
+    // testValues("1f1");
+    // testValues(".40545");
+    // testValues("42.40545464454543434");
+    // testValues("1242.0022342");
+    // testValues("545453434343434343434354545343434343434343435454534343434343434343545453434343434343434354545343434343434343435454534343434343434343.03");
 
-
-
-	// try {
-	// 	std::cout << "inf" << std::endl;
-	// 	float negative_infinity1 = INFINITY;
-	// 	std::cout << negative_infinity1 << std::endl;
-	// 	float doubleinf = INFINITY;
-	// 	std::cout << doubleinf << std::endl;
-
-	// 	std::cout << "negativ" << std::endl;
-	// 	float anegative_infinity1 = -INFINITY;
-	// 	std::cout << anegative_infinity1 << std::endl;
-	// 	float adoubleinf = -INFINITY;
-
-	// 	std::cout << adoubleinf << std::endl;
-	// 	std::cout << "Testing ints" << std::endl;
-	// 	std::cout << "------------------" << std::endl;
-	// 	std::string intStr1 = "0";
-	// 	std::string intStr2 = "-5";
-	// 	std::string intStr3 = "2147483647";
-	// 	std::string intStr4 = "-2147483647";
-	// 	std::string intStr5 = "21474836455";
-	// 	std::string intStr6 = "-21474836499";
-	// 	std::string intStr7 = std::to_string(std::numeric_limits<int>::infinity());
-	// 	std::string intStr8 = std::to_string(std::numeric_limits<int>::infinity() * -1);
-	// 	//double
-	// 	std::string intStr9 = "-inf";
-	// 	std::string intStr10 = "+inf";
-	// 	std::string intStr11= "nan";
-	// 	//float
-	// 	std::string intStr12 = "inff";
-	// 	std::string intStr13 = "+inff";
-	// 	std::string intStr14 = "nanf";
-	// 	A.ScalarConverter::converter(intStr1);
-	// 	A.ScalarConverter::converter(intStr2);
-	// 	A.ScalarConverter::converter(intStr3);
-	// 	A.ScalarConverter::converter(intStr4);
-	// 	A.ScalarConverter::converter(intStr5);
-	// 	A.ScalarConverter::converter(intStr6);
-	// 	A.ScalarConverter::converter(intStr7);
-	// 	A.ScalarConverter::converter(intStr8);
-	// 	std::cout << intStr7 << std::endl;
-	// 	std::cout << intStr8 << std::endl;
-	// 	// int inttest6 = A.ScalarConverter::converter(intStr6);
-	// 	// std::cout << "inttest6 = " << inttest6 <<std::endl;
-	// } 
-	// catch (const std::exception& e) {
-    //     std::cerr << "Error: " << e.what() << std::endl;
-    // }
-
-	// try {
-	// 	std::cout << "Testing double" << std::endl;
-	// 	std::cout << "------------------" << std::endl;
-	// 	std::string doubleStr1 = std::to_string(0.1);
-	// 	std::string doubleStr2 = std::to_string(-0.1);
-	// 	std::string doubleStr3 = std::to_string(std::numeric_limits<double>::lowest());
-	// 	std::string doubleStr4 = std::to_string(std::numeric_limits<double>::max());
-	// 	std::string doubleStr5 = std::to_string(std::numeric_limits<double>::lowest() - 1);
-	// 	std::string doubleStr6 = std::to_string(std::numeric_limits<double>::max() + 1);
-	// 	double doubletest1 = A.ScalarConverter::convertdouble(doubleStr1);
-	// 	std::cout << "doubletest1 = " << doubletest1 <<std::endl;
-	// 	double doubletest2 = A.ScalarConverter::convertdouble(doubleStr2);
-	// 	std::cout << "doubletest2 = " << doubletest2 <<std::endl;
-	// 	// double doubletest3 = A.ScalarConverter::convertdouble(doubleStr3);
-	// 	// std::cout << "doubletest3 = " << doubletest3 <<std::endl;
-	// 	// double doubletest4 = A.ScalarConverter::convertdouble(doubleStr4);
-	// 	// std::cout << "doubletest4 = " << doubletest4 <<std::endl;
-	// 	// double doubletest5 = A.ScalarConverter::convertdouble(doubleStr5);
-	// 	// std::cout << "doubletest5 = " << doubletest5 <<std::endl;
-	// 	// double doubletest6 = A.ScalarConverter::convertdouble(doubleStr6);
-	// 	// std::cout << "doubletest6 = " << doubletest6 <<std::endl;
-	// } 
-	// catch (const std::exception& e) {
-    //     std::cerr << "Error: " << e.what() << std::endl;
-    // }
+    
 	return 1;
 }
