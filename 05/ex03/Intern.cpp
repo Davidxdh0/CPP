@@ -37,7 +37,10 @@ AForm* Intern::createShrubbery(std::string str) {
 
 AForm*	Intern::makeForm(const std::string nameForm,  std::string str){
 	const std::string array[] = {"Robot", "Presidential", "Shrubbery"};
-	AForm* (Intern::*forms[])(std::string) = {&Intern::createRobot, &Intern::createPresident, &Intern::createShrubbery};
+	AForm* (Intern::*forms[])(std::string) = {
+												&Intern::createRobot, 
+	 											&Intern::createPresident,
+	 											&Intern::createShrubbery};
 	try {
 		for (int i = 0; i < 3; i++){
 			if ( nameForm == array[i]){
