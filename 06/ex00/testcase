@@ -1,59 +1,59 @@
 1
 Char: Not displayable
 Int: 1
-Float: 1.0f
-Double: 1.0
+Float: 1f
+Double: 1
 -----------------------
 -1
 Char: Impossible
 Int: -1
-Float: -1.0f
-Double: -1.0
+Float: -1f
+Double: -1
 -----------------------
 +42
 Char: '*'
 Int: 42
-Float: 42.0f
-Double: 42.0
+Float: 42f
+Double: 42
 -----------------------
 2147483647
 Char: Not displayable
 Int: 2147483647
-Float: 2.14748e+09.0f
-Double: 2.14748e+09.0
+Float: 2.14748e+09f
+Double: 2.14748e+09
 -----------------------
 -2147483648
 Char: Impossible
 Int: -2147483648
-Float: -2.14748e+09.0f
-Double: -2.14748e+09.0
+Float: -2.14748e+09f
+Double: -2.14748e+09
 -----------------------
 +2147483647
 Char: Not displayable
 Int: 2147483647
-Float: 2.14748e+09.0f
-Double: 2.14748e+09.0
+Float: 2.14748e+09f
+Double: 2.14748e+09
 -----------------------
 +2147483648
 Char: Not displayable
-Int: Impossible
-Double: Impossible
-Float: Impossible
+Int: -2147483648
+Float: 2.14748e+09f
+Double: 2.14748e+09
 -----------------------
 -2147483649
 Char: Impossible
-Int: Impossible
-Float: -2.14748e+09.0f
-Double: -2.14748e+09.0
+Int: -2147483648
+Float: -2.14748e+09f
+Double: -2.14748e+09
 -----------------------
 1222222222222222222222222222222222222222222222222223333333333333333333333333333333333333333333333333333333322222222222222222222222222222222222222222222222223333333333333333333333333333333333333333333333333333333322222222222222222222222222222222222222222222222223333333333333333333333333333333333333333333333333333333322222222222222222222222222222222
-Char: Not displayable
+Char: Impossible
 Int: Impossible
 Double: Impossible
 Float: Impossible
 -----------------------
 1222222222222222222222222222222222222222222222222223333333333333333333333333333333333333333333333333333333322222222222222222222222222222222222222222222222223333333333333333333333333333333333333333333333333333333322222222222222222222222222222222222222222222222223333333333333333333333333333333333333333333333333333333322222222222222222222222222222222
-Char: Not displayable
+Char: Impossible
 Int: Impossible
 Double: Impossible
 Float: Impossible
@@ -66,15 +66,15 @@ Double: 0.1
 -----------------------
 -2147483649
 Char: Impossible
-Int: Impossible
-Float: -2.14748e+09.0f
-Double: -2.14748e+09.0
+Int: -2147483648
+Float: -2.14748e+09f
+Double: -2.14748e+09
 -----------------------
 2147483648
 Char: Not displayable
-Int: Impossible
-Float: 2.14748e+09.0f
-Double: 2.14748e+09.0
+Int: -2147483648
+Float: 2.14748e+09f
+Double: 2.14748e+09
 -----------------------
 1.1
 Char: Not displayable
@@ -84,19 +84,19 @@ Double: 1.1
 -----------------------
 -inff
 Char: Impossible
-Int: Impossible
+Int: -2147483648
 Float: -inff
 Double: -inf
 -----------------------
 +inff
 Char: Not displayable
-Int: Impossible
+Int: -2147483648
 Float: inff
 Double: inf
 -----------------------
 inff
 Char: Not displayable
-Int: Impossible
+Int: -2147483648
 Float: inff
 Double: inf
 -----------------------
@@ -113,26 +113,26 @@ Float: 1.11111f
 Double: 1.11111
 -----------------------
 inf
-Char: Impossible
-Int: Impossible
+Char: Not displayable
+Int: -2147483648
 Float: inff
 Double: inf
 -----------------------
 -inf
 Char: Impossible
-Int: Impossible
+Int: -2147483648
 Float: -inff
 Double: -inf
 -----------------------
 +inf
-Char: Impossible
-Int: Impossible
+Char: Not displayable
+Int: -2147483648
 Float: inff
 Double: inf
 -----------------------
 inf
-Char: Impossible
-Int: Impossible
+Char: Not displayable
+Int: -2147483648
 Float: inff
 Double: inf
 -----------------------
@@ -151,98 +151,98 @@ Double: 1233
 ++1
 Char: '+'
 Int: 43
-Float: 43.0f
-Double: 43.0
+Float: 43f
+Double: 43
 -----------------------
 --1
 Char: '-'
 Int: 45
-Float: 45.0f
-Double: 45.0
+Float: 45f
+Double: 45
 -----------------------
 -
 Char: '-'
 Int: 45
-Float: 45.0f
-Double: 45.0
+Float: 45f
+Double: 45
 -----------------------
 +
 Char: '+'
 Int: 43
-Float: 43.0f
-Double: 43.0
+Float: 43f
+Double: 43
 -----------------------
 --
 Char: '-'
 Int: 45
-Float: 45.0f
-Double: 45.0
+Float: 45f
+Double: 45
 -----------------------
 ++
 Char: '+'
 Int: 43
-Float: 43.0f
-Double: 43.0
+Float: 43f
+Double: 43
 -----------------------
 --1
 Char: '-'
 Int: 45
-Float: 45.0f
-Double: 45.0
+Float: 45f
+Double: 45
 -----------------------
 ++1
 Char: '+'
 Int: 43
-Float: 43.0f
-Double: 43.0
+Float: 43f
+Double: 43
 -----------------------
 1.f
 Char: Not displayable
 Int: 1
-Float: 1.0f
-Double: 1.0
+Float: 1f
+Double: 1
 -----------------------
 1f
 Char: '1'
 Int: 49
-Float: 49.0f
-Double: 49.0
+Float: 49f
+Double: 49
 -----------------------
 .f
 Char: '.'
 Int: 46
-Float: 46.0f
-Double: 46.0
+Float: 46f
+Double: 46
 -----------------------
 -1.f
 Char: Impossible
 Int: -1
-Float: -1.0f
-Double: -1.0
+Float: -1f
+Double: -1
 -----------------------
 -1f
 Char: '-'
 Int: 45
-Float: 45.0f
-Double: 45.0
+Float: 45f
+Double: 45
 -----------------------
 -.f
 Char: '-'
 Int: 45
-Float: 45.0f
-Double: 45.0
+Float: 45f
+Double: 45
 -----------------------
 f.1
 Char: 'f'
 Int: 102
-Float: 102.0f
-Double: 102.0
+Float: 102f
+Double: 102
 -----------------------
 f1.
 Char: 'f'
 Int: 102
-Float: 102.0f
-Double: 102.0
+Float: 102f
+Double: 102
 -----------------------
 1.1
 Char: Not displayable
@@ -265,26 +265,26 @@ Double: 1.1
 --1.1
 Char: '-'
 Int: 45
-Float: 45.0f
-Double: 45.0
+Float: 45f
+Double: 45
 -----------------------
 1f1
 Char: '1'
 Int: 49
-Float: 49.0f
-Double: 49.0
+Float: 49f
+Double: 49
 -----------------------
 1ff
 Char: '1'
 Int: 49
-Float: 49.0f
-Double: 49.0
+Float: 49f
+Double: 49
 -----------------------
 1f1
 Char: '1'
 Int: 49
-Float: 49.0f
-Double: 49.0
+Float: 49f
+Double: 49
 -----------------------
 .40545
 Char: Not displayable
@@ -306,13 +306,7 @@ Double: 1242
 -----------------------
 545453434343434343434354545343434343434343435454534343434343434343545453434343434343434354545343434343434343435454534343434343434343.03
 Char: Not displayable
-Int: Impossible
-Float: Impossible
-Double: 5.45453e+131.0
------------------------
-+2147483647
-Char: Not displayable
-Int: 2147483647
-Float: 2.14748e+09.0f
-Double: 2.14748e+09.0
+Int: -2147483648
+Float: inff
+Double: 5.45453e+131
 -----------------------

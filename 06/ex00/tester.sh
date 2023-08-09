@@ -5,13 +5,16 @@ run_test() {
     local expected_output=$2
     local test_number=$3
 
-    echo -n "Test $test_number - Input: $input"
+    # echo -n "Test $test_number - Input: $input"
     output=$(./convert "$input")
     if [ "$output" == "$expected_output" ]; then
+		echo -n "Test $test_number - Input: $input"
         echo -e "\033[32m ✓ PASSED\033[0m"
         # echo -e "$output"
 		# echo "-----------------------"
+		local p=1;
     else
+		echo -n "Test $test_number - Input: $input"
         echo -e "\033[31m ✗ FAILED\033[0m Input: $input"
         echo "Expected Output:"
         echo -e "$expected_output"

@@ -1,9 +1,9 @@
 NAME        := convert
 CC          := c++
 
-CFLAGS      := -Wall -Wextra -Werror
-CFLAGS      += -std=c++98
-SRC_FILES   := main.cpp ScalarConverter.cpp
+CFLAGS      := -Wall -Wextra -Werror 
+CFLAGS		+= -std=c++98
+SRC_FILES   := main.cpp ScalarConverter.cpp Type.cpp Tester.cpp
 
 # object files
 OBJ_DIR 	:= obj
@@ -33,7 +33,7 @@ run: 	all
 		./$(NAME)
 	
 test: 	clean
-		@$(MAKE) CFLAGS="-DTESTS=1" 
+		@$(MAKE) CFLAGS+="-DTESTS=1" 
 		@$(MAKE) all
 
 test2: 	clean

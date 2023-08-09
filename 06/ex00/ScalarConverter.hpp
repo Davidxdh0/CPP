@@ -3,7 +3,6 @@
 #ifndef TESTS
 #define TESTS 0
 #endif
-
 #include <iostream>   // stoi 
 #include <sstream>    // stof 
 #include <stdexcept>  // exception 
@@ -39,7 +38,6 @@ class ScalarConverter {
 	public:	
 		~ScalarConverter();
 	
-		static int		getType(void );
 		static void		findType(const std::string& input);
 		static void		converter(const std::string& input);
 		static void		testValues(const char* input);
@@ -67,5 +65,6 @@ class ScalarConverter {
 		static bool isInt(const std::string& input); 
 		static bool onlyInt(const std::string& input);
 };
+
 
 #endif
