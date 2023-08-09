@@ -11,15 +11,15 @@
 template <typename T> void easyfind(T x, int i){
 	try {
 		if (std::find(x.begin(), x.end(), i) != x.end())
-			std::cout << "found" << std::endl;
+			std::cout << "Found " << i << std::endl;
 		else
 			throw std::runtime_error("Can't be found in container");
 	}
-	catch(std::exception& e){
-		std::errc << e.what() << std::endl;
+	catch (const std::exception& e) {
+        std::cerr << e.what() << std::endl;
 	}
 	catch(...){
-		std::cout << "std::runtime_error(Can't be found in container)" << std::endl;
+		std::cout << "Big Error: Can't be found in container" << std::endl;
 	}
 }
 #endif

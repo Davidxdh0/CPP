@@ -34,5 +34,11 @@ int main(void) {
 	easyfind(listContainer, 2);
 	easyfind(dequeContainer, 2);
 	easyfind(setContainer, 2);
+
+	easyfind(vectorContainer, 4);
+	easyfind(unorderedSetContainer, 4);
+	easyfind(listContainer, 4);
+	easyfind(dequeContainer, 4);
+	easyfind(setContainer, 4);
 	return (1);
 }
