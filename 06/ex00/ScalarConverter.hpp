@@ -12,7 +12,7 @@
 #include <limits>     // isnan, std::stod 
 #include <cmath>      // std::fmod 
 #include <cassert>    // assert 
-#include <ctype.h>
+#include <ctype.h>	  // isdigit, isalpha
 
 enum enum_type {
 	e_char = 0,
@@ -38,6 +38,7 @@ class ScalarConverter {
 		ScalarConverter(const ScalarConverter& other);
 		ScalarConverter& operator=(const ScalarConverter& other);
 		~ScalarConverter();
+
 		static int		getType(void );
 		static void		findType(const std::string& input);
 		static void		converter(const std::string& input);
@@ -64,18 +65,6 @@ class ScalarConverter {
 		static bool	isChar(const std::string& input);
 		static bool isFloat(const std::string& input); 
 		static bool isInt(const std::string& input); 
-		
-		class NonDisplayable : public std::exception{
-		public:
-			virtual const char* what() const throw(){
-				return ("Non Displayable");
-			}
-		};
-		class Impossible : public std::exception{
-		public:
-			virtual const char* what() const throw(){
-				return ("Impossible");
-			}
-		};	
 };
+
 #endif

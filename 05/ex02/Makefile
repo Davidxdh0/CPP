@@ -28,6 +28,7 @@ clean		:
 
 fclean		:	clean
 				rm -rf ${NAME}
+				rm Find_shrubbery
 
 run			: 	all
 				./${NAME}

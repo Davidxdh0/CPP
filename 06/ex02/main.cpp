@@ -29,18 +29,18 @@ void identify(Base* p){
 
 void identify(Base& p){
 		try {
-			dynamic_cast<A&>(p);
-			std::cout << "A" << std::endl;
+			static_cast<void>(dynamic_cast<A&>(p));
+			std::cout << "A" <<  std::endl;
 		}
 		catch (const std::bad_cast&) {	
 			try {
-				dynamic_cast<B&>(p);
+				static_cast<void>(dynamic_cast<B&>(p));
 				std::cout << "B" << std::endl;
 			}
 			catch (const std::bad_cast&) {	
 				try {
-					dynamic_cast<C&>(p);
-					std::cout << "B" << std::endl;
+					static_cast<void>(dynamic_cast<C&>(p));
+					std::cout << "C" << std::endl;
 				}
 				catch(const std::bad_cast&){
 					std::cout << "Dynamic cast failed" << std::endl;
@@ -51,13 +51,13 @@ void identify(Base& p){
 
 int main(void) {
 	std::cout << "-----Pointers-----" << std::endl;
-	for (int i = 0; i < 5; i++){
+	for (int i = 0; i < 6; i++){
 		Base* p = generate();
 		identify(p);
 		delete p;
 	}
 	std::cout << "-----References-----" << std::endl;
-	for (int i = 0; i < 5; i++){
+	for (int i = 0; i < 6; i++){
 		Base* p = generate();
 		identify(*p);
 		delete p;

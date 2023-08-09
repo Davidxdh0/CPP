@@ -10,7 +10,9 @@ std::string ScalarConverter::_pi 	 = "";
 std::string ScalarConverter::_pf 	 = "";
 std::string ScalarConverter::_pd 	 = "";
 
-ScalarConverter::ScalarConverter(){std::cout << "Contructed ScalarConverter"<< std::endl;}
+ScalarConverter::ScalarConverter(){
+	std::cout << "Contructed ScalarConverter"<< std::endl;
+}
 
 ScalarConverter::ScalarConverter( const ScalarConverter& other) {
 	std::cout << "Copy constructor called ScalarConverter" << std::endl;
@@ -24,7 +26,9 @@ ScalarConverter& ScalarConverter::operator=(const ScalarConverter& other){
     return *this;
 }
 
-ScalarConverter::~ScalarConverter(){std::cout << "Decontructed ScalarConverter" << std::endl;}
+ScalarConverter::~ScalarConverter(){
+	std::cout << "Decontructed ScalarConverter" << std::endl;
+}
 
 void	ScalarConverter::converter(const std::string& input){
 	if (TESTS == 2)
@@ -46,6 +50,19 @@ void	ScalarConverter::converter(const std::string& input){
 	if (TESTS == 2)
 		std::cout << "-----------------------" << std::endl;
 }		
+/*
+Creates a buffer, 
+redirect the std::cout to buffer and saves it in prevcoutbuf
+then i redirect the std::cout back to normal, 
+then i save the buffer in _pf
+print the _pf
+
+std::stringstream buffer; 
+std::streambuf* prevcoutbuf = std::cout.rdbuf(buffer.rdbuf());
+std::cout.rdbuf(prevcoutbuf);
+_pf = buffer.str();
+std::cout << _pf;	
+*/
 
 void	ScalarConverter::printChar(const std::string& input){
 	std::stringstream buffer;

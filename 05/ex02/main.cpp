@@ -12,20 +12,24 @@ int main (void)
 {
 	atexit(checkleaks);
 	Bureaucrat david("David", 1);
-	// Bureaucrat david("David", 150);
+	// Bureaucrat david("David", 150); // for gradetoolow tests
 	ShrubberyCreationForm 	shrub("Find");
 	PresidentialPardonForm 	pres("President");
 	RobotomyRequestForm		robot("Robot");
 	david.executeForm(shrub);
 	david.executeForm(robot);
 	david.executeForm(pres);
+
 	shrub.setSigned();
 	pres.setSigned();
+	robot.setSigned();
+
 	david.executeForm(shrub);
 	david.executeForm(robot);
-	
+	david.executeForm(pres);
+
 	std::cout << std::endl;
-	robot.setSigned();
+
 	for (int i = 0; i < 10; i++)
 		david.executeForm(robot);
 	std::cout << std::endl;

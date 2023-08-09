@@ -1,8 +1,13 @@
 NAME        := span
 CC          := c++
 
-CFLAGS      := -Wall -Wextra -Werror -Wno-error=deprecated-copy -Wno-deprecated-copy
-CFLAGS      += -std=c++98 -std=c++11
+ifneq (,$(findstring ubuntu,$(shell uname -a)))
+	CFLAGS := -Wall -Wextra -Werror -Wno-error=deprecated-copy -Wno-deprecated-copy
+else
+	CFLAGS := -Wall -Wextra -Werror
+endif
+
+CFLAGS += -std=c++98
 SRC_FILES   := main.cpp
 
 # object files
