@@ -11,7 +11,7 @@ Span::Span(const Span& other){
 	;
 }
 
-Span::Span& operator=(const Span& other){
+Span& Span::operator=(const Span& other){
 	;
 }
 
