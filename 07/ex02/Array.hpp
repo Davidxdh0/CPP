@@ -61,9 +61,14 @@ T& Array<T>::operator[](unsigned int index){
 
 template <typename T>
 const T& Array<T>::operator[](unsigned int index) const{
-	if (this->_size - 1 < index)
-		throw std::runtime_error("Index out of bounds");
-	return (this->_data[index]);
+	try {
+		if (this->_size - 1 < index)
+			throw std::runtime_error("Index out of bounds");
+		return (this->_data[index]);
+	}
+	catch(...){
+		return NULL;
+	}
 }
 
 template <typename T>

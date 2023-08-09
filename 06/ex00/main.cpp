@@ -11,15 +11,17 @@ int main(int argc, char *argv[]) {
 	if (argv[1])
 		ScalarConverter::converter(argv[1]);
 	// -------------------------
+	// float 340282346638528859811704183484516925440.0
+	// float -340282346638528859811704183484516925440.0000000000000000
 	// to test the input/output
 	// std::string input = "42..0";
 	// char		k = .1;
 	// char 	k = input.front();
-	// int 		k = static_cast<char>("");
-	// double 	k = .1;
+	// int 		k = 2147483647;
+	// double 	k = 2232.1000000;
 	// float 	k = 1f.;
 	// char 	c = static_cast<char>(k);
-	// int 		i = static_cast<int>(k);
+	// int 	i = static_cast<int>(k);
 	// float 	f = static_cast<float>(k);
 	// double 	d = static_cast<double>(k);
 	// std::cout << "c = " << c << std::endl << "i = " << i << std::endl << "f = " << f << std::endl << "d = " << d << std::endl;

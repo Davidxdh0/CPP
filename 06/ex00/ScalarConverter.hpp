@@ -34,11 +34,11 @@ class ScalarConverter {
 		static std::string  _pf; //testing values - captures std::cout
 		static std::string  _pd; //testing values - captures std::cout
 		ScalarConverter();
-	public:	
 		ScalarConverter(const ScalarConverter& other);
 		ScalarConverter& operator=(const ScalarConverter& other);
+	public:	
 		~ScalarConverter();
-
+	
 		static int		getType(void );
 		static void		findType(const std::string& input);
 		static void		converter(const std::string& input);
@@ -65,6 +65,7 @@ class ScalarConverter {
 		static bool	isChar(const std::string& input);
 		static bool isFloat(const std::string& input); 
 		static bool isInt(const std::string& input); 
+		static bool onlyInt(const std::string& input);
 };
 
 #endif

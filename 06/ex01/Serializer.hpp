@@ -14,9 +14,9 @@ struct Data{
 class Serializer {
 	private:
 		Serializer();
-	public:	
 		Serializer(const Serializer& other);
 		Serializer& operator=(const Serializer& other);
+	public:	
 		~Serializer();
 
 		static uintptr_t 	serialize(Data* ptr);

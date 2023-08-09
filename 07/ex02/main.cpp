@@ -5,9 +5,27 @@ int main(void) {
     Array<int> intarray(12);
 	Array<int> intarrays1 = intarray;
 	Array<int> intarrays2;
+	Array<int> intarrays3(0);
 	intarrays2 = intarray;
 	intarray[0] = 5;
-	std::cout << intarray[0] << " != " << intarrays1[0] << intarrays2[0] << std::endl;
+	for (size_t i = 0; i < intarray.size(); i++) {
+        std::cout << intarray[i];
+    }
+    std::cout << std::endl;
+    for (size_t i = 0; i < intarrays1.size(); i++) {
+        std::cout << intarrays1[i];
+    }
+    std::cout << std::endl;
+    for (size_t i = 0; i < intarrays2.size(); i++) {
+        std::cout << intarrays2[i];
+    }
+    std::cout << std::endl;
+    for (size_t i = 0; i < intarrays3.size(); i++) {
+        std::cout << intarrays3[i];
+    }
+    std::cout << std::endl;
+
+	std::cout << intarray[0] << " != " << intarrays1[0] << intarrays2[0] << intarrays2[0] << std::endl;
 	std::cout << "-------Outside of [index]-------" << std::endl;
 	try {
 		intarray[13] = 5;

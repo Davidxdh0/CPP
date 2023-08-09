@@ -15,31 +15,38 @@ Base * generate(void){
 
 void identify(Base* p){
 	try {
-		if (dynamic_cast<A*>(p)) 
+		if (dynamic_cast<A*>(p) != nullptr ) 
 			std::cout << "A" << std::endl;
-		else if (dynamic_cast<B*>(p))
+		else if (dynamic_cast<B*>(p) != nullptr )
 			std::cout << "B" << std::endl;
-		else if (dynamic_cast<C*>(p)) 
+		else if (dynamic_cast<C*>(p) != nullptr ) 
 			std::cout << "C" << std::endl;
 	}
 	catch(const std::bad_cast&){
 		std::cout << "Dynamic cast failed" << std::endl;
 	}
+	catch(...){
+		std::cout << "Dynamic cast failed" << std::endl;
+	}
 }
 
 void identify(Base& p){
+		if (&p == nullptr){
+			// std::cout << "nullptr" <<  std::endl;
+			return ;
+		}
 		try {
-			static_cast<void>(dynamic_cast<A&>(p));
-			std::cout << "A" <<  std::endl;
+				A a = dynamic_cast<A&>(p);
+				std::cout << "A" << std::endl;
 		}
 		catch (const std::bad_cast&) {	
 			try {
-				static_cast<void>(dynamic_cast<B&>(p));
+				B b = dynamic_cast<B&>(p);
 				std::cout << "B" << std::endl;
 			}
 			catch (const std::bad_cast&) {	
 				try {
-					static_cast<void>(dynamic_cast<C&>(p));
+					C c = dynamic_cast<C&>(p);
 					std::cout << "C" << std::endl;
 				}
 				catch(const std::bad_cast&){
@@ -47,18 +54,21 @@ void identify(Base& p){
 				}
 			}
 		}
+		catch (...){
+			std::cout << "Dynamic cast failed" << std::endl;
+		}
 }
 
 int main(void) {
-	std::cout << "-----Pointers-----" << std::endl;
+	std::cout << "-----NullPointers-----" << std::endl;
+	Base* p = nullptr;
+	identify(p);
+	identify(*p);
+	delete p;
+	std::cout << "-----Pointer&&&-----" << std::endl;
 	for (int i = 0; i < 6; i++){
 		Base* p = generate();
 		identify(p);
-		delete p;
-	}
-	std::cout << "-----References-----" << std::endl;
-	for (int i = 0; i < 6; i++){
-		Base* p = generate();
 		identify(*p);
 		delete p;
 	}
