@@ -24,11 +24,9 @@ done
 for directory in {02..09}; do
     for ex in {00..04}; do
         if [ -d "0$directory/ex0$ex" ]; then
-			echo "Entering 0$directory/ex0$ex"
-			pushd "0$directory/ex0$ex" || exit
+			cd "0$directory/ex0$ex" || exit
 			make fclean
-			popd
-			popd
+            cd ../../
         fi
     done
 done

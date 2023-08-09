@@ -7,8 +7,8 @@
 #include <iostream>
 
 struct Data{
-	int id = 1;
-	std::string field = "Test";
+	int id;
+	std::string field;;
 };
 
 class Serializer {

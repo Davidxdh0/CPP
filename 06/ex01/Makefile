@@ -2,7 +2,7 @@ NAME        := serializer
 CC          := c++
 
 CFLAGS      := -Wall -Wextra -Werror
-CFLAGS      += -std=c++98 -std=c++11
+CFLAGS      += -std=c++98
 SRC_FILES   := main.cpp Serializer.cpp
 
 # object files

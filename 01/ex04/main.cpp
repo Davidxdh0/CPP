@@ -49,8 +49,8 @@ void	printArray(std::string *array)
 
 int main(int argc, char *argv[])
 {
-	std::string					*array;
-	std::vector<std::string>	changedfile;
+	std::string	*array;
+	int			index
 
 	if (argc != 4 || !strcmp(argv[1], "") || strlen(argv[2]) <= 0)
 	{
@@ -61,21 +61,34 @@ int main(int argc, char *argv[])
 	if (array == NULL)
 		return 1;
 	printArray(array); 
+
+	std::ifstream file(array[0]);
+    if (file.is_open()){
+        std::string line;
+        while (std::getline(file, line))
+            index++;
+        file.close();
+    }
+
+	std::string* changedfile = new std::string[index]; 
+	index = 0;
 	std::ifstream file(array[0]);
 	if (file.is_open())
 	{
 		std::string line;
 		while (std::getline(file, line))
-			changedfile.push_back(changefile(line, array[1], array[2]));
+		{
+            changedfile[index] = changefile(line, array[1], array[2]);
+            index++;
+        }
 		file.close();
-		sleep(2);
-        std::ofstream outputFile(array[0]);
+        std::ofstream outputFile("Output");
         if (!outputFile.is_open()) 
 		{
-            std::cout << "Failed to open file: " << array[0] << std::endl;
+            std::cout << "Failed to open file: Output"  << std::endl;
             return 1;
         }
-        for (std::vector<std::string>::size_type i = 0; i < changedfile.size(); ++i) 
+        for (int i = 0; i < changedfile.size(); ++i) 
 			outputFile << changedfile[i] << std::endl;
         outputFile.close();
 	}
