@@ -89,7 +89,9 @@ void	ScalarConverter::printFloat(){
 			throw std::runtime_error("Impossible");
 		if (std::isinf(_float) && std::isinf(-_float))
 			std::cout << _float << "f" << std::endl;
-		else if (std::fmod(_float, 1.0)== 0.0 && (std::to_string(_float).length() < 8 || _float == 0))
+		else if (std::fmod(_float, 1.0) == 0.0 && (std::to_string(_float).length() < 14 && _float >= 0))
+			std::cout << _float << ".0f" << std::endl;
+		else if (std::fmod(_float, 1.0) == 0.0 && (std::to_string(_float).length() < 15 && _float <= 0))
 			std::cout << _float << ".0f" << std::endl;
 		else
 			std::cout << _float << "f" << std::endl;
@@ -113,7 +115,9 @@ void	ScalarConverter::printDouble(){
 			throw std::runtime_error("Impossible");
 		if (_double > std::numeric_limits<double>::max() && _double != std::numeric_limits<double>::infinity())
 			throw std::runtime_error("Impossible");
-		else if (std::fmod(_double, 1.0) == 0.0 && std::to_string(_double).length() < 8)
+		else if (std::fmod(_double, 1.0) == 0.0 && std::to_string(_double).length() < 14 && _double >= 0)
+			std::cout << _double << ".0" << std::endl;
+		else if (std::fmod(_double, 1.0) == 0.0 && std::to_string(_double).length() < 15 && _double <= 0)
 			std::cout << _double << ".0" << std::endl;
 		else
 			std::cout << _double << std::endl;

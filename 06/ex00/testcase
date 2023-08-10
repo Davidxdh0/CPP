@@ -1,20 +1,20 @@
 1
 Char: Not displayable
 Int: 1
-Float: 1f
-Double: 1
+Float: 1.0f
+Double: 1.0
 -----------------------
 -1
 Char: Impossible
 Int: -1
-Float: -1f
-Double: -1
+Float: -1.0f
+Double: -1.0
 -----------------------
 +42
 Char: '*'
 Int: 42
-Float: 42f
-Double: 42
+Float: 42.0f
+Double: 42.0
 -----------------------
 2147483647
 Char: Not displayable
@@ -151,98 +151,98 @@ Double: 1233
 ++1
 Char: '+'
 Int: 43
-Float: 43f
-Double: 43
+Float: 43.0f
+Double: 43.0
 -----------------------
 --1
 Char: '-'
 Int: 45
-Float: 45f
-Double: 45
+Float: 45.0f
+Double: 45.0
 -----------------------
 -
 Char: '-'
 Int: 45
-Float: 45f
-Double: 45
+Float: 45.0f
+Double: 45.0
 -----------------------
 +
 Char: '+'
 Int: 43
-Float: 43f
-Double: 43
+Float: 43.0f
+Double: 43.0
 -----------------------
 --
 Char: '-'
 Int: 45
-Float: 45f
-Double: 45
+Float: 45.0f
+Double: 45.0
 -----------------------
 ++
 Char: '+'
 Int: 43
-Float: 43f
-Double: 43
+Float: 43.0f
+Double: 43.0
 -----------------------
 --1
 Char: '-'
 Int: 45
-Float: 45f
-Double: 45
+Float: 45.0f
+Double: 45.0
 -----------------------
 ++1
 Char: '+'
 Int: 43
-Float: 43f
-Double: 43
+Float: 43.0f
+Double: 43.0
 -----------------------
 1.f
 Char: Not displayable
 Int: 1
-Float: 1f
-Double: 1
+Float: 1.0f
+Double: 1.0
 -----------------------
 1f
 Char: '1'
 Int: 49
-Float: 49f
-Double: 49
+Float: 49.0f
+Double: 49.0
 -----------------------
 .f
 Char: '.'
 Int: 46
-Float: 46f
-Double: 46
+Float: 46.0f
+Double: 46.0
 -----------------------
 -1.f
 Char: Impossible
 Int: -1
-Float: -1f
-Double: -1
+Float: -1.0f
+Double: -1.0
 -----------------------
 -1f
 Char: '-'
 Int: 45
-Float: 45f
-Double: 45
+Float: 45.0f
+Double: 45.0
 -----------------------
 -.f
 Char: '-'
 Int: 45
-Float: 45f
-Double: 45
+Float: 45.0f
+Double: 45.0
 -----------------------
 f.1
 Char: 'f'
 Int: 102
-Float: 102f
-Double: 102
+Float: 102.0f
+Double: 102.0
 -----------------------
 f1.
 Char: 'f'
 Int: 102
-Float: 102f
-Double: 102
+Float: 102.0f
+Double: 102.0
 -----------------------
 1.1
 Char: Not displayable
@@ -265,26 +265,26 @@ Double: 1.1
 --1.1
 Char: '-'
 Int: 45
-Float: 45f
-Double: 45
+Float: 45.0f
+Double: 45.0
 -----------------------
-1f1
-Char: '1'
-Int: 49
-Float: 49f
-Double: 49
+-1f1
+Char: '-'
+Int: 45
+Float: 45.0f
+Double: 45.0
 -----------------------
 1ff
 Char: '1'
 Int: 49
-Float: 49f
-Double: 49
+Float: 49.0f
+Double: 49.0
 -----------------------
 1f1
 Char: '1'
 Int: 49
-Float: 49f
-Double: 49
+Float: 49.0f
+Double: 49.0
 -----------------------
 .40545
 Char: Not displayable

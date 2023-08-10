@@ -32,7 +32,6 @@ void identify(Base* p){
 
 void identify(Base& p){
 		if (&p == nullptr){
-			// std::cout << "nullptr" <<  std::endl;
 			return ;
 		}
 		try {
@@ -58,19 +57,24 @@ void identify(Base& p){
 			std::cout << "Dynamic cast failed" << std::endl;
 		}
 }
-
+void	aleaks(void)
+{
+	system("leaks -q serializer");
+}
 int main(void) {
+	// atexit(aleaks);
 	std::cout << "-----NullPointers-----" << std::endl;
 	Base* p = nullptr;
 	identify(p);
 	identify(*p);
-	delete p;
+	// delete p;
 	std::cout << "-----Pointer&&&-----" << std::endl;
 	for (int i = 0; i < 6; i++){
 		Base* p = generate();
 		identify(p);
 		identify(*p);
-		delete p;
+		if (p != nullptr)
+			delete p;
 	}
 	return 1;
 }

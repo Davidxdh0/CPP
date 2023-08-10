@@ -1,12 +1,26 @@
 #!/bin/bash
 
 # Define the testValues function
-function testValues {
-    ./convert "$1" >> testcase
-}
+# function testValues {
+#     ./convert "$1" >> testcase
+# }
+# #Clear the existing testcase file
+# > testcase
 
-# Clear the existing testcase file
-> testcase
+input_filename="testcase"
+output_filename="ss"
+
+input_lines=$(cat "$input_filename")
+
+IFS=$'\n' lines=($input_lines)
+array_index=0
+
+> "$output_filename"
+
+while IFS= read -r condition && IFS= read -r char_value && IFS= read -r int_value && IFS= read -r float_value && IFS= read -r double_value && IFS= read -r separator; do
+    echo "else if (!strcmp(input, \"$condition\"))" >> "$output_filename"
+    echo "        array[$array_index] = \"$char_value\"; array[$((array_index + 1))] = \"$int_value\"; array[$((array_index + 2))] = \"$float_value\"; array[$((array_index + 3))] = \"$double_value\";" >> "$output_filename"
+done < "$input_filename"
 
 testValues "1"
 testValues "-1"
