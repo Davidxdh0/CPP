@@ -7,7 +7,7 @@ else
 	CFLAGS := -Wall -Wextra -Werror
 endif
 
-CFLAGS += -std=c++98
+CFLAGS += -std=c++98 -std=c++11
 SRC_FILES   := main.cpp
 
 # object files
