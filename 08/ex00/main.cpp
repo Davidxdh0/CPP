@@ -2,11 +2,11 @@
 
 int main(void) {
 	
-    std::vector<int> 		vectorContainer;
-	std::vector<int> 		vectorEmpty;
-	std::list<int> 			listContainer;
-	std::deque<int> 		dequeContainer;
-	std::set<int> 			setContainer;
+    vector<int> 		vectorContainer;
+	vector<int> 		vectorEmpty;
+	list<int> 			listContainer;
+	deque<int> 		dequeContainer;
+	set<int> 			setContainer;
 	
 	// vector
     vectorContainer.push_back(1);
@@ -30,24 +30,24 @@ int main(void) {
 
 {
 	auto v = easyfind(vectorContainer, 5);
-	std::cout << v << std::endl;
+	cout << v << endl;
 	auto b = easyfind(listContainer, 5);
-	std::cout << b << std::endl;
+	cout << b << endl;
 	auto c = easyfind(dequeContainer, 5);
-	std::cout << c << std::endl;
+	cout << c << endl;
 	auto d = easyfind(setContainer, 5);
-	std::cout << d << std::endl;	
+	cout << d << endl;	
 }
 	//empty container
 	auto ve = easyfind(vectorEmpty, 8);
-	std::cout << ve << std::endl;
+	cout << ve << endl;
 	auto v = easyfind(vectorContainer, 8);
-	std::cout << v << std::endl;
+	cout << v << endl;
 	auto b = easyfind(listContainer, 8);
-	std::cout << b << std::endl;
+	cout << b << endl;
 	auto c = easyfind(dequeContainer, 8);
-	std::cout << c << std::endl;
+	cout << c << endl;
 	auto d = easyfind(setContainer, 8);
-	std::cout << d << std::endl;	
+	cout << d << endl;	
 	return (1);
 }

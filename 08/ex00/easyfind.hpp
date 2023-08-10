@@ -8,26 +8,26 @@
 #include <unordered_set>
 #include <vector>
 
+using namespace std;
+
 template <typename T> 
 int easyfind(T x, int i){
 	try {
 		if (x.empty())
-			throw std::runtime_error("Error: Empty container - return fail ");
-		typename T::iterator position = x.begin();
-		position = std::find(x.begin(), x.end(), i);
+			throw runtime_error("Error: Empty container - return fail ");
+		typename T::iterator position = find(x.begin(), x.end(), i);
 		if (position == x.end() || x.empty())
-			throw std::runtime_error("Can't be found in container - return last value: ");
-		else
-			std::cout << "Found i: " << *position << " - return index: " << std::distance(x.begin(), position) << std::endl;
-		return std::distance(x.begin(), position);
-	} catch (const std::exception& e) {
+			throw runtime_error("Can't be found in container - return last value: ");
+		cout << "Found i: " << *position << " - return index: " << distance(x.begin(), position) << endl;
+		return distance(x.begin(), position);
+	} catch (const exception& e) {
         
 		if (x.empty()){
-			std::cerr << e.what() << "-1" << std::endl;
+			cerr << e.what() << "-1" << endl;
 			return (-1);
 		}
-		std::cerr << e.what() << *(std::prev(x.end()))<< std::endl;
-		return (*(std::prev(x.end())));
+		cerr << e.what() << *(prev(x.end()))<< endl;
+		return (*(prev(x.end())));
 	}
 }
 #endif
