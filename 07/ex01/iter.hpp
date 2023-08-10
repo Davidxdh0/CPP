@@ -3,14 +3,7 @@
 #include <iostream>
 
 template <typename T, typename Func>
-void iter(T *a, size_t b, Func test) {
-    for (size_t i = 0; i < b; i++) {
-        test(a[i]);
-    }
-}
-
-template <typename T, typename Func>
-void iter(const T *a, size_t b, const Func test) {
+void iter(T *a, size_t b, Func test){
     for (size_t i = 0; i < b; i++) {
         test(a[i]);
     }

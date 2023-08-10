@@ -4,7 +4,7 @@ CC          := c++
 ifneq (,$(findstring ubuntu,$(shell uname -a)))
 	CFLAGS := -Wall -Wextra -Werror -Wno-error=deprecated-copy -Wno-deprecated-copy
 else
-	CFLAGS := -Wall -Wextra -Werror
+	CFLAGS := -Wall -Wextra -Werror -I./
 endif
 
 CFLAGS += -std=c++98

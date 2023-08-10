@@ -7,25 +7,32 @@ template <typename T> class Array {
 		T*				_data;
 		unsigned int	_size;
 	public:
-		Array();
+		Array(void);
 		Array(unsigned int n);
 		Array(const Array& other);
 		Array& operator=(const Array& other);
 		~Array();
 		T*				getData();
 		unsigned int	size() const;
-		T& operator[](unsigned int index);
-		const T& operator[](unsigned int index) const;
+		T& 				operator[](unsigned int index);
+		const T& 		operator[](unsigned int index) const;
+
+		class Err_Message : public std::exception {
+			public:
+				virtual const char* what() const throw();
+		};
 };
 
 template <typename T>
-Array<T>::Array(){
-	this->_data = NULL;
+Array<T>::Array(void){
+	this->_data = nullptr;
 	this->_size = 0;
 };
 
 template <typename T>
 Array<T>::Array(unsigned int n){
+	if (n < 0)
+		throw Err_Message();
 	this->_data = new T[n];
 	this->_size = n;
 	for(unsigned int i = 0; i < n; i++)
@@ -33,10 +40,9 @@ Array<T>::Array(unsigned int n){
 };
 
 template <typename T>
-Array<T>::Array(const Array& other){
-	this->_data = new T[other.size()];
+Array<T>::Array(const Array& other) : _data(new T[other.size()]), _size(other.size()){
 	for (unsigned int i = 0; i < other.size(); i++)
-		this->_data[i] = other[i];
+		this->_data[i] = other._data[i];
 };
 
 template <typename T>
@@ -54,27 +60,25 @@ Array<T>& Array<T>::operator=(const Array& other){
 
 template <typename T>
 T& Array<T>::operator[](unsigned int index){
+	if (_data == nullptr)
+		throw Err_Message();
 	if (this->_size - 1 < index)
-		throw std::runtime_error("Index out of bounds");
+		throw Err_Message();
 	return (this->_data[index]);
 }
 
 template <typename T>
 const T& Array<T>::operator[](unsigned int index) const{
-	try {
-		if (this->_size - 1 < index)
-			throw std::runtime_error("Index out of bounds");
-		return (this->_data[index]);
-	}
-	catch(...){
-		return NULL;
-	}
+	if (_data == nullptr)
+		throw Err_Message();
+	if (this->_size - 1 < index)
+		throw Err_Message();
+	return (this->_data[index]);
 }
 
 template <typename T>
 Array<T>::~Array(){
 	std::cout << "Deconstructed array" << std::endl;
-	delete[] this->_data;
 }
 
 template <typename T>
@@ -87,4 +91,8 @@ T*	Array<T>::getData(){
 	return this->_data;
 }
 
+template <typename T>
+const char * Array<T>::Err_Message::what() const throw(){
+    return "Error exception: Check your values";
+}
 #endif
