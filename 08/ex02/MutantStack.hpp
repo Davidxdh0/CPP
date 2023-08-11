@@ -3,27 +3,50 @@
 
 #include <iostream>
 #include <algorithm>
-#include <deque>
-#include <list>
-#include <set>
-#include <unordered_set>
-#include <vector>
+#include <stack>
 
-//geenidee
-class Mutant {
-	private:
-		unsigned int _N;
-		//container[N]
+template<typename T>
+class MutantStack : public std::stack<T>{
 	public:
-		Mutant();
-		Mutant(unsigned int N);
-		Mutant(const Mutant& other);
-		Mutant& operator=(const Mutant& other);
-		~Mutant();
+		MutantStack();
+		MutantStack(const MutantStack& other);
+		MutantStack& operator=(const MutantStack<T>& other);
+		~MutantStack();
 
-		void 	iterate();
-		void 	deiterate();
-
+		typedef typename std::stack<T>::container_type::iterator iterator;
+		iterator end();
+		iterator begin();
 };
+
+template<typename T>
+MutantStack<T>::MutantStack() : std::stack<T>() {
+	// cout << "Default constructor MutantStack" << endl;
+}
+
+template<typename T>
+MutantStack<T>::MutantStack(const MutantStack& other) : std::stack<T>(other) {
+	// cout << "Copy Constructor MutantStack" << endl;
+}
+
+template<typename T>
+MutantStack<T>& MutantStack<T>::operator=(const MutantStack<T>& other){
+	std::stack<T>::operator=(other);
+	return (*this);
+}
+
+template<typename T>
+MutantStack<T>::~MutantStack(){
+	// cout << "Deconstructor MutantStack" << endl;
+}
+
+template <typename T>
+typename MutantStack<T>::iterator MutantStack<T>::end() {
+    return (std::stack<T>::c.end());
+}
+
+template <typename T>
+typename MutantStack<T>::iterator MutantStack<T>::begin() {
+    return (std::stack<T>::c.begin());
+}
 
 #endif

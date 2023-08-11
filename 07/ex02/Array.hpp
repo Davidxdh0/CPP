@@ -78,7 +78,7 @@ const T& Array<T>::operator[](unsigned int index) const{
 
 template <typename T>
 Array<T>::~Array(){
-	std::cout << "Deconstructed array" << std::endl;
+	// std::cout << "Deconstructed array" << std::endl;
 }
 
 template <typename T>

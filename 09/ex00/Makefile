@@ -8,7 +8,7 @@ else
 endif
 
 CFLAGS += -std=c++98
-SRC_FILES   := main.cpp Span.cpp
+SRC_FILES   := main.cpp
 
 # object files
 OBJ_DIR 	:= obj

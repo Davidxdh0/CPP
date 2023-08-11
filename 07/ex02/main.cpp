@@ -1,7 +1,7 @@
 #include <Array.hpp>
 
 int main(void) {
-	std::cout << "****** Start ~10s runtime ******" << std::endl;
+	std::cout << "****** Start ~10seconds runtime ******" << std::endl;
 	try{
 		std::cout << "------initialise negative 1-----" << std::endl;
 		Array<int> intarray(-1);
@@ -9,7 +9,7 @@ int main(void) {
 		std::cout << e.what() << std::endl;
 	}
 	try{
-		std::cout << "-----copy constructor-----" << std::endl;
+		std::cout << "-----copy constructor-almost the same----" << std::endl;
 		Array<int> intarray(3);
 		Array<int> intarraycopy = intarray;
 		intarray[2] = 2;
@@ -25,7 +25,7 @@ int main(void) {
 		std::cout << e.what() << std::endl;
 	}
 	try{
-		std::cout << "-----copy assignment-----" << std::endl;
+		std::cout << "-----copy assignment--almost the same---" << std::endl;
 		Array<int> intarray(5);
 		Array<int> intarraycopy(3);
 		intarray[2] = 2;

@@ -10,12 +10,6 @@ void iter(T *a, size_t b, Func test){
 }
 
 template <typename T> 
-std::string intFunction(T &k){
-	std::cout << k << " ";
-	return "Voided";
-};
-
-template <typename T> 
 void showarray(T &k){
 	std::cout << k << " ";
 };
