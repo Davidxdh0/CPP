@@ -133,9 +133,9 @@ void	ScalarConverter::printDouble(){
 }
 
 void	ScalarConverter::convertChar(const std::string& input){
-	std::cout << input << std::endl;
+	// std::cout << input << std::endl;
 	char i = input.front();
-	std::cout << i << std::endl;
+	// std::cout << i << std::endl;
 	double b = 0;
 	try {
 		if (isDouble(input) || isFloat(input)){
@@ -150,7 +150,7 @@ void	ScalarConverter::convertChar(const std::string& input){
 			;}
 	if (TESTS == 1)
 		std::cout << "Charconvert = " << i << std::endl <<"b = " << b << std::endl;
-	std::cout << i << std::endl;
+	// std::cout << i << std::endl;
 	_char = static_cast<char>(i);
 	_float = static_cast<float>(i);
 	_double = static_cast<double>(i);

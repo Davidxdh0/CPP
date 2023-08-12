@@ -36,9 +36,9 @@ test: 	clean
 		@$(MAKE) CFLAGS+="-DTESTS=1" 
 		@$(MAKE) all
 
-test2: 	clean
-		@$(MAKE) CFLAGS="-DTESTS=2" 
-		@$(MAKE) all
+test3: 	clean
+		@$(MAKE) CFLAGS="-DTESTS=3" 
+		./$(NAME)
 
 re: 	fclean all
 
