@@ -64,7 +64,8 @@ class ScalarConverter {
 		static bool isFloat(const std::string& input); 
 		static bool isInt(const std::string& input); 
 		static bool onlyInt(const std::string& input);
-};
 
+		static void	mytester(void);
+};
 
 #endif

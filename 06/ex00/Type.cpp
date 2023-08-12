@@ -10,6 +10,41 @@ std::string ScalarConverter::_pi 	 = "";
 std::string ScalarConverter::_pf 	 = "";
 std::string ScalarConverter::_pd 	 = "";
 
+void	ScalarConverter::findType(const std::string& input){
+	try{
+		if (onlyInt(input) && input.length() > 10){
+        	double d = stod(input);
+		d++;
+		}
+	} catch(...){
+		_type = e_impossible;
+		return ;
+	}
+	if (input.empty()){
+		_type = e_impossible;
+	}
+	else if (!strcmp(input.c_str(), "inff") || !strcmp(input.c_str(), "nanf") || !strcmp(input.c_str(), "-inff") || !strcmp(input.c_str(), "+inff")){
+		_type = e_float;
+	}
+	else if (!strcmp(input.c_str(), "inf") || !strcmp(input.c_str(), "nan") || !strcmp(input.c_str(), "-inf") || !strcmp(input.c_str(), "+inf")){
+		_type = e_double;
+	}
+	else if (isInt(input)){
+		_type = e_int;
+	}
+	else if (isFloat(input)){
+		_type = e_float;
+	}
+	else if (isChar(input)){
+		_type = e_char;
+	}
+	else if (isDouble(input)){
+		_type = e_double;
+	}
+	else
+		_type = 4;
+}
+
 bool	ScalarConverter::isInt(const std::string& input){
 	int i = 0;
 	try {
@@ -52,11 +87,9 @@ bool	ScalarConverter::isChar(const std::string& input){
 			if (dot > 1|| f > 1)
 				return true;
 			return false;
-	}
-	catch (...){
+	} catch (...){
 		return false;
 	}
-
 }
 
 bool ScalarConverter::onlyInt(const std::string& input) {
@@ -119,46 +152,4 @@ bool	ScalarConverter::isDouble(const std::string& input){
         return false;}
 	catch (...) {
         return false;}
-}
-
-void	ScalarConverter::findType(const std::string& input){
-	try{
-		if (onlyInt(input) && input.length() > 10){
-        	double d = stod(input);
-		d++;
-		}
-	}
-	catch(...){
-		_type = e_impossible;
-		return ;
-	}
-	if (input.empty()){
-		_type = e_impossible;
-		return ;
-	}
-	if (!strcmp(input.c_str(), "inff") || !strcmp(input.c_str(), "nanf") || !strcmp(input.c_str(), "-inff") || !strcmp(input.c_str(), "+inff")){
-		_type = e_float;
-		return ;
-	}
-	else if (!strcmp(input.c_str(), "inf") || !strcmp(input.c_str(), "nan") || !strcmp(input.c_str(), "-inf") || !strcmp(input.c_str(), "+inf")){
-		_type = e_double;
-		return ;
-	}
-	if (isInt(input)){
-		_type = e_int;
-		return ;
-	}
-	if (isFloat(input)){
-		_type = e_float;
-		return ;
-	}
-	if (isChar(input)){
-		_type = e_char;
-		return ;
-	}
-	if (isDouble(input)){
-		_type = e_double;
-		return ;
-	}
-	_type = 4;
 }

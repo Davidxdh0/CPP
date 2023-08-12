@@ -1,24 +1,13 @@
 #include "ScalarConverter.hpp"
 
-ScalarConverter::ScalarConverter(){
-	std::cout << "Contructed ScalarConverter"<< std::endl;
-}
-
-ScalarConverter::ScalarConverter( const ScalarConverter& other) {
-	std::cout << "Copy constructor called ScalarConverter" << std::endl;
-	*this = other;
-}
-
-ScalarConverter& ScalarConverter::operator=(const ScalarConverter& other){
-	std::cout << "Copy assignment called ScalarConverter" << std::endl;
-    if (this == &other)
-        return *this;
-    return *this;
-}
-
-ScalarConverter::~ScalarConverter(){
-	std::cout << "Decontructed ScalarConverter" << std::endl;
-}
+/*
+Static constructors.
+Can't be touched, can't be stopped, can't be moved, can't be rocked.
+*/
+ScalarConverter::ScalarConverter(){}
+ScalarConverter::ScalarConverter( const ScalarConverter& other) {	*this = other;}
+ScalarConverter& ScalarConverter::operator=(const ScalarConverter& other){return *this;}
+ScalarConverter::~ScalarConverter(){}
 
 void	ScalarConverter::converter(const std::string& input){
 	if (TESTS == 2)
@@ -133,9 +122,7 @@ void	ScalarConverter::printDouble(){
 }
 
 void	ScalarConverter::convertChar(const std::string& input){
-	// std::cout << input << std::endl;
 	char i = input.front();
-	// std::cout << i << std::endl;
 	double b = 0;
 	try {
 		if (isDouble(input) || isFloat(input)){
@@ -150,7 +137,6 @@ void	ScalarConverter::convertChar(const std::string& input){
 			;}
 	if (TESTS == 1)
 		std::cout << "Charconvert = " << i << std::endl <<"b = " << b << std::endl;
-	// std::cout << i << std::endl;
 	_char = static_cast<char>(i);
 	_float = static_cast<float>(i);
 	_double = static_cast<double>(i);

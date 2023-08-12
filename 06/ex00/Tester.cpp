@@ -14,6 +14,44 @@ _pf = buffer.str();
 std::cout << _pf;	
 */
 
+void	ScalarConverter::mytester(void){
+	ScalarConverter::testValues("1");
+	ScalarConverter::testValues("-1");
+	ScalarConverter::testValues("+42");
+	ScalarConverter::testValues("2147483647");
+	ScalarConverter::testValues("-2147483648");
+	ScalarConverter::testValues("+2147483647");
+	ScalarConverter::testValues(".1");
+	ScalarConverter::testValues("1.1");
+	ScalarConverter::testValues("-inff");
+	ScalarConverter::testValues("+inff");
+	ScalarConverter::testValues("inff");
+	ScalarConverter::testValues("nanf");
+	ScalarConverter::testValues("1.111111111");
+	ScalarConverter::testValues("inf");
+	ScalarConverter::testValues("-inf");
+	ScalarConverter::testValues("+inf");
+	ScalarConverter::testValues("inf");
+	ScalarConverter::testValues("nan");
+	ScalarConverter::testValues("1233.00040040404");
+	ScalarConverter::testValues("++1");
+	ScalarConverter::testValues("--1");
+	ScalarConverter::testValues("-");
+	ScalarConverter::testValues("1ff");
+	ScalarConverter::testValues("1f1");
+	ScalarConverter::testValues(".40545");
+	ScalarConverter::testValues("42.40545464454543434");
+	ScalarConverter::testValues("1242.0022342");
+		
+	ScalarConverter::testValues("545453434343434343434354545343434343434343435454534343434343434343545453434343434343434354545343434343434343435454534343434343434343.03");
+	ScalarConverter::testValues("+2147483648");
+	ScalarConverter::testValues("-2147483649");
+	ScalarConverter::testValues("-2147483649");
+	ScalarConverter::testValues("2147483648");
+	ScalarConverter::testValues("12222222222222222222222222222222222222222222222222233333333333333333333333333333333333333333333333333333333222222222222222222222222222222222222222222222222233333333333333333333333333333333333333333333333333333333222222222222222222222222222222222222222222222222233333333333333333333333333");
+	// ScalarConverter::testValues("122222222222222222222222222222222222222222222223333333333333333333333333333333333333333333333333333333322222222222222222222222222222222222222222222222223333333333333333333333333333333333333333333333333333333322222222222222222222222222222222222222222222222223333333333333333333333333333333333333333333333333333333322222222222222222222222222222222");
+}
+
 void	ScalarConverter::remove_nl(std::string &str) {
     size_t length = str.length();
     if (length > 0 && str[length - 1] == '\n') {
