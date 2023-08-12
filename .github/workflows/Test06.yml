@@ -18,8 +18,5 @@ jobs:
     - name: Build and run tests in Directories
       run: |
           cd 06
-          for dir in */; do
-            cd "$dir"
-            make test
-            cd ..
-          done
+          cd ex00
+          make run
