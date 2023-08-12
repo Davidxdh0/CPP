@@ -1,0 +1,17 @@
+0 - date en value - pair
+
+
+
+1 - inverted Polish mathematical expression as an argument
++ 
+- 
+/ 
+*
+
+2 - (1, 1, 2, 3, 5, 8, 13, 21) - zoek containers met meeste calculatie mogelijkheden
+two different containers
+positive integer sequence as argument.
+Ford-Johnson algorithm.
+
+It is strongly advised to implement your algorithm for each container
+and thus to avoid using a generic function.

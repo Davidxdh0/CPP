@@ -1,7 +1,7 @@
 NAME        := span
 CC          := c++
 
-ifneq (,$(findstring ubuntu,$(shell uname -a)))
+ifneq (,$(findstring Linux,$(shell uname -a)))
 	CFLAGS := -Wall -Wextra -Werror -Wno-error=deprecated-copy -Wno-deprecated-copy
 else
 	CFLAGS := -Wall -Wextra -Werror

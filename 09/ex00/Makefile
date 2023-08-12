@@ -1,14 +1,14 @@
-NAME        := span
+NAME        := btc
 CC          := c++
 
-ifneq (,$(findstring ubuntu,$(shell uname -a)))
+ifneq (,$(findstring Linux,$(shell uname -a)))
 	CFLAGS := -Wall -Wextra -Werror -Wno-error=deprecated-copy -Wno-deprecated-copy
 else
 	CFLAGS := -Wall -Wextra -Werror
 endif
 
 CFLAGS += -std=c++98
-SRC_FILES   := main.cpp
+SRC_FILES   := main.cpp BitcoinExchange
 
 # object files
 OBJ_DIR 	:= obj
