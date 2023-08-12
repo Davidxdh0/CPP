@@ -2,7 +2,7 @@
 
 WrongCat::WrongCat( void ): WrongAnimal("WrongCat"){
 }
-WrongCat::WrongCat(const WrongCat& old){
+WrongCat::WrongCat(const WrongCat& old) : WrongAnimal(old) {
 	if (MESSAGE == 1)
 		std::cout << "Copy constructor " << type << std::endl;
 	*this = old;

@@ -58,8 +58,5 @@ AForm*	Intern::makeForm(const std::string nameForm,  std::string str){
 }
 
 // void Intern::setSigned(AForm* form){
-// 	if (this == nullptr)
-// 		return ;
-// 	else
 // 		form->setSigned();
 // }

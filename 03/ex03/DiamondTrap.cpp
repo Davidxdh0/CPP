@@ -22,7 +22,7 @@ DiamondTrap::DiamondTrap(std::string name) : ClapTrap(name + "_clap_name", 1 , 1
 	}
 }
 
-DiamondTrap::DiamondTrap(const DiamondTrap& old)
+DiamondTrap::DiamondTrap(const DiamondTrap& old) : ClapTrap(old), ScavTrap(old), FragTrap(old)
 {
 	if (MESSAGE == 1)
 		std::cout << "Copy constructor DiamondTrap called" << std::endl;

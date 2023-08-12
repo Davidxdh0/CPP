@@ -2,12 +2,12 @@ NAME        := array
 CC          := c++
 
 ifneq (,$(findstring Linux,$(shell uname -a)))
-	CFLAGS := -Wall -Wextra -Werror -Wno-error=deprecated-copy -Wno-deprecated-copy
+	CFLAGS := -Wall -Wextra -Werror -I./ -std=c++11
 else
-	CFLAGS := -Wall -Wextra -Werror -I./
+	CFLAGS := -Wall -Wextra -Werror -I./ -std=c++98
 endif
 
-CFLAGS += -std=c++98
+
 SRC_FILES   := main.cpp
 
 # object files

@@ -26,7 +26,8 @@ ShrubberyCreationForm::~ShrubberyCreationForm(){
 
 void	ShrubberyCreationForm::doExecute(void) const {
 	std::ofstream outfile;
-	outfile.open(_target + "_shrubbery", std::ios::out);
+	std::string name = _target + "_shrubbery";
+	outfile.open(name.c_str(), std::ios::out);
 	try {
 		if (outfile)
 		{

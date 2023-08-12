@@ -21,7 +21,7 @@ ScavTrap::ScavTrap(std::string name) : ClapTrap(name, 100, 50, 20) {
 	}
 }
 
-ScavTrap::ScavTrap(const ScavTrap& old)
+ScavTrap::ScavTrap(const ScavTrap& old) : ClapTrap(old)
 {
 	if (MESSAGE == 1)
 		std::cout << "Copy constructor ScavTrap called" << std::endl;

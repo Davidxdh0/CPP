@@ -16,6 +16,6 @@ int	main()
 	while (i < 3)
 		HORDE[i++].announce();
 	delete[] HORDE;
-	// atexit(leaks);
+	// //atexit(leaks);
 	return (0);
 }

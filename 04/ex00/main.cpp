@@ -30,6 +30,6 @@ int main()
 	k->makeSound();
 	delete Beta;
 	delete k;
-	atexit(checkleaks);
-	return 1;
+	//atexit(checkleaks);
+	return 0;
 }

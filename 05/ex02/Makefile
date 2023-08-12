@@ -1,8 +1,12 @@
 NAME		= 	bureaucrat
 CC 			= 	c++
 
-CFLAGS 		= 	-Wall -Wextra -Werror
-CFLAGS		+=	-std=c++98
+ifneq (,$(findstring Linux,$(shell uname -a)))
+	CFLAGS := -Wall -Wextra -Werror -Wno-error=deprecated-copy -Wno-deprecated-copy -std=c++11
+else
+	CFLAGS := -Wall -Wextra -Werror -std=c++98
+endif
+
 SRC_FILES 	=	main.cpp Bureaucrat.cpp AForm.cpp ShrubberyCreationForm.cpp RobotomyRequestForm.cpp PresidentialPardonForm.cpp
 
 # object files

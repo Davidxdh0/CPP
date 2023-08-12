@@ -21,5 +21,5 @@ int main(void) {
 	std::cout << "'old' id: " << crypt.id << ", field: " << crypt.field << std::endl;
 	std::cout << "kunencrypt " << kunencrypt << std::endl;
 
-	return 1;
+	return 0;
 }

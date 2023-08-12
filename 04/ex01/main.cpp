@@ -52,6 +52,6 @@ int main()
 	for (int i = 0; i < 4; i++) {
         delete animalArray[i];
     }
-	atexit(checkleaks);
+	//atexit(checkleaks);
 	return 0;
 }

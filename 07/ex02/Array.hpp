@@ -31,8 +31,6 @@ Array<T>::Array(void){
 
 template <typename T>
 Array<T>::Array(unsigned int n){
-	if (n < 0)
-		throw Err_Message();
 	this->_data = new T[n];
 	this->_size = n;
 	for(unsigned int i = 0; i < n; i++)

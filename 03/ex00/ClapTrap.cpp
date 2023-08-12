@@ -60,11 +60,12 @@ void	ClapTrap::attack(const std::string& target){
 			goal->setHitpoints(goal->_hitpoints - _attackdamage);
 		}	
 	}
-	else
+	else{
 		if (this->_energypoints > 0 && this->_hitpoints > 0)
 			std::cout << "ClapTrap "<< this->_name << " attacks "<< target <<" causing " << this->_attackdamage << " of damage." << std::endl;
 		if (this->_energypoints <= 0 || this->_hitpoints <= 0)
 			std::cout << "ClapTrap "<< this->_name << " can't attack "<< target <<" not enough energy or hitpoints" << std::endl;
+	}
 	if (this->_energypoints > 0 && this->_hitpoints > 0)
 		this->_energypoints = this->_energypoints - 1;
 	

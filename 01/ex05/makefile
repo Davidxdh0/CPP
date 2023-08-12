@@ -1,8 +1,12 @@
 NAME		= 	harl
-CC 			= 	g++
+CC 			= 	c++
 
-CFLAGS 		= 	-Wall -Wextra -Werror -pedantic
-CFLAGS		+=	-std=c++98
+ifneq (,$(findstring Linux,$(shell uname -a)))
+	CFLAGS := -Wall -Wextra -Werror -Wno-error=deprecated-copy -Wno-deprecated-copy -std=c++11
+else
+	CFLAGS := -Wall -Wextra -Werror -std=c++98
+endif
+
 INCLUDE 	= 	./include
 VPATH 		= 	src
 

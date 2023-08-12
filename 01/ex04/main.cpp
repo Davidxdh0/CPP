@@ -50,7 +50,7 @@ void	printArray(std::string *array)
 int main(int argc, char *argv[])
 {
 	std::string	*array;
-	int			index
+	int			index;
 
 	if (argc != 4 || !strcmp(argv[1], "") || strlen(argv[2]) <= 0)
 	{
@@ -98,7 +98,7 @@ int main(int argc, char *argv[])
 		return 1;
 	}
 	delete[] array;
-	// atexit(leaks);
+	// //atexit(leaks);
 	return (0);
 }
 

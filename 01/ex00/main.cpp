@@ -13,6 +13,6 @@ int	main()
 	Frank->announce();
 	randomChump("HELLLOOOOOO");
 	delete(Frank);
-	// atexit(leaks);
+	// //atexit(leaks);
 	return (0);
 }

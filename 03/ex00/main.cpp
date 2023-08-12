@@ -29,4 +29,5 @@ int main ( void )
 	clap[0].showHitpoint();
 	clap[1].showHitpoint();
 	clap[2].showHitpoint();
+	return 0;
 }

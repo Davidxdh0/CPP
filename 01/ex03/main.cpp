@@ -24,6 +24,6 @@ int main()
 		club.setType("baby"); 
 		jim.attack();
 	}
-	// atexit(leaks);
+	// //atexit(leaks);
 return (0);
 }

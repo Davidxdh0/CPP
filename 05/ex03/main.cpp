@@ -11,14 +11,14 @@ void checkleaks(void){
 
 int main (void)
 {
-	atexit(checkleaks);
+	//atexit(checkleaks);
 	Intern someRandomIntern;
 	
 	AForm* rob = someRandomIntern.makeForm("Robot", "One");
 	AForm* pres = someRandomIntern.makeForm("Presidential", "Three");
 	AForm* shrub = someRandomIntern.makeForm("Shrubbery", "Three");
 	AForm* Notexist = someRandomIntern.makeForm("Pres", "Babe");
-	AForm* No = nullptr;
+	std::cout << Notexist << std::endl;
 	Bureaucrat david("David", 1);
 	rob->beSigned(david);
 	pres->beSigned(david);
@@ -28,12 +28,12 @@ int main (void)
 	david.executeForm(*pres);
 	david.executeForm(*shrub);
 	std::cout << "----------------" << std::endl;
-	No->beSigned(david);
-	No->setGradeSigned(5);
-	No->setSigned();
+	// No->beSigned(david);
+	// No->setGradeSigned(5);
+	// No->setSigned();
 	// std::cout	<< __func__	<< __LINE__	<<std::endl;
-	david.executeForm(*Notexist);
-	david.signForm(*Notexist);
+	// david.executeForm(*Notexist);
+	// david.signForm(*Notexist);
 	std::cout << "----------------" << std::endl;
 	delete rob;
 	delete pres;
@@ -208,5 +208,5 @@ int main (void)
 	// std::cout << "name: " << david.getName() << " grade: " << david.getGrade()  << std::endl;
 	// david.setGrade(151);
 	// std::cout << "name: " << david.getName() << " grade: " << david.getGrade()  << std::endl;
-	return (1);
+	return (0);
 }

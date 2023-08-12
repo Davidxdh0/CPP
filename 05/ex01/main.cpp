@@ -1,13 +1,8 @@
 #include "Bureaucrat.hpp"
 #include "Form.hpp"
 
-void checkleaks(void){
-	system("leaks -q bureaucrat");
-}
-
 int main (void)
 {
-	atexit(checkleaks);
 	Bureaucrat david("David", 1);
 	Bureaucrat def;
 	Bureaucrat davidlow("Davidlow", 150);
@@ -166,5 +161,5 @@ int main (void)
 	// std::cout << "name: " << david.getName() << " grade: " << david.getGrade()  << std::endl;
 	// david.setGrade(151);
 	// std::cout << "name: " << david.getName() << " grade: " << david.getGrade()  << std::endl;
-	return (1);
+	return (0);
 }

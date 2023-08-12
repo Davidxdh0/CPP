@@ -60,5 +60,6 @@ int main ( void )
 	Diamond.showHitpoint();
 	Diamond.highFivesGuys();
 	Diamond.guardGate();
+	return 0;
 }
 

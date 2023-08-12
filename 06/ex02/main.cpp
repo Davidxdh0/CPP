@@ -31,9 +31,6 @@ void identify(Base* p){
 }
 
 void identify(Base& p){
-		if (&p == nullptr){
-			return ;
-		}
 		try {
 				A a = dynamic_cast<A&>(p);
 				std::cout << "A" << std::endl;
@@ -62,7 +59,7 @@ void	aleaks(void)
 	system("leaks -q serializer");
 }
 int main(void) {
-	// atexit(aleaks);
+	// //atexit(aleaks);
 	std::cout << "-----NullPointers-----" << std::endl;
 	Base* p = nullptr;
 	identify(p);
@@ -76,5 +73,5 @@ int main(void) {
 		if (p != nullptr)
 			delete p;
 	}
-	return 1;
+	return 0;
 }

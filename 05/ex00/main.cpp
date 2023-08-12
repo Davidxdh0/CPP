@@ -130,5 +130,5 @@ int main (void)
 	// std::cout << "name: " << david.getName() << " grade: " << david.getGrade()  << std::endl;
 	// david.setGrade(151);
 	// std::cout << "name: " << david.getName() << " grade: " << david.getGrade()  << std::endl;
-	return (1);
+	return (0);
 }

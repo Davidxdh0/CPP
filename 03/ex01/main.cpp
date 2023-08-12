@@ -38,4 +38,5 @@ int main ( void )
 	scav.takeDamage(20);
 	scav.showHitpoint();
 	scav.guardGate();
+	return 0;
 }

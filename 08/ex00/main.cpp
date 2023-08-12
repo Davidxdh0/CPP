@@ -88,5 +88,5 @@ std::cout << "--------Not found:---------" << std::endl;
 	auto d = easyfind(setContainer, 8);
 	std::cout << *d << std::endl;	
 	std::cout << std::endl;
-	return (1);
+	return (0);
 }

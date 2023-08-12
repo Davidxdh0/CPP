@@ -2,12 +2,11 @@ NAME        := btc
 CC          := c++
 
 ifneq (,$(findstring Linux,$(shell uname -a)))
-	CFLAGS := -Wall -Wextra -Werror -Wno-error=deprecated-copy -Wno-deprecated-copy
+	CFLAGS := -Wall -Wextra -Werror -Wno-error=deprecated-copy -Wno-deprecated-copy -std=c++11
 else
-	CFLAGS := -Wall -Wextra -Werror
+	CFLAGS := -Wall -Wextra -Werror -std=c++98
 endif
 
-CFLAGS += -std=c++98
 SRC_FILES   := main.cpp BitcoinExchange
 
 # object files

@@ -13,4 +13,5 @@ int	main()
 	std::cout << brain << std::endl;
 	std::cout << *PTR << std::endl;
 	std::cout << REF << std::endl;
+	return 0;
 }

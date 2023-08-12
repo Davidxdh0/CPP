@@ -4,13 +4,8 @@
 #include "RobotomyRequestForm.hpp"
 #include "PresidentialPardonForm.hpp"
 
-void checkleaks(void){
-	system("leaks -q bureaucrat");
-}
-
 int main (void)
 {
-	atexit(checkleaks);
 	Bureaucrat david("David", 1);
 	// Bureaucrat david("David", 150); // for gradetoolow tests
 	ShrubberyCreationForm 	shrub("Find");
@@ -190,5 +185,5 @@ int main (void)
 	// std::cout << "name: " << david.getName() << " grade: " << david.getGrade()  << std::endl;
 	// david.setGrade(151);
 	// std::cout << "name: " << david.getName() << " grade: " << david.getGrade()  << std::endl;
-	return (1);
+	return (0);
 }

@@ -85,5 +85,5 @@ int main()
 	std::cout << big.longestSpan() << std::endl;
 	std::cout << std::endl;
 	std::cout << "*****" << std::endl;
-	return 1;
+	return 0;
 }

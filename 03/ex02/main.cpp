@@ -49,4 +49,5 @@ int main ( void )
 	Frag.showHitpoint();
 	Frag.highFivesGuys();
 	// Frag.guardGate();
+	return 0;
 }

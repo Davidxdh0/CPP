@@ -17,7 +17,7 @@ FragTrap::FragTrap(std::string name) : ClapTrap(name, 100, 100, 30) {
 	}
 }
 	
-FragTrap::FragTrap(const FragTrap& old)
+FragTrap::FragTrap(const FragTrap& old) : ClapTrap(old)
 {
 	if (MESSAGE == 1)
 		std::cout << "Copy constructor FragTrap called" << std::endl;
