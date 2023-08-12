@@ -1,0 +1,34 @@
+0 - date en value - pair
+if first line not empty && line ==  date en value 
+	if validdate & validvalue
+		getdate
+		getvalue
+			multiply
+				print 
+				2011-01-03 => 3 = 0.9
+				3 error messages 
+					- Error: not a positive number.
+					- Error: bad input => 2001-42-42
+					- Error: too large a number.
+find
+	finds element with specific key 
+lower_bound
+	returns an iterator to the first element not less than the given key
+upper_bound
+	returns an iterator to the first element greater than the given key
+
+
+
+1 - inverted Polish mathematical expression as an argument
++ 
+- 
+/ 
+*
+
+2 - (1, 1, 2, 3, 5, 8, 13, 21) - zoek containers met meeste calculatie mogelijkheden
+two different containers
+positive integer sequence as argument.
+Ford-Johnson algorithm.
+
+It is strongly advised to implement your algorithm for each container
+and thus to avoid using a generic function.
