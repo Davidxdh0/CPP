@@ -2,7 +2,7 @@ NAME        := convert
 CC          := c++
 
 CFLAGS      := -Wall -Wextra -Werror 
-CFLAGS		+= -std=c++98
+CFLAGS		+= -std=c++11
 SRC_FILES   := main.cpp ScalarConverter.cpp Type.cpp Tester.cpp
 
 # object files
