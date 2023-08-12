@@ -1,4 +1,4 @@
-NAME        := span
+NAME        := Mutant
 CC          := c++
 
 ifneq (,$(findstring ubuntu,$(shell uname -a)))

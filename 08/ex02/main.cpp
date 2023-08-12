@@ -43,5 +43,6 @@ int main()
 	}
 	std::cout  << std::endl;
 	std::stack<int> s(mstack);
+	//system("leaks -q Mutant");
 	return 0;
 }

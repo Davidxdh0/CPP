@@ -1,23 +1,21 @@
 #include "Span.hpp"
 
-
 int main()
 {
-	
-
+	Span p(5);
 	std::cout << "copy constr" << std::endl;
-	Span sp = Span(5);
+	Span sp = p;
 	std::cout << "copy assign" << std::endl;
 	Span cpyassig(5);
 	cpyassig.addNumber(1);
-	for (unsigned int i = 0; i < cpyassig._Vect.size(); i++){
-		std::cout << cpyassig._Vect[i];
+	for (unsigned int i = 0; i < cpyassig.getVect().size(); i++){
+		std::cout << cpyassig.getVect()[i];
 	}
 	std::cout << std::endl;
 	std::cout << "after assign = empty" <<std::endl;
 	cpyassig = sp;
-	for (unsigned int i = 0; i < cpyassig._Vect.size(); i++){
-		std::cout << cpyassig._Vect[i];
+	for (unsigned int i = 0; i < cpyassig.getVect().size(); i++){
+		std::cout << cpyassig.getVect()[i];
 	}
 	std::cout << std::endl;
 	std::cout << "addnumber" << std::endl;
@@ -70,9 +68,10 @@ int main()
 	Span big(100000);
 	try{
 		std::cout << "addmanynumbers" << std::endl;
-		big.addManyNumbers(-5000, 5000);
-		// for (unsigned int i = 0; big._Vect[i]; i++){
-		// 	std::cout << big._Vect[i];
+		big.addManyNumbers(-50000, 50000);
+		std::cout << "size: " << big.getVect().size() << std::endl;
+		// for (unsigned int i = 0; big.getVect()[i]; i++){
+		// 	std::cout << big.getVect()[i];
 		// }
 		// std::cout << std::endl;
 	}
