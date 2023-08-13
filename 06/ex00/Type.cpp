@@ -72,24 +72,20 @@ bool	ScalarConverter::isInt(const std::string& input){
 bool	ScalarConverter::isChar(const std::string& input){
 	int f = 0;
 	int dot = 0;
-	try {
-			for (int i = 0; input[i] != '\0'; i++){
-				if (input[i] == '.')
-					dot++;
-				else if (input[i] == 'f')
-					f++;
-				else if (std::isalpha(input[i]) && !isdigit(input[i])){
-					return true;
-				}
-			}
-			if (!isDouble(input) && !isFloat(input))
-				return true;
-			if (dot > 1|| f > 1)
-				return true;
-			return false;
-	} catch (...){
-		return false;
+	for (int i = 0; input[i] != '\0'; i++){
+		if (input[i] == '.')
+			dot++;
+		else if (input[i] == 'f')
+			f++;
+		else if (std::isalpha(input[i]) && !isdigit(input[i])){
+			return true;
+		}
 	}
+	if (!isDouble(input) && !isFloat(input))
+		return true;
+	if (dot > 1|| f > 1)
+		return true;
+	return false;
 }
 
 bool ScalarConverter::onlyInt(const std::string& input) {
@@ -98,11 +94,8 @@ bool ScalarConverter::onlyInt(const std::string& input) {
 		if (input[0] == '+' || input[0] == '-')
 			i++;
 	}
-	while (input[i] != '\0' && std::isdigit(input[i])){
-		if (input[i] == '.')
-			return false;
+	while (input[i] != '\0' && std::isdigit(input[i]))
 		i++;
-	}
 	if (input[i] == '\0')
 		return true;
 	else
@@ -142,14 +135,8 @@ bool	ScalarConverter::isDouble(const std::string& input){
 				dot++;
 			i++;
 		}
-		if (dot > 1 && i > 1)
-			return false;
 		return true;
 	}
     catch (const std::invalid_argument& e){
-        return false;}
-    catch (const std::out_of_range& e){
-        return false;}
-	catch (...) {
         return false;}
 }

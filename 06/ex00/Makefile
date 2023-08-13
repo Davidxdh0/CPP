@@ -41,7 +41,7 @@ test2: 	clean
 		./$(NAME)
 
 test3: 	clean
-		@$(MAKE) CFLAGS="-DTESTS=3" 
+		@$(MAKE) CFLAGS="-DTESTS=3 --coverage -g -O0 -DTESTS=3"
 		./$(NAME)
 
 re: 	fclean all

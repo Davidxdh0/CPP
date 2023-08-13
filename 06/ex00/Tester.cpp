@@ -3,9 +3,10 @@
 /*
 Creates a buffer, 
 redirect the std::cout to buffer and saves it in prevcoutbuf
-then i redirect the std::cout back to normal, 
-then i save the buffer in _pf
+i redirect the std::cout back to normal out, 
+i save the buffer in _pf
 print the _pf
+use the _pf later for test comparisons.
 
 std::stringstream buffer; 
 std::streambuf* prevcoutbuf = std::cout.rdbuf(buffer.rdbuf());
@@ -15,6 +16,8 @@ std::cout << _pf;
 */
 
 void	ScalarConverter::mytester(void){
+	ScalarConverter::testValues("122222222222222222222222222222222222222222222223333333333333333333333333333333333333333333333333333333322222222222222222222222222222222222222222222222223333333333333333333333333333333333333333333333333333333322222222222222222222222222222222222222222222222223333333333333333333333333333333333333333333333333333333322222222222222222222222222222222");
+	ScalarConverter::testValues("");
 	ScalarConverter::testValues("1");
 	ScalarConverter::testValues("-1");
 	ScalarConverter::testValues("+42");
@@ -37,19 +40,34 @@ void	ScalarConverter::mytester(void){
 	ScalarConverter::testValues("++1");
 	ScalarConverter::testValues("--1");
 	ScalarConverter::testValues("-");
+	ScalarConverter::testValues("+");
+	ScalarConverter::testValues("--");
+	ScalarConverter::testValues("++");
+	ScalarConverter::testValues("--1");
+	ScalarConverter::testValues("++1");
+	ScalarConverter::testValues("1.f");
+	ScalarConverter::testValues("1f");
+	ScalarConverter::testValues(".f");
+	ScalarConverter::testValues("-1.f");
+	ScalarConverter::testValues("-1f");
+	ScalarConverter::testValues("-.f");
+	ScalarConverter::testValues("f.1");
+	ScalarConverter::testValues("f1.");
+	ScalarConverter::testValues("-1.1");
+	ScalarConverter::testValues("+1.1");
+	ScalarConverter::testValues("--1.1");
+	ScalarConverter::testValues("-1f1");
 	ScalarConverter::testValues("1ff");
 	ScalarConverter::testValues("1f1");
 	ScalarConverter::testValues(".40545");
 	ScalarConverter::testValues("42.40545464454543434");
 	ScalarConverter::testValues("1242.0022342");
-		
 	ScalarConverter::testValues("545453434343434343434354545343434343434343435454534343434343434343545453434343434343434354545343434343434343435454534343434343434343.03");
 	ScalarConverter::testValues("+2147483648");
 	ScalarConverter::testValues("-2147483649");
-	ScalarConverter::testValues("-2147483649");
 	ScalarConverter::testValues("2147483648");
+	ScalarConverter::testValues("340282346638528859811704183484516925445.0");
 	ScalarConverter::testValues("12222222222222222222222222222222222222222222222222233333333333333333333333333333333333333333333333333333333222222222222222222222222222222222222222222222222233333333333333333333333333333333333333333333333333333333222222222222222222222222222222222222222222222222233333333333333333333333333");
-	// ScalarConverter::testValues("122222222222222222222222222222222222222222222223333333333333333333333333333333333333333333333333333333322222222222222222222222222222222222222222222222223333333333333333333333333333333333333333333333333333333322222222222222222222222222222222222222222222222223333333333333333333333333333333333333333333333333333333322222222222222222222222222222222");
 }
 
 void	ScalarConverter::remove_nl(std::string &str) {
@@ -79,13 +97,19 @@ std::string  ScalarConverter::get_pd(void){
 	return(_pd);
 }
 
+bool customAssert(bool condition, const char* message) {
+    if (!condition) {
+        std::cerr << "Failed: " << message << std::endl;
+        return false;
+    }
+    return true;
+}
+
 void ScalarConverter::testValues(const char* input) {
 	ScalarConverter::converter(input);
 	std::string array[4];
 	if (!strcmp(input, "1"))
     	array[0] = "Char: Not displayable", array[1] = "Int: 1", array[2] = "Float: 1.0f", array[3] = "Double: 1.0";
-	else if (!strcmp(input, "1"))
-			array[0] = "Char: Not displayable", array[1] = "Int: 1", array[2] = "Float: 1.0f", array[3] = "Double: 1.0"; 
 	else if (!strcmp(input, "-1"))
 			array[0] = "Char: Impossible", array[1] = "Int: -1", array[2] = "Float: -1.0f", array[3] = "Double: -1.0"; 
 	else if (!strcmp(input, "+42"))
@@ -106,8 +130,6 @@ void ScalarConverter::testValues(const char* input) {
 			array[0] = "Char: Impossible", array[1] = "Int: Impossible", array[2] = "Float: Impossible", array[3] = "Double: Impossible"; 
 	else if (!strcmp(input, ".1"))
 			array[0] = "Char: Not displayable", array[1] = "Int: 0", array[2] = "Float: 0.1f", array[3] = "Double: 0.1"; 
-	else if (!strcmp(input, "-2147483649"))
-			array[0] = "Char: Impossible", array[1] = "Int: -2147483648", array[2] = "Float: -2.14748e+09f", array[3] = "Double: -2.14748e+09"; 
 	else if (!strcmp(input, "2147483648"))
 			array[0] = "Char: Not displayable", array[1] = "Int: -2147483648", array[2] = "Float: 2.14748e+09f", array[3] = "Double: 2.14748e+09"; 
 	else if (!strcmp(input, "1.1"))
@@ -128,8 +150,6 @@ void ScalarConverter::testValues(const char* input) {
 			array[0] = "Char: Impossible", array[1] = "Int: -2147483648", array[2] = "Float: -inff", array[3] = "Double: -inf"; 
 	else if (!strcmp(input, "+inf"))
 			array[0] = "Char: Not displayable", array[1] = "Int: -2147483648", array[2] = "Float: inff", array[3] = "Double: inf"; 
-	else if (!strcmp(input, "inf"))
-			array[0] = "Char: Not displayable", array[1] = "Int: -2147483648", array[2] = "Float: inff", array[3] = "Double: inf"; 
 	else if (!strcmp(input, "nan"))
 			array[0] = "Char: Impossible", array[1] = "Int: Impossible", array[2] = "Float: nanf", array[3] = "Double: nan"; 
 	else if (!strcmp(input, "1233.00040040404"))
@@ -145,10 +165,6 @@ void ScalarConverter::testValues(const char* input) {
 	else if (!strcmp(input, "--"))
 			array[0] = "Char: '-'", array[1] = "Int: 45", array[2] = "Float: 45.0f", array[3] = "Double: 45.0"; 
 	else if (!strcmp(input, "++"))
-			array[0] = "Char: '+'", array[1] = "Int: 43", array[2] = "Float: 43.0f", array[3] = "Double: 43.0"; 
-	else if (!strcmp(input, "--1"))
-			array[0] = "Char: '-'", array[1] = "Int: 45", array[2] = "Float: 45.0f", array[3] = "Double: 45.0"; 
-	else if (!strcmp(input, "++1"))
 			array[0] = "Char: '+'", array[1] = "Int: 43", array[2] = "Float: 43.0f", array[3] = "Double: 43.0"; 
 	else if (!strcmp(input, "1.f"))
 			array[0] = "Char: Not displayable", array[1] = "Int: 1", array[2] = "Float: 1.0f", array[3] = "Double: 1.0"; 
@@ -166,8 +182,6 @@ void ScalarConverter::testValues(const char* input) {
 			array[0] = "Char: 'f'", array[1] = "Int: 102", array[2] = "Float: 102.0f", array[3] = "Double: 102.0"; 
 	else if (!strcmp(input, "f1."))
 			array[0] = "Char: 'f'", array[1] = "Int: 102", array[2] = "Float: 102.0f", array[3] = "Double: 102.0"; 
-	else if (!strcmp(input, "1.1"))
-			array[0] = "Char: Not displayable", array[1] = "Int: 1", array[2] = "Float: 1.1f", array[3] = "Double: 1.1"; 
 	else if (!strcmp(input, "-1.1"))
 			array[0] = "Char: Impossible", array[1] = "Int: -1", array[2] = "Float: -1.1f", array[3] = "Double: -1.1"; 
 	else if (!strcmp(input, "+1.1"))
@@ -195,16 +209,16 @@ void ScalarConverter::testValues(const char* input) {
 	}
 	static int i = 0;
 	i++;
-	try {
-		assert(ScalarConverter::get_pc() == array[0] && "PC value mismatch!");
-		assert(ScalarConverter::get_pi() == array[1] && "PI value mismatch!");
-		assert(ScalarConverter::get_pf() == array[2] && "PF value mismatch!");
-		assert(ScalarConverter::get_pd() == array[3] && "PD value mismatch!");
-		std::cout << "\033[0m" << "-------------------" << std::endl;
-		std::cout << "\033[32m" << "Test "<< i << " PASSED input "  << input << "\033[0m" << std::endl;
-		
-	}
-	catch(...){
-		std::cout << "failed" << std::endl;
-	}
+	 bool allValid = true;
+
+    allValid &= customAssert(ScalarConverter::get_pc() == array[0], "PC value mismatch!");
+    allValid &= customAssert(ScalarConverter::get_pi() == array[1], "PI value mismatch!");
+    allValid &= customAssert(ScalarConverter::get_pf() == array[2], "PF value mismatch!");
+    allValid &= customAssert(ScalarConverter::get_pd() == array[3], "PD value mismatch!");
+	 if (allValid) {
+        std::cout << "\033[0m" << "-------------------" << std::endl;
+        std::cout << "\033[32m" << "Test " << i << " PASSED input " << input << "\033[0m" << std::endl;
+    } else {
+        std::cout << "\033[31m" << "Test " << i << " FAILED input " << input << "\033[0m" << std::endl;
+    }
 }
