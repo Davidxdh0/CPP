@@ -1,7 +1,7 @@
 #include "ScalarConverter.hpp"
 
 /*
-Static constructors.
+Static constructors, will not be used.
 Can't be touched, can't be stopped, can't be moved, can't be rocked.
 */
 ScalarConverter::ScalarConverter(){}
@@ -14,6 +14,11 @@ ScalarConverter& ScalarConverter::operator=(const ScalarConverter& other){
 
 ScalarConverter::~ScalarConverter(){}
 
+/*
+	Finds the type
+	converts the type
+	prints the desired output
+*/
 void	ScalarConverter::converter(const std::string& input){
 	if (TESTS == 2)
 		std::cout << input << std::endl;
