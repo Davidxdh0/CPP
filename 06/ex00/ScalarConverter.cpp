@@ -15,7 +15,7 @@ Can't be touched, can't be stopped, can't be moved, can't be rocked.
 
 /*
 	Finds the type
-	converts the type
+	converts the type, then the other types with the first result
 	prints the desired output
 */
 void	ScalarConverter::converter(const std::string& input){
