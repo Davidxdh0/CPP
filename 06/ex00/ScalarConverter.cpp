@@ -6,7 +6,11 @@ Can't be touched, can't be stopped, can't be moved, can't be rocked.
 */
 ScalarConverter::ScalarConverter(){}
 ScalarConverter::ScalarConverter( const ScalarConverter& other) {	*this = other;}
-ScalarConverter& ScalarConverter::operator=(const ScalarConverter& other){return *this;}
+ScalarConverter& ScalarConverter::operator=(const ScalarConverter& other){
+    if (this != &other)
+        return *this;
+    return *this;
+}
 
 ScalarConverter::~ScalarConverter(){}
 
