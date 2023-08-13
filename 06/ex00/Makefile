@@ -40,10 +40,14 @@ test2: 	clean
 		@$(MAKE) CFLAGS+="-DTESTS=2"
 		./$(NAME)
 
-coverage: 	clean
-		@$(MAKE) CFLAGS="-DTESTS=3 --coverage -g -O0 -DTESTS=3"
+test3: 	clean
+		@$(MAKE) CFLAGS="-DTESTS=3 "
 		./$(NAME)
-		gcovr --html-details coverage.html
+
+coverage: 	clean
+		@$(MAKE) CFLAGS="-DTESTS=3 --coverage -g -O0"
+		./$(NAME)
+		gcovr --exclude-unreachable-branches --html-details coverage.html
 		"/mnt/c/Program Files/Mozilla Firefox/firefox.exe" file://///wsl.localhost/Ubuntu/home/daaf/Documents/CPP/06/ex00/coverage.html
 		sleep 1
 		$(MAKE) fclean
