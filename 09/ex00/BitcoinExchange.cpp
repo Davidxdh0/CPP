@@ -56,7 +56,7 @@ int	BitcoinExchange::datetodecimal(std::string date){
 	return -1;
 }
 
-int	BitcoinExchange::getDataValue(std::string date){
+double	BitcoinExchange::getDataValue(std::string date){
 	if (datetodecimal(date) == -1){
 		return -1;
 	}
@@ -65,15 +65,9 @@ int	BitcoinExchange::getDataValue(std::string date){
 		return (pos->second);
 	}
 	auto lower = _Map.lower_bound(date);
-	auto higher = _Map.upper_bound(date);
 	if (lower != _Map.begin())
 		lower--;
-	int decdate 	= datetodecimal(date);
-	int declower 	= datetodecimal(lower->first);
-	int dechigher 	= datetodecimal(higher->first);
-	int difflow 	= std::abs(decdate-declower);
-	int diffhigh 	= std::abs(decdate-dechigher);
-	return (difflow <= diffhigh ? lower->second : higher->second);
+	return (lower->second);
 }
 
 void BitcoinExchange::getListValue(){
@@ -95,18 +89,20 @@ void BitcoinExchange::getListValue(){
 					std::string date = line.substr(0, pipe);
 					std::string valuestr = line.substr(pipe + 1);
 					double datavalue = getDataValue(date);
-					if (datavalue < 0 || valuestr.empty() || pipe == std::string::npos){
+					// std::cout << datavalue << std::endl;
+					if (datavalue < 0 || valuestr.empty() || pipe == std::string::npos || ){
 						std::string errormessage = "Error: bad input => " + date;
 						throw std::runtime_error(errormessage);
 					}
-					std::cout << "valuestr = " << valuestr << std::endl;
+					// std::cout << "valuestr = " << valuestr << std::endl;
 					double value = std::stod(valuestr);
+					// std::cout << "value = " << value << std::endl;
 					if (value < 0)
 						throw std::invalid_argument("Error: not a positive number.");
 					if (value > 1000)
 						throw std::invalid_argument("Error: too large number.");
 					double result = datavalue * value;
-					std::cout << date << " => " << value << " = " << result << std::endl;
+					std::cout << date << " => " << value << " * " << datavalue<< " = "  << result << std::endl;
 				}
 			}
 			catch (std::runtime_error& e){
@@ -131,4 +127,20 @@ std::map<std::string, double>  BitcoinExchange::getMap(){
 
 std::string	BitcoinExchange::getInput(){
 	return this->_input;
+}
+
+bool	BitcoinExchange::hasChar(const std::string& input){
+	int dash;
+	for (int i = 0; input[i] != '\0'; i++){
+		if (input[i] == '-')
+			dash++;
+		else if (std::isalpha(input[i]) && !isdigit(input[i])){
+			return true;
+		}
+	}
+	if (!isDouble(input) && !isFloat(input))
+		return true;
+	if (dot > 1|| f > 1)
+		return true;
+	return false;
 }

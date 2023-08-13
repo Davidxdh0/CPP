@@ -20,7 +20,7 @@ class BitcoinExchange {
 
 		std::string						getInput();
 		std::map<std::string, double> 	getMap();
-		int								getDataValue(std::string date);
+		double							getDataValue(std::string date);
 		void 							getListValue();
 		int								datetodecimal(std::string date);
 		void							Exchange();
