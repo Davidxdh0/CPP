@@ -17,6 +17,6 @@ jobs:
       run: |
           cd 06
           cd ex00
-          make coverage
+          make test3
           make re
           ./tester.sh
