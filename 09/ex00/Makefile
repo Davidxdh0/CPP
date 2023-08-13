@@ -7,7 +7,7 @@ else
 	CFLAGS := -Wall -Wextra -Werror -std=c++98
 endif
 
-SRC_FILES   := main.cpp BitcoinExchange
+SRC_FILES   := main.cpp BitcoinExchange.cpp
 
 # object files
 OBJ_DIR 	:= obj
@@ -34,7 +34,7 @@ fclean: clean
 		@rm -rf $(NAME)
 
 run: 	all
-		./$(NAME)
+		./$(NAME) "list.txt"
 	
 test: 	clean
 		@$(MAKE) CFLAGS="-DTESTS=1" 
