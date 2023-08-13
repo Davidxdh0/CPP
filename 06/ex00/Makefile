@@ -40,9 +40,14 @@ test2: 	clean
 		@$(MAKE) CFLAGS+="-DTESTS=2"
 		./$(NAME)
 
-test3: 	clean
+coverage: 	clean
 		@$(MAKE) CFLAGS="-DTESTS=3 --coverage -g -O0 -DTESTS=3"
 		./$(NAME)
+		gcovr --html-details coverage.html
+		"/mnt/c/Program Files/Mozilla Firefox/firefox.exe" file://///wsl.localhost/Ubuntu/home/daaf/Documents/CPP/06/ex00/coverage.html
+		sleep 1
+		$(MAKE) fclean
+		rm coverage.*
 
 re: 	fclean all
 
