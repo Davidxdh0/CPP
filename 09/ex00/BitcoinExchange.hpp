@@ -13,7 +13,7 @@ class BitcoinExchange {
 		std::string						_input;
 	public:
 		BitcoinExchange();
-		BitcoinExchange(int argc, char *argv[]);
+		BitcoinExchange(std::ifstream& indata, char argv[]);
 		BitcoinExchange(const BitcoinExchange& other);
 		BitcoinExchange& operator=(const BitcoinExchange& other);
 		~BitcoinExchange();
@@ -21,9 +21,10 @@ class BitcoinExchange {
 		std::string						getInput();
 		std::map<std::string, double> 	getMap();
 		double							getDataValue(std::string date);
-		void 							getListValue();
 		int								datetodecimal(std::string date);
 		void							Exchange();
+		bool							badInput(const std::string& input);
+		void 							makeLine(std::string line);
 };
 
 #endif
