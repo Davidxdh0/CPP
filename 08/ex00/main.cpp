@@ -55,17 +55,20 @@ std::cout << "-------Finds const:-------" << std::endl;
 	std::cout << *d << std::endl;	
 }
 std::cout << "--------Not found:---------" << std::endl;
-	try{
-		// empty containers segmentation fault, same behaviour.
-		// auto test1 = find(vectorEmpty.begin(), vectorEmpty.end(), 8);
-		// std::cout << "empty test  = " << *test1 << std::endl;
-		auto ve = easyfind(vectorEmpty, 8);
-		std::cout << "empty container = " << *ve << std::endl;
+	// empty containers segmentation fault, same behaviour.
+	auto test1 = find(vectorEmpty.begin(), vectorEmpty.end(), 1);
+	if (test1 == vectorEmpty.end()) {
+		std::cout << "Element not found" << std::endl;
 	}
-	catch (const std::exception& e) {
-		std::cerr << e.what() << std::endl;
+	else
+		std::cout << "empty test  = " << *test1 << std::endl;
+	auto ve = easyfind(vectorEmpty, 8);
+	if (ve == vectorEmpty.end()) {
+		std::cout << "Element not found" << std::endl;
 	}
-	
+	else
+		std::cout << "empty test  = " << *ve << std::endl;
+
 	std::cout << std::endl;
 	auto test = find(vectorContainer.begin(), vectorContainer.end(), 8);
 	std::cout << *test << std::endl;
@@ -78,11 +81,13 @@ std::cout << "--------Not found:---------" << std::endl;
 	auto b = easyfind(listContainer, 8);
 	std::cout << *b << std::endl;
 	std::cout << std::endl;
+	
 	auto c1 = find(dequeContainer.begin(), dequeContainer.end(), 8);
 	std::cout  << *c1 << std::endl;
 	auto c = easyfind(dequeContainer, 8);
 	std::cout << *c << std::endl;
 	std::cout << std::endl;
+	
 	auto d1 = find(setContainer.begin(), setContainer.end(), 8);
 	std::cout << *d1 << std::endl;
 	auto d = easyfind(setContainer, 8);

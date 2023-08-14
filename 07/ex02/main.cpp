@@ -1,10 +1,14 @@
 #include <Array.hpp>
 
+void leaks(void){
+	system("leaks -q array");
+}
 int main(void) {
+	atexit(leaks);
 	std::cout << "****** Start ~10seconds runtime ******" << std::endl;
 	try{
 		std::cout << "------initialise negative 1-----" << std::endl;
-		Array<int> intarray(-1);
+		Array<int> intarray(1);
 	}catch (std::exception& e){
 		std::cout << e.what() << std::endl;
 	}
@@ -107,5 +111,6 @@ int main(void) {
         std::cout << e.what() << std::endl;
     }
 	std::cout << "******Exit******" << std::endl;
+	
     return 0;
 }

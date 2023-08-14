@@ -14,8 +14,8 @@ Span::Span(const Span& other){
 
 Span& Span::operator=(const Span& other){
 	if (this != &other) {
-		this->_N = other._N;
-		this->_Vect = other._Vect;
+		_N = other._N;
+		_Vect = other._Vect;
 	}
 	return (*this);
 }
@@ -27,24 +27,25 @@ Span::~Span(){
 void 	Span::addNumber(const int i){
 	if (_Vect.size() == _N)
 		throw std::runtime_error("Error: Vector is full");
-	this->_Vect.push_back(i);
+	_Vect.push_back(i);
 }
 
 void 	Span::addManyNumbers(const int low, const int high){
-	std::random_device rd;
-	std::mt19937 rng(rd()); 
-	std::uniform_int_distribution<int> distribution(low, high);
+	std::random_device 					rd;
+	std::mt19937 						rng(rd()); 
+	std::uniform_int_distribution<int> 	distribution(low, high);
+
 	unsigned int size_vect = _Vect.size();
 	if (size_vect == _N)
 		throw std::runtime_error("Error: Vector is full");
 	while (size_vect < _N){
-		this->_Vect.push_back(distribution(rng));
+		_Vect.push_back(distribution(rng));
 		size_vect++;
 	}
 }
 
 int	Span::shortestSpan(){
-	unsigned int size_vect = this->_Vect.size();
+	unsigned int size_vect = _Vect.size();
 	int Span = -1;
 	for (unsigned i = 0; i < size_vect; i++){
 		if (size_vect - 1 != i){
@@ -74,5 +75,5 @@ int 	Span::longestSpan(){
 }
 
 std::vector<int> 	Span::getVect(){
-	return this->_Vect;
+	return _Vect;
 }
