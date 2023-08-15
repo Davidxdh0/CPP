@@ -1,14 +1,14 @@
-NAME        := span
+NAME        := PmergeMe
 CC          := c++
 
 ifneq (,$(findstring Linux,$(shell uname -a)))
 	CFLAGS := -Wall -Wextra -Werror -Wno-error=deprecated-copy -Wno-deprecated-copy
 else
-	CFLAGS := -Wall -Wextra -Werror
+	CFLAGS := -Wall -Wextra -Werror -Wpedantic -std=c++11
 endif
 
-CFLAGS += -std=c++98
-SRC_FILES   := main.cpp
+# CFLAGS += -std=c++98
+SRC_FILES   := main.cpp PmergeMe.cpp
 
 # object files
 OBJ_DIR 	:= obj
@@ -34,8 +34,8 @@ clean:
 fclean: clean
 		@rm -rf $(NAME)
 
-run: 	all
-		./$(NAME)
+run: 	re
+		./$(NAME) "$(shell cat input.txt)"
 	
 test: 	clean
 		@$(MAKE) CFLAGS="-DTESTS=1" 

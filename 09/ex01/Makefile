@@ -1,4 +1,4 @@
-NAME        := span
+NAME        := RPN
 CC          := c++
 
 ifneq (,$(findstring Linux,$(shell uname -a)))
@@ -8,7 +8,7 @@ else
 endif
 
 CFLAGS += -std=c++98
-SRC_FILES   := main.cpp
+SRC_FILES   := main.cpp RPN.cpp
 
 # object files
 OBJ_DIR 	:= obj
@@ -37,9 +37,8 @@ fclean: clean
 run: 	all
 		./$(NAME)
 	
-test: 	clean
-		@$(MAKE) CFLAGS="-DTESTS=1" 
-		@$(MAKE) all
+test: 	re
+		./test.sh
 
 re: 	fclean all
 

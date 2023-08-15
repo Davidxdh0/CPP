@@ -16,22 +16,22 @@ BitcoinExchange::BitcoinExchange(std::ifstream& indata, char argv[]) {
 			std::string date = line.substr(0, comma);
         	std::string valuestr = line.substr(comma + 1);
         	double value = std::stod(valuestr);
-        	_Map.insert({date, value});
+        	_Map.insert(std::make_pair(date, value));
 		}
 	}
-};
+}
 
-BitcoinExchange::BitcoinExchange(const BitcoinExchange& other) : _Map(other._Map), _input(other._input) {};
+BitcoinExchange::BitcoinExchange(const BitcoinExchange& other) : _Map(other._Map), _input(other._input) {}
 
 BitcoinExchange& BitcoinExchange::BitcoinExchange::operator=(const BitcoinExchange& other) {
 	if (this != &other){
-		this->_Map = other._Map;
-		this->_input = other._input;
+		_Map = other._Map;
+		_input = other._input;
 	}
 	return *this;
-};
+}
 
-BitcoinExchange::~BitcoinExchange(){};
+BitcoinExchange::~BitcoinExchange(){}
 
 int	BitcoinExchange::datetodecimal(std::string date){
 	size_t first = date.find('-');
@@ -59,8 +59,6 @@ double	BitcoinExchange::getDataValue(std::string date){
 		lower--;
 	return (lower->second);
 }
-
-
 
 void BitcoinExchange::Exchange(){
 	if (_input.empty())
