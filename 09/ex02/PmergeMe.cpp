@@ -44,8 +44,8 @@ void	PmergeMe::MakeContainers(){
 }
 template <typename T>
 bool	PmergeMe::isSorted(T& k){
-	for (size_t i = 0; i < k.size() - 2; i += 2){
-		if (k[i] > k[i + 2])
+	for (size_t i = 0; i < k.size() - 1; i++){
+		if (k[i] > k[i + 1])
 			return (1);
 	}
 	return (0);
@@ -66,7 +66,7 @@ void	PmergeMe::sortVect(std::vector<int>& sortvect){
 	
 	for(size_t i = 0; i < sizevect - 1 && makepairs == 1;){
 		big.push_back(std::max(sortvect[i], sortvect[i + 1]));
-		big.push_back(std::min(sortvect[i], sortvect[i + 1]));
+		small.push_back(std::min(sortvect[i], sortvect[i + 1]));
 		i += 2;
 	}
 	if (sizevect % 2 != 0){
@@ -74,23 +74,28 @@ void	PmergeMe::sortVect(std::vector<int>& sortvect){
 		std::cout << "UNEVEN" << std::endl;
 	}
 	makepairs = 0;
-	int i = 0;
-	int p = 0;	
+	int i = 0;	
 	std::cout << std::endl;
 	showstack(big);
 	std::cout << std::endl;
+	
 	while (isSorted(big)){
-		for(auto it = big.begin(); it + 2!= big.end(); it += 2){
-			if (*it > *(it + 2)) {
-				std::swap(*it, *(it + 2));
-				std::swap(*(it + 1), *(it + 3));
+		auto small_iter = small.begin();
+		for(auto it = big.begin(); it + 1 != big.end(); it++){
+			if (*it > *(it + 1)) {
+				std::swap(*it, *(it + 1));
+				std::swap(*small_iter, *(small_iter + 1));
         	}
+			small_iter++;
 		}
 		i++;
 	}
-
-	std::cout << p << std::endl;
+	// big.push_back(*small.begin());
+	// small.pop_back();
+	std::cout << std::endl;
 	showstack(big);
+	std::cout << std::endl;
+	showstack(small);
 	//step 3
 	// sortVect(big);
 	// _vect.clear();
