@@ -44,7 +44,7 @@ void	PmergeMe::MakeContainers(){
 }
 template <typename T>
 bool	PmergeMe::isSorted(T& k){
-	for (size_t i = 0; i < k.size() - 2; i+=2){
+	for (size_t i = 0; i < k.size() - 2; i += 2){
 		if (k[i] > k[i + 2])
 			return (1);
 	}
@@ -71,20 +71,24 @@ void	PmergeMe::sortVect(std::vector<int>& sortvect){
 	}
 	if (sizevect % 2 != 0){
 		unpaired = big.back();
-
+		std::cout << "UNEVEN" << std::endl;
 	}
 	makepairs = 0;
 	int i = 0;
-	int p = 0;
-	while (isSorted(big) && i < 10){
-		for(auto it = big.begin(); it != (big.end() - 2); it += 2){
+	int p = 0;	
+	std::cout << std::endl;
+	showstack(big);
+	std::cout << std::endl;
+	while (isSorted(big)){
+		for(auto it = big.begin(); it + 2!= big.end(); it += 2){
 			if (*it > *(it + 2)) {
-            std::swap(*it, *(it + 1));
-            std::swap(*(it + 2), *(it + 3));
-        }
+				std::swap(*it, *(it + 2));
+				std::swap(*(it + 1), *(it + 3));
+        	}
 		}
 		i++;
 	}
+
 	std::cout << p << std::endl;
 	showstack(big);
 	//step 3
