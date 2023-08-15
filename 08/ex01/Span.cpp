@@ -52,13 +52,13 @@ if (_Vect.size() < 2)
 	return span;
 }
 
-int 	Span::longestSpan(){
+double 	Span::longestSpan(){
 	if (_Vect.size() < 2)
 		throw std::runtime_error("Span can't be found");
 	
-	int low = *(std::min_element(_Vect.begin(), _Vect.end()));
-	int max = *(std::max_element(_Vect.begin(), _Vect.end()));
-	int span = abs(max - low);
+	double low = *(std::min_element(_Vect.begin(), _Vect.end()));
+	double max = *(std::max_element(_Vect.begin(), _Vect.end()));
+	double span = abs(max - low);
 	return span;
 }
 

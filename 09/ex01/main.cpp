@@ -1,12 +1,8 @@
 #include "RPN.hpp"
 
-void leaks(void){
-	system("leaks -q RPN");
-}
-
 int main(int argc, char *argv[]){
 	if (argc < 2 || argc > 2 ){
-		std::cout << "Error: Arguments are wrong " << argv[0] << std::endl;
+		std::cout << "Error: Arguments are wrong."  << std::endl;
 		return 1;
 	}
 	try {
@@ -15,8 +11,6 @@ int main(int argc, char *argv[]){
 		calc.makeStacks();
 	} catch (std::exception& e){
 		std::cout << e.what() << std::endl;
-	} catch (...){
-		std::cout << "unknown error" << std::endl;
 	}
 	return 0;
 }

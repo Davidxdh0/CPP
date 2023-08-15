@@ -14,7 +14,7 @@ int main(int argc, char *argv[]){
 		std::cout << std::endl;
 		big.sortVect(bigVect);
 		std::cout << std::endl;
-		big.showstack(big.getVect());
+		// big.showstack(big.getVect());
 		
 		// big.sortDeque(big.getDeque());
 		// big.showstack(big.getDeque());

@@ -19,7 +19,7 @@ class Span {
 		void				addNumber(const int i);
 		void 				addManyNumbers(const int low, const int high);
 		int					shortestSpan();
-		int 				longestSpan();
+		double 				longestSpan();
 		std::vector<int>  	getVect();
 		const int& 			operator[](unsigned int index) const;
 		int& 				operator[](unsigned int index); 

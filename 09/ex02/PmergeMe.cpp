@@ -42,6 +42,14 @@ void	PmergeMe::MakeContainers(){
 		_deque.push_back(b);
     }
 }
+template <typename T>
+bool	PmergeMe::isSorted(T& k){
+	for (size_t i = 0; i < k.size() - 2; i+=2){
+		if (k[i] > k[i + 2])
+			return (1);
+	}
+	return (0);
+}
 
 //Ford–Johnson algorithm 
 void	PmergeMe::sortVect(std::vector<int>& sortvect){
@@ -54,33 +62,51 @@ void	PmergeMe::sortVect(std::vector<int>& sortvect){
 	// step 1
 	int unpaired = 0;
 	// step 2
-	for(size_t i = 0; i + 1 < sizevect;){
+	static bool makepairs = 1;
+	
+	for(size_t i = 0; i < sizevect - 1 && makepairs == 1;){
 		big.push_back(std::max(sortvect[i], sortvect[i + 1]));
-		small.push_back(std::min(sortvect[i], sortvect[i + 1]));
+		big.push_back(std::min(sortvect[i], sortvect[i + 1]));
 		i += 2;
 	}
-	if (sizevect % 2 != 0)
-		unpaired = sortvect.back();
-	//step 3
-	sortVect(big);
-	_vect.clear();
-	_vect.reserve(sizevect);
-	
-	// big wortd niet goed gesorteerd.
-	// size_t index = 0;
-	// for (size_t num = 0; num < big.size(); num++) {
-    //     if (index < big.size()) {
-    //         _vect.insert(_vect.begin(), big[index]);
-    //         index++;
-    //     }
-    // }
-	//step 4
-	_vect.insert(_vect.begin(), unpaired);
-	//step 5
-	for (size_t i = 0; i < small.size(); i++){
-		std::vector<int>::iterator pos = std::lower_bound(_vect.begin(), _vect.end(), small[i]);
-		_vect.insert(pos, small[i]);
+	if (sizevect % 2 != 0){
+		unpaired = big.back();
+
 	}
+	makepairs = 0;
+	int i = 0;
+	int p = 0;
+	while (isSorted(big) && i < 10){
+		for(auto it = big.begin(); it != (big.end() - 2); it += 2){
+			if (*it > *(it + 2)) {
+            std::swap(*it, *(it + 1));
+            std::swap(*(it + 2), *(it + 3));
+        }
+		}
+		i++;
+	}
+	std::cout << p << std::endl;
+	showstack(big);
+	//step 3
+	// sortVect(big);
+	// _vect.clear();
+	// _vect.reserve(sizevect);
+	
+	// // big wortd niet goed gesorteerd.
+	// // size_t index = 0;
+	// // for (size_t num = 0; num < big.size(); num++) {
+    // //     if (index < big.size()) {
+    // //         _vect.insert(_vect.begin(), big[index]);
+    // //         index++;
+    // //     }
+    // // }
+	// //step 4
+	// _vect.insert(_vect.begin(), unpaired);
+	// //step 5
+	// for (size_t i = 0; i < small.size(); i++){
+	// 	std::vector<int>::iterator pos = std::lower_bound(_vect.begin(), _vect.end(), small[i]);
+	// 	_vect.insert(pos, small[i]);
+	// }
 }
 
 void	PmergeMe::sortDeque(const std::deque<int>& sortdeque){

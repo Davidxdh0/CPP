@@ -51,9 +51,8 @@ double	RPN::calculate(double first, double second, char operation){
 	if (operation == '*')
 		result = second * first;
 	else if (operation == '/'){
-		if (first == 0){
+		if (first == 0)
 			throw std::runtime_error("Error: can't divise by 0");
-		}
 		result = second / first;
 	}
 	else if (operation == '-')

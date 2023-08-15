@@ -86,10 +86,10 @@ int main(void) {
 		std::cout << e.what() << std::endl;
 	}
 	std::cout << std::endl;
-	Span big(100000);
+	Span big(1000);
 	try{
 		std::cout << "addmanynumbers" << std::endl;
-		big.addManyNumbers(-50000, 50000);
+		big.addManyNumbers(-500000, 500000);
 		std::cout << "size: " << big.getVect().size() << std::endl;
 		// for (unsigned int i = 0; big.getVect()[i]; i++){
 		// 	std::cout << big.getVect()[i];

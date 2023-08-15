@@ -27,6 +27,8 @@ class PmergeMe {
 		void				sortDeque(const std::deque<int>& sortdeque);
 		template <typename T>
 		void	showstack(const T k);
+		template <typename T>
+		bool	isSorted(T& k);
 
 };
 

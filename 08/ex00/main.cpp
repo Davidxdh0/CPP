@@ -1,7 +1,11 @@
 #include "easyfind.hpp"
 
+// void	leaks()
+// {
+// 	system("leaks -q easy");
+// }
 int main(void) {
-	
+	// atexit(leaks);
     std::vector<int> 		vectorContainer;
 	std::vector<int> 		vectorEmpty;
 	std::list<int> 			listContainer;
@@ -43,7 +47,7 @@ std::cout << "-------Finds:-------" << std::endl;
 	auto d = easyfind(setContainer, 5);
 	std::cout << *d << std::endl;	
 }
-std::cout << "-------Finds const:-------" << std::endl;
+std::cout << "-------Finds const containers:-------" << std::endl;
 {
 	auto v = easyfind(const_vectorContainer, 5);
 	std::cout << *v << std::endl;

@@ -8,11 +8,6 @@
 #include <vector>
 
 template <typename T> 
-typename T::iterator easyfind(T& x, int i){
-	return std::find(x.begin(), x.end(), i);
-} 
-
-template <typename T> 
 typename T::const_iterator easyfind(const T& x, int i){
 	return std::find(x.begin(), x.end(), i);
 } 

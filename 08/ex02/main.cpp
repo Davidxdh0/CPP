@@ -1,7 +1,13 @@
 #include "MutantStack.hpp"
 
+// void	leaks()
+// {
+// 	system("leaks -q Mutant");
+// }
+
 int main()
 {
+	// atexit(leaks);
 	MutantStack<int> mstack;
 	mstack.push(5);
 	mstack.push(17);
@@ -10,12 +16,12 @@ int main()
 	std::cout << mstack.size() << std::endl;
 	mstack.push(3);
 	mstack.push(5);
-	MutantStack<int> mstackcpy = mstack;
+	MutantStack<int> mstackcpy(mstack);
 	mstack.push(737);
 	MutantStack<int> mstackcpyass;
 	mstackcpyass = mstack;
 	mstack.push(0);
-
+	std::cout << "copy contructor and assign" << std::endl;
 {
 	MutantStack<int>::iterator begin = mstackcpy.begin();
 	MutantStack<int>::iterator end = mstackcpy.end();
@@ -42,7 +48,6 @@ int main()
 		++it;
 	}
 	std::cout  << std::endl;
-	std::stack<int> s(mstack);
-	//system("leaks -q Mutant");
+	std::stack<int> s(mstack);	
 	return 0;
 }

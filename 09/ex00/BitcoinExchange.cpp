@@ -42,7 +42,7 @@ int	BitcoinExchange::datetodecimal(std::string date){
 		int month = std::stoi(date.substr(first + 1, second - first - 1));
 		int day = std::stoi(date.substr(second + 1));
 		if (year > 2008 && year < 2100 && month >= 0 && month <= 12 && day >= 0 && day <= 31) {
-			 return year * 10000 + month * 100 + day;
+			return year * 10000 + month * 100 + day;
 		}
 	}
 	return -1;
@@ -76,16 +76,16 @@ void BitcoinExchange::Exchange(){
 		try {
 				makeLine(line);
 			}
-			catch (std::runtime_error& e){
-				std::cerr << e.what() << std::endl;
-			} catch (std::out_of_range& e) {
-				std::cerr << e.what() << std::endl;
-			} catch (std::invalid_argument& e){
-				std::cout << "Error: bad input => " + line << std::endl;
-			}  catch (...) {
-            	std::cerr << "Error: unknown." << std::endl;
-        	}
+		catch (std::runtime_error& e){
+			std::cerr << e.what() << std::endl;
+		} catch (std::out_of_range& e) {
+			std::cerr << e.what() << std::endl;
+		} catch (std::invalid_argument& e){
+			std::cout << "Error: bad input => " + line << std::endl;
+		}  catch (...) {
+			std::cerr << "Error: unknown." << std::endl;
 		}
+	}
 }
 
 void BitcoinExchange::makeLine(std::string line){
