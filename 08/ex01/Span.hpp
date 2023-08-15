@@ -11,8 +11,7 @@ class Span {
 		unsigned int 		_N;
 		std::vector<int> 	_Vect;
 	public:
-		Span();
-		Span(unsigned int N);
+		Span(unsigned int N=1);
 		Span(const Span& other);
 		Span& operator=(const Span& other);
 		~Span();
@@ -22,6 +21,9 @@ class Span {
 		int					shortestSpan();
 		int 				longestSpan();
 		std::vector<int>  	getVect();
+		const int& 			operator[](unsigned int index) const;
+		int& 				operator[](unsigned int index); 
 };
+
 
 #endif

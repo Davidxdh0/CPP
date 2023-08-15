@@ -1,15 +1,12 @@
 #include "Span.hpp"
 
-Span::Span() : _N(0), _Vect(){
-	// std::cout << "Default constructor Span" << std::endl;
-}
-
 Span::Span(const unsigned int N) : _N(N), _Vect(){
 	// std::cout << "Constructor Span" << std::endl;
+	if (_N == 0)
+		throw std::runtime_error("Error: Vector[0]");
 }
 
-Span::Span(const Span& other){
-	*this = other;
+Span::Span(const Span& other) : _N(other._N), _Vect(other._Vect){
 }
 
 Span& Span::operator=(const Span& other){
@@ -45,32 +42,23 @@ void 	Span::addManyNumbers(const int low, const int high){
 }
 
 int	Span::shortestSpan(){
-	unsigned int size_vect = _Vect.size();
-	int Span = -1;
-	for (unsigned i = 0; i < size_vect; i++){
-		if (size_vect - 1 != i){
-			int low = abs(_Vect[i] - _Vect[i + 1]);
-			if (low < Span || Span == -1)
-				Span = low;
-		}
-	}
-	if (Span == -1)
-		throw std::runtime_error("Span cant be found");
-	return Span;
+if (_Vect.size() < 2)
+		throw std::runtime_error("Span can't be found");
+	std::vector<int> differences(_Vect.size());
+	
+	std::sort(_Vect.begin(), _Vect.end());
+	std::adjacent_difference(_Vect.begin(), _Vect.end(), differences.begin());
+	int span = *(std::min_element(differences.begin() + 1, differences.end()));
+	return span;
 }
 
 int 	Span::longestSpan(){
-	unsigned int size_vect = _Vect.size();
-	int span = -1;
-	for (unsigned i = 0; i < size_vect; i++){
-		if (size_vect - 1 != i){
-			int high = abs(_Vect[i] + _Vect[i + 1]);
-			if (high > span || span == -1)
-				span = high;
-		}
-	}
-	if (span == -1)
-		throw std::runtime_error("Span cant be found");
+	if (_Vect.size() < 2)
+		throw std::runtime_error("Span can't be found");
+	
+	int low = *(std::min_element(_Vect.begin(), _Vect.end()));
+	int max = *(std::max_element(_Vect.begin(), _Vect.end()));
+	int span = abs(max - low);
 	return span;
 }
 

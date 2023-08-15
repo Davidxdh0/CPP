@@ -4,7 +4,7 @@ CC          := c++
 ifneq (,$(findstring Linux,$(shell uname -a)))
 	CFLAGS := -Wall -Wextra -Werror -Wno-error=deprecated-copy -Wno-deprecated-copy -std=c++11 
 else
-	CFLAGS := -Wall -Wextra -Werror -Wpedantic -std=c++98
+	CFLAGS := -Wall -Wextra -Werror -Wpedantic -std=c++11
 endif
 
 # CFLAGS += -std=c++98
@@ -34,7 +34,7 @@ clean:
 fclean: clean
 		@rm -rf $(NAME)
 
-run: 	all
+run: 	re
 		./$(NAME)
 	
 test: 	clean
