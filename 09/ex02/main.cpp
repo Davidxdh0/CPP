@@ -10,15 +10,25 @@ int main(int argc, char *argv[]){
 		big.checkInput();
 		big.MakeContainers();
 		
-		std::vector<int> bigVect = big.getVect();
-		std::cout << std::endl;
-		big.sortVect(bigVect);
-		std::cout << std::endl;
-		// big.showstack(big.getVect());
+		auto start = std::chrono::high_resolution_clock::now();
+		big.sortDeque(big.getDeque());
+		auto end = std::chrono::high_resolution_clock::now();
+		auto duration = std::chrono::duration_cast<std::chrono::microseconds>(end - start).count();
 		
-		// big.sortDeque(big.getDeque());
-		// big.showstack(big.getDeque());
-
+		auto start1 = std::chrono::high_resolution_clock::now();
+		big.sortVect(big.getVect());
+		auto end1 = std::chrono::high_resolution_clock::now();
+		auto duration1 = std::chrono::duration_cast<std::chrono::microseconds>(end1 - start1).count();
+		
+		std::cout << std::endl;
+		std::cout << "Deque took  " << duration << " microseconds" << std::endl;
+		std::cout << "Vector took " << duration1 << " microseconds" << std::endl;
+		
+		std::cout << std::endl;
+		big.showstack(big.getDeque());
+		std::cout << std::endl << std::endl;
+		big.showstack(big.getVect());
+		
 	} catch (std::exception& e){
 		std::cout << e.what() << std::endl;
 	} catch (...){

@@ -6,6 +6,7 @@
 #include <vector>
 #include <deque>
 #include <limits.h>
+#include <chrono>
 
 class PmergeMe {
 	private:
@@ -23,23 +24,39 @@ class PmergeMe {
 		std::deque<int>		getDeque();
 		void				checkInput();
 		void				MakeContainers();
-		void				sortVect(std::vector<int>& sortvect);
-		void				sortDeque(const std::deque<int>& sortdeque);
+
+		std::vector<std::pair<int, int>>	MergeVect(std::vector<std::pair<int, int>>& first, std::vector<std::pair<int, int>>& second);	
+		std::vector<std::pair<int, int>>	SortVectBig(std::vector<std::pair<int, int>>& pairs);
+		void								sortVect(std::vector<int> sortvect);
+		
+		std::deque<std::pair<int, int>>		MergeDeque(std::deque<std::pair<int, int>>& first, std::deque<std::pair<int, int>>& second);	
+		std::deque<std::pair<int, int>>		SortDequeBig(std::deque<std::pair<int, int>>& pairs);
+		void								sortDeque(const std::deque<int> sortdeque);
+
 		template <typename T>
-		void	showstack(const T k);
+		void	showstackpair(const T& k);
 		template <typename T>
-		bool	isSorted(T& k);
+		void	showstack(const T& k);
 
 };
 
 template <typename T>
-void	PmergeMe::showstack(const T k){
-	typename T::const_iterator begin = k.begin();
-	typename T::const_iterator end = k.end();
-	for (; begin < end; begin++){
-		std::cout << *begin << " ";
+void	PmergeMe::showstackpair(const T &k){
+	for(auto& vect : k){
+		std::cout << vect.first << " ";
 	}
 	std::cout << std::endl;
+	for(auto& vect2 : k){
+		std::cout << vect2.second << " ";
+	}
+	std::cout << std::endl;
+}
+
+template <typename T>
+void	PmergeMe::showstack(const T &k){
+	for(auto& vect : k){
+		std::cout << vect << " ";
+	}
 }
 
 #endif
