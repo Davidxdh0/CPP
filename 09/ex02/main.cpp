@@ -7,7 +7,7 @@
 
 int main(int argc, char *argv[]){
 	// atexit(leaks);
-	if (argc < 3 ){
+	if (argc < 2 ){
 		std::cout << "Error" << argv[0] <<std::endl;
 		return 1;
 	}
