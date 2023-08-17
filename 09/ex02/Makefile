@@ -35,7 +35,7 @@ fclean: clean
 		@rm -rf $(NAME)
 
 run: 	re
-		./$(NAME) "$(shell cat input.txt)"
+		./$(NAME) `shuf -i 1-30 -n 10 | tr "\n" " " `
 	
 test: 	clean
 		@$(MAKE) CFLAGS="-DTESTS=1" 

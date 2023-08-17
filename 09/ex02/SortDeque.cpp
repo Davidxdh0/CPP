@@ -34,7 +34,7 @@ std::deque<std::pair<int, int>> PmergeMe::SortDequeBig(std::deque<std::pair<int,
 }
 
 //Ford–Johnson algorithm 
-void	PmergeMe::sortDeque(std::deque<int> sortdeque){
+void	PmergeMe::sortDeque(std::deque<int>& sortdeque){
 	
 	size_t sizevect 			   = sortdeque.size();
 	std::deque<std::pair<int, int>> pairs;
@@ -53,11 +53,12 @@ void	PmergeMe::sortDeque(std::deque<int> sortdeque){
 	
 	std::deque<std::pair<int, int>> sortedpairs;
 	sortedpairs = SortDequeBig(pairs);
-
+	
 	_deque.clear();
 	for (const auto& pair : sortedpairs) {
         _deque.push_back(pair.first);
     }
+	
 	if (uneven)
 		sortedpairs.push_back({-1, unpaired});;
 
@@ -69,4 +70,5 @@ void	PmergeMe::sortDeque(std::deque<int> sortdeque){
 			_deque.insert(pos, i->second);
 		}
     }
+	
 }
