@@ -35,7 +35,7 @@ fclean: clean
 		@rm -rf $(NAME)
 
 run: 	re
-		./$(NAME) `shuf -i 1-30 -n 10 | tr "\n" " " `
+		./$(NAME) `jot -r 30800 1 1000 | tr '\n' ' '`
 	
 test: 	clean
 		@$(MAKE) CFLAGS="-DTESTS=1" 

@@ -37,13 +37,18 @@ int	BitcoinExchange::datetodecimal(std::string date){
 	size_t first = date.find('-');
 	size_t second = date.find('-', first + 1);
 	
-	if (first != std::string::npos && second != std::string::npos){
-		int year = std::stoi(date.substr(0, first));
-		int month = std::stoi(date.substr(first + 1, second - first - 1));
-		int day = std::stoi(date.substr(second + 1));
-		if (year > 2008 && year < 2100 && month >= 0 && month <= 12 && day >= 0 && day <= 31) {
-			return year * 10000 + month * 100 + day;
-		}
+	try {
+			if (first != std::string::npos && second != std::string::npos){
+				int year = std::stoi(date.substr(0, first));
+				int month = std::stoi(date.substr(first + 1, second - first - 1));
+				int day = std::stoi(date.substr(second + 1));
+				if (year > 2008 && year < 2100 && month >= 0 && month <= 12 && day >= 0 && day <= 31) {
+					return year * 10000 + month * 100 + day;
+				}
+			}
+	}
+	catch (std::exception& e){
+		return -1;
 	}
 	return -1;
 }
@@ -94,7 +99,7 @@ void BitcoinExchange::makeLine(std::string line){
 		std::string date = line.substr(0, pipe);
 		std::string valuestr = line.substr(pipe + 1);
 		double datavalue = getDataValue(date);
-		if (valuestr.empty() || pipe == std::string::npos || badInput(line)){
+		if (valuestr.empty() || pipe == std::string::npos || badInput(line) || datavalue == -1){
 			std::string errormessage = "Error: bad input => " + date;
 			throw std::runtime_error(errormessage);
 		}
