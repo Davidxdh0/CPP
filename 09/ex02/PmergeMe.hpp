@@ -25,8 +25,8 @@ class PmergeMe {
 		std::vector<int>&	getVect();
 		std::deque<int>&	getDeque();
 		std::vector<int>&	getEval();
-		void				checkInput(int argc, char* input[]);
-		void				MakeContainers(int argc, char *argv[]);
+		void				checkInput(int argc, char* input[], bool cont);
+		void				MakeContainers(int argc, char *argv, bool cont, int i);
 
 		std::vector<std::pair<int, int>>	MergeVect(std::vector<std::pair<int, int>>& first, std::vector<std::pair<int, int>>& second);	
 		std::vector<std::pair<int, int>>	SortVectBig(std::vector<std::pair<int, int>>& pairs);

@@ -15,7 +15,11 @@ PmergeMe& PmergeMe::operator=(const PmergeMe& other) {
 
 PmergeMe::~PmergeMe(){}
 
-void	PmergeMe::checkInput(int argc, char* input[]){
+void	PmergeMe::checkInput(int argc, char* input[], bool cont){
+
+	if (cont == 1){
+		_vect.reserve(argc - 1);
+	}
 	int argvindex = 1;
 	while(argvindex < argc){
 		bool digitbool = false;
@@ -29,24 +33,36 @@ void	PmergeMe::checkInput(int argc, char* input[]){
 		}
 		if (digitbool == false)
 			throw std::runtime_error("Error: No digits.");
+		MakeContainers(argc, input[argvindex], cont, argvindex);
 		argvindex++;
 	}
 }
 
-void	PmergeMe::MakeContainers(int argc, char *argv[]){
-	for (int i = 1; i < argc; i++){
-		double number = strtod(argv[i], nullptr);
-		if (number < INT_MIN || number > INT_MAX)
-			throw std::runtime_error("Error: Incorrect input, integers only.");
-		int b = static_cast<int>(number);
-		_vect.push_back(b);
-		_deque.push_back(b);
-		_eval.push_back(b);
-	}
-	// for (int number : _vect) {
-    // 	if (std::count(_vect.begin(), _vect.end(), number) > 1)
-    //     	throw std::runtime_error("Error: duplicate.");
-    // }
+void	PmergeMe::MakeContainers(int argc, char *argv, bool cont, int i){
+	
+	double number = strtod(argv, nullptr);
+	if (number < INT_MIN || number > INT_MAX)
+		throw std::runtime_error("Error: Incorrect input, integers only.");
+	if (cont == 1)
+		_vect.emplace_back(static_cast<int>(number));
+	else
+		_deque.push_back(static_cast<int>(number));
+	if (i < 7)
+		_eval.emplace_back(static_cast<int>(number));
+	argc++;
+	// I don't mind duplicates, but if you do, uncomment.
+	// if (cont == 1){
+	// 	for (int number : _vect) {
+	// 		if (std::count(_vect.begin(), _vect.end(), number) > 1)
+	// 			throw std::runtime_error("Error: duplicate.");
+	// 	}
+	// }
+	// else {
+	// 	for (int number : _deque) {
+	// 		if (std::count(_deque.begin(), _deque.end(), number) > 1)
+	// 			throw std::runtime_error("Error: duplicate.");
+	// 	}
+	// }
 }
 
 

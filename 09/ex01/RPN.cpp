@@ -17,12 +17,25 @@ RPN& RPN::RPN::operator=(const RPN& other) {
 
 RPN::~RPN(){}
 
+// void	RPN::checkStacks(){
+// 	for (size_t i = 0; _input[i] != '\0'; i++){
+// 		if (std::isdigit(_input[i]) || \
+// 			(_input[i] == '*' || _input[i] == '/' || _input[i] == '-' || _input[i] == '+' \
+// 			|| _input[i] == ' '))
+// 			continue;
+// 		else
+// 			throw std::runtime_error("Error: expression is wrong");
+// 	}
+// }
+
 void	RPN::checkStacks(){
+	int integer = 0;
 	for (size_t i = 0; _input[i] != '\0'; i++){
-		if (std::isdigit(_input[i]) || \
-			(_input[i] == '*' || _input[i] == '/' || _input[i] == '-' || _input[i] == '+' \
-			|| _input[i] == ' '))
-			continue;
+		if (std::isdigit(_input[i]) && integer == 0)
+			integer++;
+		else if (_input[i] == '*' || _input[i] == '/' || _input[i] == '-' || _input[i] == '+' || _input[i] == ' '){
+			integer = 0;
+		}
 		else
 			throw std::runtime_error("Error: expression is wrong");
 	}
@@ -70,6 +83,7 @@ void	RPN::operations(){
 		char oper		= _operations.top();
 		_operations.pop();
 		_integers.top() = calculate(first, second, oper);
+		// std::cout << second << " " << oper << " " << first << " = " << _integers.top() << std::endl;
 	}
 	else
 		throw std::runtime_error("Error: expression is wrong");

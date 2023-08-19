@@ -10,10 +10,10 @@ std::vector<std::pair<int, int>>	PmergeMe::MergeVect(std::vector<std::pair<int, 
     auto endSecond 	= second.end();
 	while (iterFirst != endFirst && iterSecond != endSecond) {
         if (iterFirst->first <= iterSecond->first) {
-            result.push_back(std::move(*iterFirst));
+            result.emplace_back(std::move(*iterFirst));
             ++iterFirst;
         } else {
-            result.push_back(std::move(*iterSecond));
+            result.emplace_back(std::move(*iterSecond));
             ++iterSecond;
         }
     }
@@ -42,9 +42,9 @@ void	PmergeMe::sortVect(std::vector<int>& sortvect){
 	size_t sizevect	= sortvect.size();
 	int unpaired 	= 0;
 	bool uneven		= false;
-	pairs.reserve(sizevect);
+	pairs.reserve(sizevect/2);
 	for(size_t i = 0; i < sizevect; i+=2 ){
-		if (sizevect % 2 != 0 && i + 1 == sizevect){
+		if (i + 1 == sizevect && sizevect % 2 != 0 ){
 			uneven 	 = true;
 			unpaired = sortvect[i];
 			continue ;
@@ -59,7 +59,7 @@ void	PmergeMe::sortVect(std::vector<int>& sortvect){
 	_vect.clear();
 	_vect.reserve(sizevect);
 	for (const auto& pair : sortedpairs) {
-        _vect.push_back(pair.first);
+        _vect.emplace_back(pair.first);
     }
 	if (uneven){
 		auto pos = std::lower_bound(_vect.begin(), _vect.end(), unpaired);

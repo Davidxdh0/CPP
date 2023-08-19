@@ -38,14 +38,14 @@ int	BitcoinExchange::datetodecimal(std::string date){
 	size_t second = date.find('-', first + 1);
 	
 	try {
-			if (first != std::string::npos && second != std::string::npos){
-				int year = std::stoi(date.substr(0, first));
-				int month = std::stoi(date.substr(first + 1, second - first - 1));
-				int day = std::stoi(date.substr(second + 1));
-				if (year > 2008 && year < 2100 && month >= 0 && month <= 12 && day >= 0 && day <= 31) {
-					return year * 10000 + month * 100 + day;
-				}
+		if (first != std::string::npos && second != std::string::npos){
+			int year = std::stoi(date.substr(0, first));
+			int month = std::stoi(date.substr(first + 1, second - first - 1));
+			int day = std::stoi(date.substr(second + 1));
+			if (year > 2008 && year < 2100 && month >= 0 && month <= 12 && day >= 0 && day <= 31) {
+				return year * 10000 + month * 100 + day;
 			}
+		}
 	}
 	catch (std::exception& e){
 		return -1;

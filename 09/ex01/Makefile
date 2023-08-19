@@ -35,7 +35,7 @@ fclean: clean
 		@rm -rf $(NAME)
 
 run: 	all
-		./$(NAME)
+		./$(NAME) "5 5 * 1 - 1 +"
 	
 test: 	re
 		./test.sh
