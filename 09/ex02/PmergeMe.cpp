@@ -26,8 +26,6 @@ void	PmergeMe::checkInput(int argc, char* input[], bool cont){
 		for (size_t i = 0; input[argvindex][i] != '\0'; i++){
 			if (std::isdigit(input[argvindex][i]))
 				digitbool = true;
-			else if (input[argvindex][i] == ' ')
-				continue;
 			else
 				throw std::runtime_error("Error: Positive integers only.");
 		}
