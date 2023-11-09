@@ -13,11 +13,11 @@ ClapTrap::ClapTrap(void ){
 		std::cout << "Contructed ClapTrap named " << this->_name << std::endl;
 }
 
-ClapTrap::ClapTrap(std::string name, int hitpoints, int energypoints, int attackdamage){	
+ClapTrap::ClapTrap(const std::string &name){	
 	this->_name 		= name;
-	this->_hitpoints 	= hitpoints;
-	this->_energypoints = energypoints;
-	this->_attackdamage = attackdamage;
+	this->_hitpoints 	= 10;
+	this->_energypoints = 10;
+	this->_attackdamage = 0;
 	if (MESSAGE == 1)
 		std::cout << "Contructed ClapTrap named " << this->_name << std::endl;
 	if (VALUES == 1){

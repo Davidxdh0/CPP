@@ -6,10 +6,10 @@
 
 #include "Debug.hpp"
 
-class FragTrap : public virtual ClapTrap {
+class FragTrap : virtual public ClapTrap {
 	public:
 		FragTrap( void );
-		FragTrap(std::string name);
+		FragTrap(const std::string &name);
 		FragTrap(const FragTrap& old);
 		FragTrap &operator=(const FragTrap &old);
 		~FragTrap( void );

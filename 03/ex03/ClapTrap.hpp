@@ -15,7 +15,7 @@ class 	ClapTrap{
 
 	public:
 		ClapTrap( void );
-		ClapTrap(std::string name, int hitpoints, int energypoints, int attackdamage);
+		ClapTrap(const std::string &name);
 		ClapTrap(const ClapTrap& old);
 		ClapTrap 	&operator=(const ClapTrap &old);
 		void		attack(const std::string& target);

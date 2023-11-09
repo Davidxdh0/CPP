@@ -4,7 +4,18 @@
 
 int main ( void )
 {
-		// ClapTrap clap[3] = { 
+	DiamondTrap Diamond("Monster");
+	Diamond.whoAmI();
+	Diamond.attack("Baby");
+	Diamond.showHitpoint();
+	Diamond.beRepaired(10);
+	Diamond.showHitpoint();
+	Diamond.takeDamage(50);
+	Diamond.showHitpoint();
+	Diamond.highFivesGuys();
+	Diamond.guardGate();
+	return 0;
+	// ClapTrap clap[3] = { 
 	// 					ClapTrap("one"), 
 	// 					ClapTrap("two"), 
 	// 					ClapTrap("three") };
@@ -50,16 +61,5 @@ int main ( void )
 	// Frag.highFivesGuys();
 	// Frag.guardGate();
 	//-------------------------
-	DiamondTrap Diamond("Monster");
-	Diamond.whoAmI();
-	Diamond.attack("Baby");
-	Diamond.showHitpoint();
-	Diamond.beRepaired(10);
-	Diamond.showHitpoint();
-	Diamond.takeDamage(50);
-	Diamond.showHitpoint();
-	Diamond.highFivesGuys();
-	Diamond.guardGate();
-	return 0;
 }
 
