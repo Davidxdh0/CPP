@@ -3,9 +3,11 @@
 BitcoinExchange::BitcoinExchange() : _Map(), _input("") {}
 
 BitcoinExchange::BitcoinExchange(std::ifstream& indata, char argv[]) {
-	_input = argv;
 	std::string line;
-	bool firstline = 1;
+	_input 			= argv;
+	bool firstline 	= 1;
+	double value 	= 0;
+
 	while(getline(indata, line)){
 		if (firstline){
 			firstline = 0;
@@ -15,7 +17,12 @@ BitcoinExchange::BitcoinExchange(std::ifstream& indata, char argv[]) {
 		if (comma != std::string::npos){
 			std::string date = line.substr(0, comma);
         	std::string valuestr = line.substr(comma + 1);
-        	double value = std::stod(valuestr);
+			try {
+        		value = std::stod(valuestr); 
+			}
+			catch (std::exception &e){
+				value = 1001;
+			}
         	_Map.insert(std::make_pair(date, value));
 		}
 	}
@@ -53,7 +60,7 @@ int	BitcoinExchange::datetodecimal(std::string date){
 	return -1;
 }
 
-double	BitcoinExchange::getDataValue(std::string date){
+double	BitcoinExchange::getDateValue(std::string date){
 	if (datetodecimal(date) == -1)
 		return -1;
 	auto pos = _Map.find(date);
@@ -66,21 +73,22 @@ double	BitcoinExchange::getDataValue(std::string date){
 }
 
 void BitcoinExchange::Exchange(){
+	std::string line;
+	bool firstline = 1;
+
 	if (_input.empty())
 		throw std::runtime_error("Error: argv is empty");
 	std::ifstream indata(_input);
 	if (!indata.is_open())
 		throw std::runtime_error("Can't open input");
-	std::string line;
-	bool firstline = 1;
 	while(getline(indata, line)){
 		if (line == "date | value" && firstline){
 			firstline = 0;
 			continue;
 		}	
 		try {
-				makeLine(line);
-			}
+			makeLine(line);
+		}
 		catch (std::runtime_error& e){
 			std::cerr << e.what() << std::endl;
 		} catch (std::out_of_range& e) {
@@ -94,30 +102,40 @@ void BitcoinExchange::Exchange(){
 }
 
 void BitcoinExchange::makeLine(std::string line){
+	double value = 0;
+	double result = 0;
+
 	size_t pipe = line.find('|');
 	if (pipe != std::string::npos){
 		std::string date = line.substr(0, pipe);
 		std::string valuestr = line.substr(pipe + 1);
-		double datavalue = getDataValue(date);
-		if (valuestr.empty() || pipe == std::string::npos || badInput(line) || datavalue == -1){
-			std::string errormessage = "Error: bad input => " + date;
-			throw std::runtime_error(errormessage);
+		double datevalue = getDateValue(date);
+		if (valuestr.empty() || pipe == std::string::npos || badInput(line) || datevalue == -1){
+			throw std::runtime_error("Error: bad input => " + date);
 		}
-		double value = std::stod(valuestr);
-		if (value < 0)
-			throw std::out_of_range("Error: not a positive number.");
-		if (value > 1000)
-			throw std::out_of_range("Error: too large number.");
-		if (datavalue < 0){
-			std::string errormessage = "Error: bad input => " + date;
-			throw std::runtime_error(errormessage);
+		try {
+			value = std::stod(valuestr);
 		}
-		double result = datavalue * value;
+		catch (std::exception &e){
+			value = 1001;
+			int i = 0;
+			while(isspace(valuestr[i])){
+				i++; }
+			if (valuestr[i] == '-'){
+				value = -1; }
+		}
+		if (value < 0){
+			throw std::out_of_range("Error: not a positive number.");}
+		if (value > 1000){
+			throw std::out_of_range("Error: too large number.");}
+		if (datevalue < 0){
+			throw std::runtime_error("Error: bad input => " + date);
+		}
+		result = datevalue * value;
 		std::cout << date << "=> " << value << " = "  << result << std::endl;
 	}
 	else {
-		std::string errormessage = "Error: bad input => " + line;
-		throw std::runtime_error(errormessage);
+		throw std::runtime_error("Error: bad input => " + line);
 	}
 }
 	
@@ -134,6 +152,7 @@ bool	BitcoinExchange::badInput(const std::string& input){
 	int dot = 0;
 	int pipe = 0;
 	int valuedash = 0;
+	
 	for (size_t i = 0; input[i] != '\0'; i++){
 		if (input[i] == '-' && pipe == 0)
 			dash++;

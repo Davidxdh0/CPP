@@ -11,6 +11,7 @@ class BitcoinExchange {
 	private:
 		std::map<std::string, double> 	_Map;
 		std::string						_input;
+		
 	public:
 		BitcoinExchange();
 		BitcoinExchange(std::ifstream& indata, char argv[]);
@@ -20,7 +21,7 @@ class BitcoinExchange {
 
 		std::string						getInput();
 		std::map<std::string, double> 	getMap();
-		double							getDataValue(std::string date);
+		double							getDateValue(std::string date);
 		int								datetodecimal(std::string date);
 		void							Exchange();
 		bool							badInput(const std::string& input);
