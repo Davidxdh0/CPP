@@ -134,11 +134,11 @@ Fixed& Fixed::operator++ ()
 	this->_number++;
 	return *this;
 }
-	
+
 Fixed Fixed::operator++ (int)
 {
 	Fixed temp(*this);
-	++(*this);
+	this->_number++;
 	return temp;
 }
 

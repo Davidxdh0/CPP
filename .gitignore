@@ -2,3 +2,6 @@
 .DS_Store
 .vscode
 *.o
+*/number
+*/array
+*/RPN

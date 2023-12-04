@@ -80,10 +80,10 @@ void	RPN::operations(){
 		double first	= _integers.top();
 		_integers.pop();
 		double second	= _integers.top();
-		char oper		= _operations.top();
+		char operateChr = _operations.top();
 		_operations.pop();
-		_integers.top() = calculate(first, second, oper);
-		// std::cout << second << " " << oper << " " << first << " = " << _integers.top() << std::endl;
+		_integers.top() = calculate(first, second, operateChr);
+		// std::cout << second << " " << operateChr << " " << first << " = " << _integers.top() << std::endl;
 	}
 	else
 		throw std::runtime_error("Error: expression is wrong");

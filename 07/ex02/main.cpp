@@ -4,11 +4,11 @@ void leaks(void){
 	system("leaks -q array");
 }
 int main(void) {
-	atexit(leaks);
+	// atexit(leaks);
 	std::cout << "****** Start ~10seconds runtime ******" << std::endl;
 	try{
 		std::cout << "------initialise negative 1-----" << std::endl;
-		Array<int> intarray(1);
+		Array<int> intarray(-1);
 	}catch (std::exception& e){
 		std::cout << e.what() << std::endl;
 	}
