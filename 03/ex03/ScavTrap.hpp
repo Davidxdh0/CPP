@@ -6,10 +6,10 @@
 
 #include "Debug.hpp"
 
-class ScavTrap : public virtual ClapTrap {
+class ScavTrap :  virtual public ClapTrap {
 	public:
 		ScavTrap( void );
-		ScavTrap(std::string name);
+		ScavTrap(const std::string &name);
 		ScavTrap(const ScavTrap& old);
 		ScavTrap &operator=(const ScavTrap &old);
 		~ScavTrap( void );

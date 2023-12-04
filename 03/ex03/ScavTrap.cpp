@@ -1,7 +1,10 @@
 #include "ScavTrap.hpp"
 #include "Debug.hpp"
 
-ScavTrap::ScavTrap(void) : ClapTrap("Default", 100, 50, 20) {
+ScavTrap::ScavTrap( void ) : ClapTrap() {
+	_hitpoints = 100;
+	_energypoints = 50;
+	_attackdamage = 20;
 	if (MESSAGE == 1)
 		std::cout << "Contructed ScavTrap named " << this->_name << std::endl;
 	if (VALUES == 1){
@@ -11,7 +14,10 @@ ScavTrap::ScavTrap(void) : ClapTrap("Default", 100, 50, 20) {
 	}
 }
 
-ScavTrap::ScavTrap(std::string name) : ClapTrap(name, 100, 50, 20) {
+ScavTrap::ScavTrap(const std::string &name) : ClapTrap(name) {
+	_hitpoints = 100;
+	_energypoints = 50;
+	_attackdamage = 20;
 	if (MESSAGE == 1)
 		std::cout << "Contructed ScavTrap named " << this->_name << std::endl;
 	if (VALUES == 1){
