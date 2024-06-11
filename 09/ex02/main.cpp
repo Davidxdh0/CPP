@@ -10,9 +10,10 @@ int main(int argc, char *argv[]){
 		std::cout << "Error" << argv[0] <<std::endl;
 		return 1;
 	}
+
+	//Deque
 	try {
 		std::chrono::high_resolution_clock::time_point start = std::chrono::high_resolution_clock::now();
-
 		PmergeMe big;
 		big.checkInput(argc, argv, 0);
 		big.sortDeque(big.getDeque());
@@ -30,6 +31,8 @@ int main(int argc, char *argv[]){
 	} catch (...){
 		std::cout << "Error" << std::endl;
 	}
+	
+	//optimised Vector
 	try {
 		auto start1	= std::chrono::high_resolution_clock::now();
 

@@ -26,7 +26,7 @@ std::vector<std::pair<int, int>> PmergeMe::SortVectBig(std::vector<std::pair<int
 
 	if (pairs.size() <= 1)
         return pairs;
-	
+
 	size_t middle = pairs.size() / 2;
 	std::vector<std::pair<int, int>> first(pairs.begin(), pairs.begin() + middle);
 	std::vector<std::pair<int, int>> second(pairs.begin() + middle, pairs.end());
@@ -61,6 +61,7 @@ void	PmergeMe::sortVect(std::vector<int>& sortvect){
 	for (const auto& pair : sortedpairs) {
         _vect.emplace_back(pair.first);
     }
+	//should have used jacobsnumbers, might implement in the future.
 	if (uneven){
 		auto pos = std::lower_bound(_vect.begin(), _vect.end(), unpaired);
         _vect.insert(pos, unpaired);

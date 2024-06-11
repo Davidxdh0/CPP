@@ -21,6 +21,10 @@ int main()
 	i->makeSound();
 	j->makeSound();
 
+	const Animal copy = *j;
+	Animal assign;
+	assign = copy; 
+	
 	delete meta;
 	delete j;
 	delete i;

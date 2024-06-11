@@ -1,5 +1,5 @@
 #include "Dog.hpp"
-
+#define MESSAGE 1
 
 Dog::Dog( void ) : Animal("Dog") {}
 
