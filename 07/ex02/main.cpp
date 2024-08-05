@@ -5,13 +5,13 @@ void leaks(void){
 }
 int main(void) {
 	// atexit(leaks);
-	std::cout << "****** Start ~10seconds runtime ******" << std::endl;
-	try{
-		std::cout << "------initialise negative 1-----" << std::endl;
-		Array<int> intarray(-1);
-	}catch (std::exception& e){
-		std::cout << e.what() << std::endl;
-	}
+	// std::cout << "****** Start ~10seconds runtime - don't uncomment ******" << std::endl;
+	// try{
+	// 	std::cout << "------initialise negative 1-----" << std::endl;
+	// 	Array<int> intarray(-1);
+	// }catch (std::exception& e){
+	// 	std::cout << e.what() << std::endl;
+	// }
 	try{
 		std::cout << "-----copy constructor-almost the same----" << std::endl;
 		Array<int> intarray(3);
